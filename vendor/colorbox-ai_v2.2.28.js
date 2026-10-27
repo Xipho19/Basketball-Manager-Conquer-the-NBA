@@ -336,7 +336,7 @@
     const activityId = String(((_b = (_a = window.ColorboxAI) == null ? void 0 : _a.project) == null ? void 0 : _b.id) || "").trim();
     if (options.platformHeaders !== false && activityId) headers.activityId = activityId;
     const token = options.platformHeaders === false ? "" : options.token || getAuthToken();
-    if (token) headers["X-Hupu-Token"] = token;
+    if (token) headers["X-Disabled-Header"] = token;
     const fetchOpts = {
       method: options.method || "GET",
       // Preserve the historical cookie-enabled default, while allowing callers such
@@ -870,7 +870,7 @@
       options = options || {};
       const headers = { "Content-Type": "application/json;charset=UTF-8" };
       const token = options.token || getAuthToken();
-      if (token) headers["X-Hupu-Token"] = token;
+      if (token) headers["X-Disabled-Header"] = token;
       const fetchOpts = {
         method: options.method || "GET",
         credentials: "include",
@@ -1151,7 +1151,7 @@
       options = options || {};
       const headers = { "Content-Type": "application/json;charset=UTF-8" };
       const token = options.token || getAuthToken();
-      if (token) headers["X-Hupu-Token"] = token;
+      if (token) headers["X-Disabled-Header"] = token;
       const fetchOpts = {
         method: options.method || "GET",
         credentials: "include",
@@ -1408,7 +1408,7 @@
         "Content-Type": "application/json;charset=UTF-8"
       }, options.headers || {});
       const token = getAuthToken();
-      if (token) headers["X-Hupu-Token"] = token;
+      if (token) headers["X-Disabled-Header"] = token;
       const fetchOptions = {
         method: options.method || "GET",
         credentials: "include",
@@ -2363,7 +2363,7 @@
       return new Promise(function(resolve, reject) {
         pendingRequests[requestId] = { resolve, reject };
         if (window.parent && window.parent !== window) {
-          postMessageToParent("http.request", {
+          postMessageToParent("http_request_disabled", {
             requestId,
             config: {
               url: config.url,
@@ -6977,7 +6977,7 @@
         }
       } else {
         const loginResp = yield postJson(DEFAULT_LOGIN_URL, {}, {
-          "x-hupu-token": hupuToken,
+          "x-disabled-header": hupuToken,
           "X-Target-Env-Id": envId
         });
         loginJson = loginResp.json || {};
@@ -7179,7 +7179,7 @@
           {
             headers: __spreadValues({
               "Content-Type": "application/json;charset=UTF-8"
-            }, token ? { "X-Hupu-Token": token } : {})
+            }, token ? { "X-Disabled-Header": token } : {})
           }
         );
         if (!body || body.code !== 0) {
@@ -7228,7 +7228,7 @@
     const token = context.env.getAuthToken();
     return __spreadValues({
       "Content-Type": "application/json;charset=UTF-8"
-    }, token ? { "X-Hupu-Token": token } : {});
+    }, token ? { "X-Disabled-Header": token } : {});
   }
   function executor7(params, context) {
     return __async(this, null, function* () {
@@ -7592,7 +7592,7 @@
             const token = options.platformHeaders === false ? "" : context.env.getAuthToken();
             const headers = Object.assign(
               { "Content-Type": "application/json;charset=UTF-8" },
-              token ? { "X-Hupu-Token": token } : {},
+              token ? { "X-Disabled-Header": token } : {},
               options.headers || {},
               getCommonRequestHeaders(context, options.platformHeaders)
             );
@@ -7614,7 +7614,7 @@
             const token = options.platformHeaders === false ? "" : context.env.getAuthToken();
             const headers = Object.assign(
               { "Content-Type": "application/json;charset=UTF-8" },
-              token ? { "X-Hupu-Token": token } : {},
+              token ? { "X-Disabled-Header": token } : {},
               options.headers || {},
               getCommonRequestHeaders(context, options.platformHeaders)
             );
@@ -7671,7 +7671,7 @@
         const token = options.platformHeaders === false ? "" : context.env.getAuthToken();
         const headers = Object.assign(
           { "Content-Type": "application/json;charset=UTF-8" },
-          token ? { "X-Hupu-Token": token } : {},
+          token ? { "X-Disabled-Header": token } : {},
           options.headers || {},
           getCommonRequestHeaders(context, options.platformHeaders)
         );
@@ -8402,7 +8402,7 @@
         };
         const token = context.env.getAuthToken();
         const headers = {};
-        if (token) headers["X-Hupu-Token"] = token;
+        if (token) headers["X-Disabled-Header"] = token;
         const res = yield context.httpClient.post(url, payload, { headers });
         return res;
       } catch (err) {
@@ -9350,7 +9350,7 @@
         };
         const token = context.env.getAuthToken();
         const headers = {};
-        if (token) headers["X-Hupu-Token"] = token;
+        if (token) headers["X-Disabled-Header"] = token;
         const res = yield context.httpClient.post(url, payload, { headers });
         return res;
       } catch (err) {
@@ -9401,7 +9401,7 @@
         const url = `${host}/${platform}/${version}/bplcommentapi/bpl/score_tree/getSelfByBizKey?outBizType=${encodeURIComponent(params.outBizType)}&outBizNo=${encodeURIComponent(params.outBizNo)}`;
         const token = context.env.getAuthToken();
         const headers = {};
-        if (token) headers["X-Hupu-Token"] = token;
+        if (token) headers["X-Disabled-Header"] = token;
         const res = yield context.httpClient.get(url, { headers });
         return res;
       } catch (err) {
@@ -9464,7 +9464,7 @@
         const platform = getAppPlatform((_b = (_a = context.env).getNativeInfo) == null ? void 0 : _b.call(_a));
         const url = `${host}/${platform}/${version}/bbsactivityapi/audit/act/check`;
         const headers = {};
-        if (token) headers["X-Hupu-Token"] = token;
+        if (token) headers["X-Disabled-Header"] = token;
         const res = yield context.httpClient.post(url, { content, title: "" }, { headers });
         const succeed = res == null ? void 0 : res.succeed;
         const internalCode = res == null ? void 0 : res.internalCode;
