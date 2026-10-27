@@ -1,0 +1,23 @@
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:101108"]===null)d["nba:101108"]="代表球队：洛杉矶快船、新奥尔良黄蜂。主要荣誉：12次NBA全明星、5次NBA助攻王、6次NBA抢断王。球风：挡拆组织和中距离投篮兼备，善于控制节奏并用抢断影响比赛。 现实 NBA 经历：2005-06 至 2025-26 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2548"]===null)d["nba:2548"]="代表球队：迈阿密热火。主要荣誉：3次NBA总冠军、2006年NBA总决赛MVP、13次NBA全明星。球风：速度快、擅长变向突破和高难度上篮，也能在后场组织进攻。 现实 NBA 经历：2003-04 至 2018-19 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1503"]===null)d["nba:1503"]="代表球队：奥兰多魔术、休斯顿火箭。主要荣誉：2次NBA得分王、7次NBA全明星、2001年NBA进步最快球员。球风：突破和中距离跳投结合，得分手段丰富，也能贡献篮板与传球。 现实 NBA 经历：1997-98 至 2012-13 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2405"]===null)d["nba:2405"]="代表球队：菲尼克斯太阳、纽约尼克斯。主要荣誉：6次NBA全明星、2007年NBA最佳阵容一阵、2003年NBA最佳新秀。球风：挡拆配合和冲击篮筐是主要武器，终结有爆发力，也能贡献中距离得分。 现实 NBA 经历：2002-03 至 2015-16 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:200746"]===null)d["nba:200746"]="代表球队：波特兰开拓者、圣安东尼奥马刺。主要荣誉：7次NBA全明星、2次NBA最佳阵容二阵。球风：中距离跳投稳定，善于用高出手点和转身后仰创造得分机会。 现实 NBA 经历：2006-07 至 2021-22 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2207"]===null)d["nba:2207"]="代表球队：亚特兰大老鹰、布鲁克林篮网。主要荣誉：7次NBA全明星、2010年NBA最佳阵容三阵。球风：外线投射和持球得分兼备，能在锋卫位置承担关键进攻。 现实 NBA 经历：2001-02 至 2021-22 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1888"]===null)d["nba:1888"]="代表球队：底特律活塞、华盛顿奇才。主要荣誉：2004年NBA总冠军、3次NBA全明星、1999年NCAA总冠军。球风：擅长持续无球跑动、借掩护接球跳投，以中距离得分牵动对手防线。 现实 NBA 经历：1999-00 至 2012-13 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2449"]===null)d["nba:2449"]="代表球队：休斯顿火箭、巴斯克尼亚。主要荣誉：2004年奥运会金牌、2次欧洲篮球联赛最佳阵容一阵、2008年NBA最佳新秀一阵。球风：内线脚步细腻，善用假动作、上下步和面筐投篮，靠技术创造得分机会。 现实 NBA 经历：2007-08 至 2016-17 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:200768"]===null)d["nba:200768"]="代表球队：多伦多猛龙、休斯顿火箭。主要荣誉：2019年NBA总冠军、6次NBA全明星、2016年NBA最佳阵容三阵。球风：身材结实、拼抢强硬，重视阅读防守和及时传球，善于做帮助球队取胜的细节。 现实 NBA 经历始于 2006-07 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1712"]===null)d["nba:1712"]="代表球队：华盛顿奇才、金州勇士。主要荣誉：NBA最佳第六人、NBA全明星、NBA最佳新秀阵容。球风：兼顾前场得分与篮板，NBA生涯场均18.5分、7.5篮板。 现实 NBA 经历：1998-99 至 2013-14 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2746"]===null)d["nba:2746"]="代表球队：亚特兰大老鹰。主要荣誉：NBA最佳防守阵容、NBA最佳新秀阵容、NBA扣篮大赛冠军。球风：兼顾前场防守与篮板，NBA生涯场均7.4篮板。 现实 NBA 经历：2004-05 至 2017-18 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1536"]===null)d["nba:1536"]="代表球队：圣安东尼奥马刺、金州勇士。主要荣誉：NBA总冠军。球风：兼顾得分与传球的锋卫球员，NBA生涯场均15.1分、3.1次助攻。 现实 NBA 经历：2000-01 至 2013-14 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1899"]===null)d["nba:1899"]="代表球队：迈阿密热火、波士顿凯尔特人。主要荣誉：NBA总冠军、NBA最佳新秀阵容。球风：为前场提供得分与篮板，NBA生涯场均8.6分、4.7篮板。 现实 NBA 经历：1999-00 至 2010-11 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:200757"]===null)d["nba:200757"]="代表球队：俄克拉荷马城雷霆、亚特兰大老鹰。主要荣誉：NBA最佳防守阵容。球风：兼顾前场防守与篮板，NBA生涯场均3.7篮板。 现实 NBA 经历：2006-07 至 2019-20 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:200779"]===null)d["nba:200779"]="代表球队：尼克斯。球风：以三分投射见长的高个前锋，能在外线为球队拉开空间。 现实 NBA 经历：2006-07 至 2016-17 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1800"]===null)d["nba:1800"]="代表球队：骑士。球风：主要提供外线投射，曾在单季命中225记三分。 现实 NBA 经历：1998-99 至 2008-09 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2757"]===null)d["nba:2757"]="代表球队：马刺。主要荣誉：NBA总冠军。球风：主要司职后卫，NBA生涯场均8.4分、3.4助攻。 现实 NBA 经历：2004-05 至 2016-17 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:201967"]===null)d["nba:201967"]="代表球队：鹈鹕。球风：主要司职前锋，NBA生涯场均5.8分、3.7篮板。 现实 NBA 经历：2009-10 至 2018-19 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2229"]===null)d["nba:2229"]="代表球队：猛龙。主要荣誉：NBA总冠军。球风：主要司职后卫，NBA生涯场均9.9分、3.5助攻。 现实 NBA 经历：2001-02 至 2013-14 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2416"]===null)d["nba:2416"]="代表球队：湖人。球风：主要司职后卫，NBA生涯场均6.4分、1.0助攻。 现实 NBA 经历：2002-03 至 2009-10 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2669"]===null)d["nba:2669"]="代表球队：马刺。球风：主要司职前锋，NBA生涯场均3.9分、3.3篮板。 现实 NBA 经历：2003-04 至 2008-09 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:202704"]===null)d["nba:202704"]="代表球队：活塞。主要荣誉：NBA总冠军。球风：善于持球打挡拆的控卫，能在突破得分与传球之间寻找机会。 现实 NBA 经历：2011-12 至 2024-25 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2427"]===null)d["nba:2427"]="代表球队：马刺。球风：主要司职后卫，NBA生涯场均6.3分、1.3助攻。 现实 NBA 经历：2002-03 至 2013-14 赛季。";}

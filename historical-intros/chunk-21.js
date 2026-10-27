@@ -1,0 +1,9 @@
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1449"]===null)d["nba:1449"]="代表球队：波士顿凯尔特人。主要荣誉：3次NBA总冠军、3次NBA常规赛MVP、2次NBA总决赛MVP。球风：基本功扎实、技术全面，擅长投篮与关键时刻的进攻选择。 现实 NBA 经历：1979-80 至 1991-92 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1713"]===null)d["nba:1713"]="代表球队：多伦多猛龙、新泽西篮网。主要荣誉：8次NBA全明星、1999年NBA最佳新秀、2000年NBA扣篮大赛冠军。球风：扣篮富有力量和创意，后期发展为能提供三分与经验的外线球员。 现实 NBA 经历：1998-99 至 2019-20 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2736"]===null)d["nba:2736"]="代表球队：芝加哥公牛、迈阿密热火。主要荣誉：2次NBA全明星、2012年NBA最佳防守二阵。球风：重视防守与团队配合，能在锋线承担得分和篮板等多种任务。 现实 NBA 经历：2004-05 至 2018-19 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1889"]===null)d["nba:1889"]="代表球队：丹佛掘金、费城76人。主要荣誉：2002年NBA助攻王、2000年NBA最佳新秀一阵。球风：以传球组织为主要任务，也能依靠背身进攻在后卫对位中得分。 现实 NBA 经历：1999-00 至 2015-16 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2406"]===null)d["nba:2406"]="代表球队：华盛顿奇才、达拉斯独行侠。主要荣誉：NBA总冠军、NBA全明星、NBA最佳新秀阵容。球风：兼顾前场得分与篮板，NBA生涯场均14.1分、5篮板。 现实 NBA 经历：2002-03 至 2015-16 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2549"]===null)d["nba:2549"]="代表球队：洛杉矶快船。主要荣誉：NBA全明星。球风：兼顾前场得分与篮板，NBA生涯场均11.2分、7.6篮板。 现实 NBA 经历：2003-04 至 2015-16 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2747"]===null)d["nba:2747"]="代表球队：克利夫兰骑士、丹佛掘金。主要荣誉：NBA总冠军、NBA最佳第六人。球风：兼具三分投射和扣篮能力，能在后场提供爆发性得分。 现实 NBA 经历：2004-05 至 2019-20 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:200758"]===null)d["nba:200758"]="代表球队：犹他爵士、芝加哥公牛。球风：为前场提供得分与篮板，NBA生涯场均7.8分、2.8篮板。 现实 NBA 经历：2006-07 至 2013-14 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1559"]===null)d["nba:1559"]="代表球队：独行侠。球风：主要司职锋卫球员，NBA生涯场均4.0分、3.2篮板。 现实 NBA 经历：1999-00 至 2007-08 赛季。";}

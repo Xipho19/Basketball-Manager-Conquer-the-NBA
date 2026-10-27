@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#08080a" />
+    <link rel="icon" type="image/png" href="../branding/favicon.png" />
+    <title>篮球经理：征服联盟</title>
+    <style>
+      :root { --accent-primary: #00F2FE; --accent-primary-rgb: 0, 242, 254; color-scheme: dark; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #eaf3fa; background: #070e19; font-variant-numeric: tabular-nums; }
+      * { box-sizing: border-box; }
+      body { min-width: 320px; min-height: 100vh; margin: 0; background: radial-gradient(circle at 75% 0%, #173149, transparent 38%), linear-gradient(180deg, #0a1627, #070e19 60%); }
+      button, a { font: inherit; }
+      button { appearance: none; -webkit-appearance: none; border-style: solid; }
+      button:focus-visible, a:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+      main { width: min(100%, 560px); min-height: 100dvh; margin: 0 auto; padding: 0 14px max(34px, env(safe-area-inset-bottom)); }
+      header { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 11px; margin: 0 -14px; padding: max(14px, env(safe-area-inset-top)) 14px 13px; border-bottom: 1px solid #2a4356; background: #0b1b2b; }
+      .back { display: inline-flex; min-height: 36px; padding: 0 12px; flex: none; align-items: center; gap: 5px; color: var(--accent-primary); border: 1px solid #3b5b6f; background: #102537; text-decoration: none; font-size: 11px; font-weight: 900; }
+      .back span { font-size: 23px; font-weight: 400; line-height: 1; }
+      .section-title small, .ranking-hero small { color: var(--accent-primary); font: 900 9px ui-monospace, monospace; letter-spacing: .14em; }
+      .refresh { padding: 8px 9px; color: var(--accent-primary); border: 1px solid #3b5b6f; background: #102537; font-size: 10px; cursor: pointer; }
+      .refresh:disabled { opacity: .5; cursor: wait; }
+      .ranking-hero { padding: 26px 4px 21px; }
+      .ranking-hero h2 { margin: 8px 0; font-size: clamp(24px, 6vw, 32px); line-height: 1.12; }
+      .ranking-hero p { margin: 0; color: #99afc2; font-size: 11px; line-height: 1.55; }
+      .metric-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-bottom: 12px; }
+      .metric-tabs button { min-height: 36px; color: #99afc2; border: 1px solid #30495f; background: #102537; font-size: 12px; font-weight: 900; cursor: pointer; }
+      .metric-tabs button[aria-pressed="true"] { color: var(--accent-primary); border-color: var(--accent-primary); background: #143044; }
+      .mine { padding: 16px; border: 1px solid #476278; border-top: 2px solid #d5ac5c; background: radial-gradient(circle at 90% 5%, rgba(213,172,92,.15), transparent 34%), linear-gradient(135deg, #172c40, #0d1a2b 75%); }
+      .mine-heading, .mine-values, .mine-facts { display: flex; justify-content: space-between; gap: 12px; }
+      .mine-heading { align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid #30465a; }
+      .mine-heading span { color: #d5ac5c; font: 900 9px ui-monospace, monospace; letter-spacing: .13em; }
+      .mine-heading b { margin-left: 7px; color: #eaf3fa; font: 900 12px Inter, sans-serif; letter-spacing: 0; }
+      .mine-heading small, .mine-identity small, .mine-values small { color: #8ca8bc; font-size: 10px; }
+      .mine-identity { display: flex; align-items: center; gap: 11px; padding: 15px 0; }
+      .mine-identity > div { display: grid; flex: 1; min-width: 0; gap: 3px; }
+      .mine-identity .mine-title { flex: none; color: #f4cc79; font-size: 14px; font-weight: 900; white-space: nowrap; }
+      .mine-identity strong { overflow: hidden; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+      .mine-emblem img { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; }
+      .manager-title { display: block; color: #f4cc79; font-size: 9px; font-style: normal; }
+      .avatar img { width: 100%; height: 100%; object-fit: cover; }
+      .podium .avatar { display: grid; width: 32px; height: 32px; margin: 0 auto 6px; place-items: center; border-radius: 50%; overflow: hidden; background: #19334a; font-size: 11px; }
+      .row .avatar { overflow: hidden; border-radius: 50%; }
+      .mine-emblem { display: grid; width: 42px; height: 42px; flex: none; padding: 4px; overflow: hidden; border-radius: 50%; place-items: center; border: 1px solid #6d6650; background: #283045; color: #f4d691; font: 900 13px ui-monospace, monospace; }
+      .mine-values { align-items: end; padding: 12px 0 16px; border-top: 1px solid #30465a; border-bottom: 1px solid #30465a; }
+      .mine-values > div { display: grid; gap: 6px; }
+      .mine-values > div:last-child { text-align: right; }
+      .mine-values strong { color: #f4cc79; font-size: clamp(21px, 5vw, 29px); line-height: 1; }
+      .mine-values b { color: var(--accent-primary); font-size: 22px; line-height: 1; }
+      .mine-qualification { margin: 9px 0 0; color: #9eb6c7; font-size: 10px; line-height: 1.5; }
+      .mine-facts { padding-top: 12px; color: #9eb6c7; font-size: 10px; }
+      .submit { margin-top: 9px; padding: 10px 12px; border: 1px solid #2b5262; background: #102536; }
+      .submit p { margin: 0; color: #9eb6c7; font-size: 10px; line-height: 1.5; }
+      .submit .message { margin-top: 5px; color: #f6d28a; }
+      .submit button { margin-top: 9px; padding: 7px 12px; color: #061722; border: 0; background: var(--accent-primary); font-size: 10px; font-weight: 900; cursor: pointer; }
+      .submit button[hidden] { display: none; }
+      .section-title { display: flex; justify-content: space-between; align-items: end; margin: 25px 0 10px; gap: 12px; }
+      .section-title h2 { margin: 4px 0 0; font-size: 16px; }
+      .section-title > span { color: #8fa8ba; font-size: 10px; }
+      .podium { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+      .podium article { --medal: #ffe079; --medal-border: #c8a03c; --medal-wash: #50431b; position: relative; min-width: 0; min-height: 125px; padding: 11px 6px 10px; border: 1px solid var(--medal-border); background: linear-gradient(155deg, var(--medal-wash), #102638 76%); text-align: center; }
+      .podium article:nth-child(2) { --medal: #d5e0e8; --medal-border: #8195a7; --medal-wash: #2e3c4b; }
+      .podium article:nth-child(3) { --medal: #df9979; --medal-border: #aa5c44; --medal-wash: #4a2925; }
+      .podium em { position: absolute; top: 7px; left: 6px; display: grid; width: 20px; height: 20px; place-items: center; border: 1px solid var(--medal-border); border-radius: 50%; color: var(--medal); font-size: 10px; font-style: normal; font-weight: 900; }
+      .podium b { display: block; overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+      .podium small { display: block; overflow: hidden; margin-top: 3px; color: #a8bbc9; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+      .podium .manager-title, .podium strong { color: var(--medal); }
+      .podium strong { display: block; margin-top: 4px; font-size: 16px; }
+      .list { padding: 0 12px; border: 1px solid #30495f; background: #0e1c2d; }
+      .row { display: grid; min-height: 63px; grid-template-columns: 27px 35px minmax(0, 1fr) auto; align-items: center; gap: 8px; border-bottom: 1px solid #25394c; }
+      .row:last-child { border-bottom: 0; }
+      .row .rank { color: #88a5ba; font-size: 12px; font-weight: 900; text-align: center; }
+      .row.top-rank .rank { color: #f1c86e; }
+      .row .avatar { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #3c5b70; background: #19334a; color: var(--accent-primary); font-size: 11px; font-weight: 900; }
+      .row .name { display: grid; min-width: 0; gap: 3px; }
+      .row .name b { overflow: hidden; color: #eef6fb; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+      .row .name small { color: #7899ad; font-size: 9px; }
+      .row .score { color: #e6c379; font-size: 13px; font-weight: 900; white-space: nowrap; }
+      .row .score-column { display: grid; gap: 4px; text-align: right; }
+      .row .score-column > small { color: #7899ad; font-size: 9px; white-space: nowrap; }
+      .row .score-column .manager-title { font-size: 10px; font-weight: 700; white-space: nowrap; }
+      .row.mine-row { margin-inline: -12px; padding-inline: 12px; background: rgba(var(--accent-primary-rgb),.09); }
+      .state { margin: 0; padding: 24px 12px; color: #a7bfd0; font-size: 12px; line-height: 1.55; text-align: center; }
+      .state.error { color: #ffb2a5; }
+      .rule { margin: 15px 0 0; color: #829daf; font-size: 10px; line-height: 1.5; }
+      @media (max-width: 375px) { .mine-facts { gap: 5px; font-size: 9px; } .row { gap: 6px; } .row .score { font-size: 11px; } }
+    </style>
+  <link rel="stylesheet" href="../leaderboard.css">
+</head>
+  <body>
+    <main>
+      <header><a class="back" id="back" href="../index.html"><span aria-hidden="true">‹</span>返回生涯总览</a><button class="refresh" id="refresh" type="button">刷新榜单 ↻</button></header>
+      <div class="ranking-hero"><small>DYNASTY SCORE · 王朝积分</small><h2>全服经理，一较高下</h2><p id="ranking-description">冠军率 = 总冠军数 ÷ 已完成赛季数；正在进行的赛季不计入，至少完成10个赛季才能上榜。</p></div>
+      <nav class="metric-tabs" aria-label="排行榜类型"><button type="button" id="metric-championshipRate" aria-pressed="true">冠军率</button><button type="button" id="metric-championships" aria-pressed="false">冠军数</button><button type="button" id="metric-score" aria-pressed="false">总积分</button></nav>
+      <section class="mine" aria-label="我的排名"><div class="mine-heading"><span>MY RANK <b>我的排名</b></span><small>账号最高成绩</small></div><div class="mine-identity"><span class="mine-emblem" id="my-logo"></span><div><strong id="my-name">正在读取球队资料</strong><small id="my-team">最高积分存档</small></div><em class="manager-title mine-title" id="my-title">称号待同步</em></div><div class="mine-values"><div><small>全服名次</small><strong id="my-rank">正在加载</strong></div><div><small id="my-metric-label">冠军率</small><b id="my-score">—</b></div></div><div class="mine-facts"><span id="my-season">赛季 —</span><span id="my-championships">总冠军 —</span><span id="my-achievements">成就 —</span></div><p class="mine-qualification" id="my-rate-eligibility" hidden></p></section>
+      <section class="submit" aria-label="成绩自动同步"><p id="local-score">从生涯总览进入后，当前成绩会自动校验并同步。</p><p class="message" id="submit-message" role="status" aria-live="polite" hidden></p><button id="retry-sync" type="button" hidden>重试同步</button></section>
+      <div class="section-title"><div><small>TOP THREE</small><h2>荣耀前三</h2></div><span id="podium-metric">最高积分生涯 · 冠军率</span></div>
+      <section class="podium" id="podium" aria-label="排行榜前三名"></section>
+      <div class="section-title"><div><small>SCORE BOARD</small><h2 id="leaderboard-title">冠军率榜</h2></div><span>前 50 名</span></div>
+      <section class="list" id="list" aria-label="排行榜列表"><p class="state" id="status" role="status">正在加载榜单…</p></section>
+      <p class="rule">三个榜单均取账号最高积分生涯的数据。冠军率 = 总冠军数 ÷ 已完成赛季数，正在进行的赛季不计入；至少完成10个已结算赛季才能上冠军率榜，旧成绩缺少赛季数时显示待同步。</p>
+    </main>
+    <script>
+      const podium = document.getElementById("podium");
+      const list = document.getElementById("list");
+      const refreshButton = document.getElementById("refresh");
+      const backLink = document.getElementById("back");
+      const careerSlot = new URLSearchParams(window.location.search).get("careerSlot");
+      if (/^[1-6]$/.test(careerSlot || "")) backLink.href = `../index.html?careerSlot=${careerSlot}`;
+      const myLogo = document.getElementById("my-logo");
+      const myTitle = document.getElementById("my-title");
+      const myRank = document.getElementById("my-rank");
+      const myName = document.getElementById("my-name");
+      const myScore = document.getElementById("my-score");
+      const myTeam = document.getElementById("my-team");
+      const mySeason = document.getElementById("my-season");
+      const myChampionships = document.getElementById("my-championships");
+      const myAchievements = document.getElementById("my-achievements");
+      const myEligibility = document.getElementById("my-rate-eligibility");
+      const retryButton = document.getElementById("retry-sync");
+      const localScore = document.getElementById("local-score");
+      const submitMessage = document.getElementById("submit-message");
+      const metrics = {
+        score: { label: "王朝积分", title: "王朝积分总榜", podium: "最高王朝积分", description: "按账号最高王朝积分排名；同分时，先达到该积分的经理排在前面。" },
+        championships: { label: "冠军数", title: "总冠军数榜", podium: "最高积分生涯 · 冠军数", description: "按最高积分生涯的总冠军数排名，三个榜单使用同一份生涯成绩。" },
+        championshipRate: { label: "冠军率", title: "冠军率榜", podium: "最高积分生涯 · 冠军率", description: "冠军率 = 总冠军数 ÷ 已完成赛季数；正在进行的赛季不计入，至少完成10个赛季才能上榜。" },
+      };
+      let selectedMetric = "championshipRate";
+      let loadGeneration = 0;
+      function metricValue(entry, metric) {
+        const career = bestCareer(entry);
+        if (!career) return "—";
+        if (metric === "championshipRate") return Number.isSafeInteger(career.completedSeasons) && career.completedSeasons >= 10 && typeof career.championshipRate === "number" && Number.isFinite(career.championshipRate)
+          ? `${(career.championshipRate * 100).toFixed(1)}%` : Number.isSafeInteger(career.completedSeasons) && career.completedSeasons >= 0 && career.completedSeasons < 10 ? "—" : "待同步";
+        if (metric === "championships") return Number.isSafeInteger(career.championships) ? `${career.championships} 冠` : "待同步";
+        return Number(entry.score).toLocaleString("zh-CN");
+      }
+      function rateFacts(entry) {
+        return `${Number.isSafeInteger(entry.championships) ? entry.championships : "—"} 冠 / ${Number.isSafeInteger(entry.completedSeasons) ? entry.completedSeasons : "—"} 季`;
+      }
+      function selectMetric(metric) {
+        if (selectedMetric === metric) return;
+        selectedMetric = metric;
+        for (const key of Object.keys(metrics)) document.getElementById(`metric-${key}`).setAttribute("aria-pressed", String(key === metric));
+        document.getElementById("ranking-description").textContent = metrics[metric].description;
+        document.getElementById("my-metric-label").textContent = metrics[metric].label;
+        document.getElementById("podium-metric").textContent = metrics[metric].podium;
+        document.getElementById("leaderboard-title").textContent = metrics[metric].title;
+        void load(true);
+      }
+      for (const metric of Object.keys(metrics)) document.getElementById(`metric-${metric}`).addEventListener("click", () => selectMetric(metric));
+      // This page has no telemetry transport other than the host bridge.
+      const trackingStartedAt = Date.now();
+      let trackingReports = 0;
+      let trackingInitialReports = 0;
+      const trackingSeen = new Set();
+      const trackingElements = new WeakSet();
+      const trackingObservers = new Map();
+      const trackingEvents = {
+        listVisible: { act: "exposure", blk: "BMC008", pos: "T20", label: "王朝积分总榜" },
+        syncVisible: { act: "exposure", blk: "BMC008", pos: "T21", label: "成绩自动同步" },
+        refresh: { act: "click", blk: "BMC008", pos: "T22", label: "刷新榜单 ↻" },
+        retry: { act: "click", blk: "BMC008", pos: "T23", label: "重试同步" },
+        back: { act: "click", blk: "BMC008", pos: "T24", label: "返回生涯总览" },
+      };
+      function reportTracking(action, result) {
+        const event = trackingEvents[action];
+        if (!event || trackingReports >= 70 || (Date.now() - trackingStartedAt < 5000 && trackingInitialReports >= 40)) return;
+        const message = { type: "basketball-manager:leaderboard-analytics", action, ...(result ? { result } : {}) };
+        try {
+          if (window.parent === window) return;
+          window.parent.postMessage(message, window.location.origin);
+          trackingReports++;
+          if (Date.now() - trackingStartedAt < 5000) trackingInitialReports++;
+        } catch { /* Reporting must not interrupt the leaderboard. */ }
+      }
+      function observeTracking(element, action, result) {
+        const key = `${action}:${result || "visible"}`;
+        trackingObservers.get(action)?.disconnect();
+        trackingObservers.delete(action);
+        if (!element || typeof IntersectionObserver === "undefined" || trackingSeen.has(key) || trackingElements.has(element)) return;
+        try {
+          const observer = new IntersectionObserver((entries) => {
+            if (!element.isConnected || document.visibilityState === "hidden" || element.closest("[hidden], [inert]")) return;
+            if (!entries.some((entry) => entry.target === element && entry.isIntersecting && entry.intersectionRatio >= 0.5)) return;
+            if (!trackingSeen.has(key) && !trackingElements.has(element)) {
+              trackingSeen.add(key);
+              trackingElements.add(element);
+              reportTracking(action, result);
+            }
+            observer.disconnect();
+          }, { threshold: 0.5 });
+          trackingObservers.set(action, observer);
+          observer.observe(element);
+        } catch { /* Old embedded browsers may lack usable visibility observers. */ }
+      }
+      function showSyncFeedback(text, result) {
+        const element = document.createElement("span");
+        element.textContent = text;
+        // Each changed result is an actual new visible element, never a synthetic exposure.
+        submitMessage.replaceChildren(element);
+        submitMessage.hidden = false;
+        observeTracking(element, "syncVisible", result);
+      }
+      const proofKey = "basketball-manager-leaderboard-proof-v1";
+      let localProof = null;
+      try {
+        const saved = sessionStorage.getItem(proofKey);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed?.version === 1 && Number.isSafeInteger(parsed.score) && parsed.score >= 0) {
+            localProof = parsed;
+            localScore.textContent = `本次提交 ${parsed.score.toLocaleString("zh-CN")} 分 · 自动保留账号最高成绩`;
+          }
+        }
+      } catch { /* Reading a leaderboard does not require local storage. */ }
+
+      function status(message, error = false) {
+        list.replaceChildren();
+        const element = document.createElement("p");
+        element.className = error ? "state error" : "state";
+        element.setAttribute("role", error ? "alert" : "status");
+        element.textContent = message;
+        list.append(element);
+      }
+
+      let requestId = 0;
+      function requestViaGame(action, submission) {
+        return new Promise((resolve, reject) => {
+          const id = ++requestId;
+          const onResponse = (event) => {
+            if (event.source !== window.parent || (event.origin !== window.location.origin && !(window.location.protocol === "file:" && event.origin === "null"))) return;
+            const message = event.data;
+            if (message?.type !== "basketball-manager:leaderboard-response" || message.id !== id) return;
+            clearTimeout(timeout);
+            window.removeEventListener("message", onResponse);
+            if (message.error) reject(new Error(message.error));
+            else resolve(message.data);
+          };
+          const timeout = window.setTimeout(() => {
+            window.removeEventListener("message", onResponse);
+            reject(new Error("榜单连接超时，请稍后重试。"));
+          }, 30000);
+          window.addEventListener("message", onResponse);
+          window.parent.postMessage({ type: "basketball-manager:leaderboard-request", id, action, submission }, window.location.origin);
+        });
+      }
+
+      async function request(path, options = {}) {
+        if (new URLSearchParams(window.location.search).get("embedded") === "1" && window.parent !== window) {
+          const action = path === "/leaderboard" ? "list" : path === "/leaderboard/me" ? "mine" : path === "/leaderboard/submit" ? "submit" : null;
+          if (!action) throw new Error("不支持的排行榜请求");
+          return requestViaGame(action, action === "submit" ? options.data : { force: options.force === true, metric: options.data?.metric || "score" });
+        }
+        throw new Error("请从游戏内打开排行榜。");
+      }
+
+      function addText(parent, tag, className, value) {
+        const element = document.createElement(tag);
+        element.className = className;
+        element.textContent = String(value);
+        parent.append(element);
+      }
+
+      function imageUrl(value) {
+        if (typeof value !== "string") return "";
+        if (/^\.\/expansion-logos\/[a-z0-9-]+\.(png|svg|webp)$/.test(value)) return "../" + value.slice(2);
+        try { const url = new URL(value); return url.protocol === "https:" && /^(?:[a-z0-9-]+\.)*(?:hupu\.com|hoopchina\.com\.cn)$/i.test(url.hostname) ? url.href : ""; } catch { return ""; }
+      }
+
+      function renderImage(parent, url, label, lazy = true) {
+        parent.replaceChildren();
+        const fallback = document.createElement("span");
+        fallback.textContent = Array.from(label || "经理").slice(0, 2).join("");
+        parent.append(fallback);
+        const src = imageUrl(url);
+        if (!src) return;
+        const img = document.createElement("img");
+        img.alt = label || "头像";
+        img.loading = lazy ? "lazy" : "eager";
+        img.decoding = "async";
+        img.addEventListener("error", () => img.replaceWith(fallback), { once: true });
+        img.src = src;
+        parent.replaceChildren(img);
+      }
+
+      function showCareerSyncStatus(mine) {
+        const complete = mine?.careerSnapshotVerified === true && Number.isSafeInteger(mine.completedSeasons) && mine.completedSeasons >= 0;
+        showSyncFeedback(complete ? "最高积分与生涯资料已同步。" : "最高成绩资料待同步，请打开最高积分存档后重试。", complete ? "synced" : "pending");
+        retryButton.hidden = complete;
+      }
+
+      function renderMine(mine, metric = selectedMetric) {
+        const career = bestCareer(mine);
+        const eligible = metric !== "championshipRate" || (Number.isSafeInteger(career?.completedSeasons) && career.completedSeasons >= 10);
+        myRank.textContent = eligible && Number.isSafeInteger(mine?.rank) && mine.rank > 0 ? `第 ${mine.rank} 名` : "暂未上榜";
+        const belowMinimum = metric === "championshipRate" && Number.isSafeInteger(career?.completedSeasons) && career.completedSeasons >= 0 && career.completedSeasons < 10;
+        myEligibility.hidden = !belowMinimum;
+        myEligibility.textContent = belowMinimum ? `至少完成10个赛季才能上榜 · 已完成 ${career.completedSeasons}/10 季` : "";
+        myScore.textContent = metricValue(mine, metric);
+        myName.textContent = career?.teamName || "最高成绩球队待同步";
+        myTitle.textContent = career?.title || "称号待同步";
+        myTeam.textContent = career?.careerSnapshotVerified === true ? "最高积分存档 · 总经理生涯" : "最高成绩资料待同步";
+        mySeason.textContent = `赛季 ${career?.seasonId || "—"}`;
+        myChampionships.textContent = metric === "championshipRate" && career ? rateFacts(career) : `总冠军 ${Number.isSafeInteger(career?.championships) ? career.championships : "—"}`;
+        myAchievements.textContent = `成就 ${Number.isSafeInteger(career?.achievements) ? career.achievements : "—"}`;
+        renderImage(myLogo, career?.teamLogo, myName.textContent, false);
+        if (!localProof && mine?.careerSnapshotVerified === true) showCareerSyncStatus(mine);
+      }
+
+      function bestCareer(entry) {
+        if (!entry || entry.careerSnapshotVerified === true) return entry;
+        return { ...entry, teamName: "", teamLogo: "", seasonId: "", title: "称号待同步", championships: null, achievements: null, completedSeasons: null, championshipRate: null };
+      }
+
+      function render(entries, mine, metric = selectedMetric) {
+        entries = entries.map((entry) => bestCareer(mine && String(entry.id) === String(mine.id) ? { ...entry, ...mine, rank: entry.rank } : entry));
+        podium.replaceChildren();
+        list.replaceChildren();
+        observeTracking(document.getElementById("leaderboard-title"), "listVisible");
+        if (!entries.length) { status("榜单暂时还没有成绩。"); return; }
+        for (const entry of entries.slice(0, 3)) {
+          const card = document.createElement("article");
+          addText(card, "em", "", entry.rank);
+          const avatar = document.createElement("span");
+          avatar.className = "avatar";
+          renderImage(avatar, entry.avatarUrl, entry.displayName || "经理", false);
+          card.append(avatar);
+          addText(card, "b", "", entry.displayName || "经理");
+          addText(card, "small", "", entry.teamName || "球队待同步");
+          addText(card, "small", "manager-title", entry.title || "称号待同步");
+          addText(card, "strong", "", metricValue(entry, metric));
+          if (metric === "championshipRate") addText(card, "small", "", rateFacts(entry));
+          podium.append(card);
+        }
+        for (const entry of entries) {
+          const isCurrent = mine && String(entry.id) === String(mine.id);
+          const row = document.createElement("div");
+          row.className = `row${entry.rank <= 3 ? " top-rank" : ""}${isCurrent ? " mine-row" : ""}`;
+          addText(row, "span", "rank", entry.rank);
+          const avatar = document.createElement("span");
+          avatar.className = "avatar";
+          renderImage(avatar, entry.avatarUrl, entry.displayName || "经理");
+          row.append(avatar);
+          const identity = document.createElement("span");
+          identity.className = "name";
+          addText(identity, "b", "", `${entry.displayName || "经理"}${isCurrent ? " · 我" : ""}`);
+          addText(identity, "small", "", `${entry.teamName || "球队待同步"} · ${entry.seasonId || "赛季待同步"}`);
+          row.append(identity);
+          const scoreColumn = document.createElement("span");
+          scoreColumn.className = "score-column";
+          addText(scoreColumn, "strong", "score", `${metricValue(entry, metric)}${metric === "score" ? " 分" : ""}`);
+          if (metric === "championshipRate") addText(scoreColumn, "small", "", rateFacts(entry));
+          addText(scoreColumn, "em", "manager-title", entry.title || "称号待同步");
+          row.append(scoreColumn);
+          list.append(row);
+        }
+      }
+
+      let syncPromise = null;
+      let syncAttempted = false;
+      function syncScore(force = false) {
+        if (syncPromise) return syncPromise;
+        syncAttempted = true;
+        syncPromise = performSync(force).finally(() => { syncPromise = null; });
+        return syncPromise;
+      }
+      async function performSync(force = false) {
+        if (!localProof) return request("/leaderboard/me", { auth: true });
+        retryButton.disabled = true;
+        retryButton.hidden = true;
+        submitMessage.hidden = false;
+        submitMessage.setAttribute("role", "status");
+        showSyncFeedback("正在自动校验并同步成绩…", "pending");
+        try {
+          let profile = null;
+          const embedded = new URLSearchParams(window.location.search).get("embedded") === "1" && window.parent !== window;
+          if (!embedded) throw new Error("请从游戏内打开排行榜。");
+          const result = await request("/leaderboard/submit", {
+            method: "POST", auth: true,
+            data: { proof: localProof, displayName: profile?.nickname || "经理", ...(profile ? { avatarUrl: profile.avatar || profile.userHeadUrl || "" } : {}), ...(force ? { force: true } : {}) }
+          });
+          const mine = Number.isSafeInteger(result?.rank) ? result : await request("/leaderboard/me", { auth: true });
+          showCareerSyncStatus(mine);
+          return mine && profile ? { ...mine, displayName: profile.nickname, avatarUrl: profile.avatar || profile.userHeadUrl || mine.avatarUrl || "" } : mine;
+        } catch (error) {
+          submitMessage.setAttribute("role", "alert");
+          showSyncFeedback(error instanceof Error ? error.message : "成绩提交失败，请稍后再试。", "failure");
+          retryButton.hidden = false;
+          return request("/leaderboard/me", { auth: true });
+        } finally { retryButton.disabled = false; }
+      }
+
+      function leaderboardRows(payload, metric) {
+        if (metric !== "score" && payload?.metric !== metric) throw new Error("该榜单暂未开放，请稍后重试。");
+        const rows = Array.isArray(payload) ? payload : payload?.entries;
+        if (!Array.isArray(rows)) throw new Error("榜单数据格式不正确。");
+        return rows;
+      }
+
+      async function load(force = false, retry = false) {
+        const metric = selectedMetric;
+        const generation = ++loadGeneration;
+        const current = () => generation === loadGeneration;
+        refreshButton.disabled = true;
+        podium.replaceChildren();
+        status("正在加载榜单…");
+        myRank.textContent = "正在加载";
+        myScore.textContent = "—";
+        myEligibility.hidden = true;
+        let entries = null;
+        let mine = null;
+        const data = { metric, limit: 100 };
+        // Tab changes reuse an in-flight proof sync; refreshes never submit a proof again.
+        const pendingSync = localProof && (!syncAttempted || retry) ? syncScore(retry) : syncPromise;
+        const readMine = () => request("/leaderboard/me", { auth: true, data: { metric }, force: force || Boolean(pendingSync) });
+        const listTask = request("/leaderboard", { data, force }).then((payload) => {
+          if (!current()) return;
+          const rows = leaderboardRows(payload, metric);
+          entries = rows.filter((entry) => Number.isInteger(entry.rank) && Number.isFinite(Number(entry.score)));
+          render(entries, mine, metric);
+        }).catch((error) => { if (current()) status(error instanceof Error ? error.message : "榜单加载失败，请稍后再试。", true); });
+        const mineTask = (pendingSync ? pendingSync.then(() => current() ? readMine() : null) : readMine()).then(async (result) => {
+          if (!current()) return;
+          if (result && metric !== "score" && result.metric !== metric) throw new Error("该榜单暂未开放，请稍后重试。");
+          if (!result && metric !== "score") {
+            // A null metric rank may still belong to a synced account with no completed season.
+            const career = await request("/leaderboard/me", { auth: true, data: { metric: "score" }, force: force || Boolean(pendingSync) });
+            if (!current()) return;
+            result = career ? { ...career, rank: null, metric } : null;
+          }
+          mine = result;
+          renderMine(mine, metric);
+          if (entries) render(entries, mine, metric);
+        }).catch((error) => {
+          if (!current()) return;
+          myRank.textContent = "暂不可用";
+          submitMessage.setAttribute("role", "alert");
+          showSyncFeedback(error instanceof Error ? error.message : "个人名次暂不可用", "failure");
+        });
+        try {
+          await Promise.all([listTask, mineTask]);
+          if (!current()) return;
+          // A new proof may change all three global rankings while their list requests are in flight.
+          const mineRow = entries?.find((entry) => String(entry.id) === String(mine?.id));
+          if (entries && mine && (pendingSync || (Number.isSafeInteger(mine.rank) && mine.rank > 0 && mine.rank <= 100 && (!mineRow || mineRow.rank !== mine.rank || metricValue(mineRow, metric) !== metricValue(mine, metric))))) {
+            const payload = await request("/leaderboard", { data, force: true });
+            if (!current()) return;
+            const rows = leaderboardRows(payload, metric);
+            if (Array.isArray(rows)) {
+              const refreshedMine = rows.find((entry) => String(entry.id) === String(mine.id));
+              if (refreshedMine) { mine = { ...mine, ...refreshedMine }; renderMine(mine, metric); }
+              render(rows, mine, metric);
+            }
+          }
+        } catch (error) {
+          if (current()) showSyncFeedback(error instanceof Error ? error.message : "榜单更新失败，请刷新重试。", "failure");
+        } finally { if (current()) refreshButton.disabled = false; }
+      }
+
+      backLink.href = /^[1-6]$/.test(careerSlot || "")
+        ? `../index.html?careerSlot=${careerSlot}` : "../index.html";
+      backLink.addEventListener("click", (event) => {
+        reportTracking("back");
+        if (new URLSearchParams(window.location.search).get("embedded") === "1" && window.parent !== window) {
+          event.preventDefault();
+          window.parent.postMessage("basketball-manager:close-leaderboard", window.location.origin);
+        }
+      });
+      refreshButton.addEventListener("click", () => { reportTracking("refresh"); void load(true); });
+      retryButton.addEventListener("click", () => { reportTracking("retry"); void load(false, true); });
+      void load();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="zh-CN" data-startup-loading>
+  <head>
+<script>/* 本地离线镜像：拦截阻塞式 alert（账号/云存档不可用提示），改为控制台警告 */
+(function () {
+  var _alert = window.alert;
+  window.alert = function (msg) {
+    try { console.warn('[本地镜像] 已拦截弹窗：' + (msg == null ? '' : String(msg))); } catch (e) {}
+  };
+})();</script><script data-colorbox-colyseus="0.18.2" src="./vendor/colyseus-0.18.2.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f4ef" />
+    <link rel="icon" type="image/png" href="./branding/favicon.png" />
+    <link rel="apple-touch-icon" href="./branding/game-logo.png" />
+    <title>篮球经理：征服联盟</title>
+    <!-- Previous standalone startup screen retained for reference; intentionally not rendered.
+    <style>
+      #game-startup { position:fixed;inset:0;z-index:1000;overflow:auto;color:#e2f1ff;background:#060911;font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+      #game-startup::before { content:"";position:absolute;z-index:-1;pointer-events:none;left:50%;top:50%;width:min(100%,calc(85vh * 2 / 3));height:85vh;transform:translate(-50%,-50%);background-image:linear-gradient(180deg,rgba(2,6,16,.38) 0%,rgba(2,6,16,.08) 42%,rgba(2,6,16,.18) 65%,rgba(2,6,16,.88) 100%),url("/story/startup-court-ball.webp");background-position:center;background-size:cover;-webkit-mask-image:radial-gradient(ellipse at center,#000 58%,transparent 80%);mask-image:radial-gradient(ellipse at center,#000 58%,transparent 80%); }
+      #game-startup * { box-sizing:border-box; }
+      #game-startup .startup-layout { width:100%;max-width:480px;min-height:100%;margin:auto;padding:28px 26px 24px;padding-top:max(28px,env(safe-area-inset-top));padding-bottom:max(24px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:32px; }
+      #game-startup .startup-header { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+      #game-startup .startup-brand { color:#91a8ba;font-size:9px;font-weight:600;line-height:1.6;letter-spacing:2px; }
+      #game-startup .startup-live { display:flex;align-items:center;gap:7px;color:#b1cadb;font-size:11px;white-space:nowrap; }
+      #game-startup .startup-live:before { content:"";width:5px;height:5px;border-radius:50%;background:#00f2fe;box-shadow:0 0 12px #00f2fe66;animation:startup-pulse 1.8s ease-in-out infinite; }
+      #game-startup .startup-hero { flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding-top:clamp(34px,8vh,72px); }
+      #game-startup .startup-wordmark { position:relative;align-self:flex-start;margin:0;width:min(100%,360px);height:clamp(90px,31vw,120px);font-size:inherit;line-height:1; }
+      #game-startup #game-startup-logo { position:absolute;inset:0;width:100%;height:100%;object-fit:contain; }
+      #game-startup #game-startup-wordmark-text { position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center; }
+      #game-startup .startup-wordmark-main { display:block;font-size:clamp(44px,14vw,60px);line-height:1.18;font-weight:900;letter-spacing:2px;transform:skew(-7deg);text-shadow:1px 1px 0 #15516b,2px 2px 0 #082a3e,0 7px 24px #020610b3; }
+      #game-startup .startup-wordmark-main span { color:#00f2fe; }
+      #game-startup .startup-edition { display:flex;align-items:center;gap:10px;margin:14px 0 0;color:#d5e8f3;font-size:14px;line-height:1.6;font-weight:600;letter-spacing:4px; }
+      #game-startup .startup-edition:before,#game-startup .startup-edition:after { content:"";width:20px;height:1px;background:#00f2fe; }
+      #game-startup .startup-edition:after { width:40px;background:#00f2fe55; }
+      #game-startup .startup-tagline { margin:26px 0 0;color:#b1cadb;font-size:23px;font-weight:500;line-height:1.55;letter-spacing:1px;text-shadow:0 2px 16px #020610; }
+      #game-startup .startup-tagline span { color:#e2f1ff; }
+      #game-startup .startup-console { padding:20px;border:1px solid #00f2fe40;border-radius:4px;background:rgba(6,9,17,.86);box-shadow:0 0 28px #00f2fe08; }
+      #game-startup .startup-meter-heading { display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;color:#e2f1ff;font-size:12px; }
+      #game-startup #game-startup-count { color:#00f2fe;font:600 24px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0;font-variant-numeric:tabular-nums; }
+      #game-startup progress { display:block;width:100%;height:4px;border:0;border-radius:0;background:#00f2fe1c;color:#00f2fe;appearance:none; }
+      #game-startup progress::-webkit-progress-bar { background:#00f2fe1c; }
+      #game-startup progress::-webkit-progress-value { background:#00f2fe; }
+      #game-startup progress::-moz-progress-bar { background:#00f2fe; }
+      #game-startup #game-startup-message { min-height:40px;margin:18px 0 0;color:#a9c4da;font-size:12px;line-height:1.8; }
+      #game-startup .startup-timing { display:flex;justify-content:space-between;gap:12px;margin-top:8px;color:#91a8ba;font-size:10px;letter-spacing:.5px; }
+      #game-startup #game-startup-elapsed { color:#c6deed;font-variant-numeric:tabular-nums; }
+      #game-startup #game-startup-retry { width:100%;min-height:46px;margin-top:18px;padding:12px 18px;border:1px solid #00f2fe;border-radius:4px;background:#00f2fe;color:#021713;font:inherit;font-size:14px;font-weight:600;cursor:pointer; }
+      #game-startup #game-startup-retry:focus-visible { outline:2px solid #e2f1ff;outline-offset:4px; }
+      #game-startup [hidden] { display:none!important; }
+      #game-startup[data-state="failed"] .startup-live:before { background:#efa38b;box-shadow:none;animation:none; }
+      #game-startup[data-state="failed"] #game-startup-message { color:#eed6c9; }
+      @keyframes startup-pulse { 50% { opacity:.35; } }
+      @media (max-height:740px) { #game-startup .startup-layout { gap:22px;padding-top:max(20px,env(safe-area-inset-top));padding-bottom:max(18px,env(safe-area-inset-bottom)); } #game-startup .startup-hero { padding-top:30px; } #game-startup .startup-wordmark-main { font-size:44px; } #game-startup .startup-edition { margin-top:10px;font-size:12px;letter-spacing:3px; } #game-startup .startup-tagline { margin-top:20px;font-size:20px; } #game-startup .startup-console { padding:16px; } #game-startup #game-startup-message { min-height:22px;margin-top:14px; } }
+      @media (min-width:640px) and (max-height:540px) { #game-startup::before { left:26%; } #game-startup .startup-layout { max-width:960px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px;align-content:center;padding:20px 32px; } #game-startup .startup-header { grid-column:1/-1; } #game-startup .startup-hero { padding:0; } #game-startup .startup-wordmark { max-width:300px;height:100px; } #game-startup .startup-wordmark-main { font-size:40px; } #game-startup .startup-tagline { margin-top:16px;font-size:18px; } #game-startup .startup-console { align-self:center; } }
+      @media (prefers-reduced-motion:reduce) { #game-startup .startup-live:before { animation:none; } #game-startup progress::-webkit-progress-value { transition:none; } }
+    </style>
+    -->
+    <style>html[data-startup-loading] #root{filter:blur(6px);pointer-events:none;-webkit-user-select:none;user-select:none}html,body{background:#060911;min-height:100%;margin:0}.startup-home-shell,.startup-home-shell *,#game-startup,#game-startup *{box-sizing:border-box}#game-startup{z-index:1000;padding:max(18px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));-webkit-backdrop-filter:none;backdrop-filter:none;background:#02081357;place-items:center;font:14px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;display:grid;position:fixed;inset:0}#game-startup .home-loading-card{color:#effaff;width:min(100%,340px);max-height:calc(100dvh - 36px);box-shadow:none;text-align:center;background:#0d1b2d;border:1px solid #00f2fe;border-radius:12px;justify-items:center;gap:10px;padding:28px 22px;display:grid;overflow-y:auto}#game-startup .basketball-seam-loader{contain:layout paint;flex:none;width:48px;height:48px;margin-bottom:6px;display:block;overflow:visible}#game-startup .basketball-seam-bg{fill:none;stroke:#00f2fe24;stroke-width:2.5px;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}#game-startup .basketball-seam-flow{fill:none;stroke-width:3px;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:28 132;stroke-dashoffset:160px;vector-effect:non-scaling-stroke;animation:1.65s linear infinite startup-basketball-flow}#game-startup b{font-size:18px}#game-startup-status{color:#00f2fe;font-size:11px}#game-startup .startup-meter-heading{color:#92a9bc;justify-content:space-between;align-items:center;gap:12px;width:100%;font-size:12px;display:flex}#game-startup #game-startup-count{color:#00f2fe;letter-spacing:0;font-variant-numeric:tabular-nums;font:600 22px/1.2 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}#game-startup progress{color:#00f2fe;appearance:none;background:#00f2fe1c;border:0;border-radius:3px;width:100%;height:5px;display:block}#game-startup progress::-webkit-progress-bar{background:#00f2fe1c;border-radius:3px}#game-startup progress::-webkit-progress-value{background:#00f2fe;border-radius:3px}#game-startup progress::-moz-progress-bar{background:#00f2fe;border-radius:3px}#game-startup #game-startup-message{color:#92a9bc;margin:0;font-size:11px;line-height:1.5}#game-startup .startup-timing{color:#92a9bc;justify-content:space-between;gap:12px;width:100%;font-size:10px;display:flex}#game-startup #game-startup-elapsed{font-variant-numeric:tabular-nums}#game-startup #game-startup-retry{color:#00f2fe;width:100%;min-height:44px;font:inherit;cursor:pointer;background:0 0;border:1px solid #00f2fe;border-radius:8px;margin-top:6px;padding:10px 14px;font-size:13px}#game-startup #game-startup-retry:focus-visible{outline-offset:4px;outline:2px solid #e2f1ff}#game-startup[hidden],#game-startup [hidden],.startup-home-shell [hidden]{display:none!important}#game-startup[data-state=failed] #game-startup-message{color:#eed6c9}#game-startup[data-state=render-failed] .basketball-seam-loader,#game-startup[data-state=render-failed] .startup-meter-heading,#game-startup[data-state=render-failed] progress,#game-startup[data-state=render-failed] .startup-timing{display:none}@keyframes startup-basketball-flow{0%{stroke-dashoffset:160px}to{stroke-dashoffset:0}}@media (prefers-reduced-motion:reduce){#game-startup .basketball-seam-flow{stroke-dasharray:22 138;stroke-dashoffset:0;animation:none}#game-startup progress::-webkit-progress-value{transition:none}}</style>
+    <style data-game-home-layout>
+/* Critical home layout is inlined before startup and retained after React mounts. */
+.launcher-shell.home-screen, .launcher-shell.home-screen * { box-sizing: border-box; }
+.launcher-shell.home-screen {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  width: 100%; max-width: none; height: 100vh; height: 100dvh; min-height: 100vh; min-height: 100dvh; max-height: none;
+  margin: 0; padding: clamp(28px,5vh,56px) max(24px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));
+  overflow-x: hidden; overflow-y: auto; color: #e2f1ff; border: 0; border-radius: 0;
+  background-color: #060911; background-position: center; background-size: cover; box-shadow: none;
+  font: 16px/normal -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-synthesis: none; text-rendering: optimizeLegibility;
+}
+.launcher-shell.home-screen .launcher-center { position: relative; z-index: 1; display: grid; width: 100%; place-items: center; text-align: center; }
+.launcher-shell.home-screen .launcher-mark { position: relative; display: grid; width: min(56vw,220px); height: auto; aspect-ratio: 1; margin-bottom: 0; place-items: center; overflow: visible; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.launcher-shell.home-screen .launcher-mark img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 18px rgba(0,4,13,.78)); }
+.launcher-shell.home-screen .launcher-center h1 { position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.launcher-shell.home-screen .launcher-center p { margin: 4px 0 0; color: #a9c4da; font-size: 12px; line-height: normal; text-shadow: 0 1px 8px #000; }
+.launcher-shell.home-screen .launcher-guide { position: relative; z-index: 1; width: 100%; margin-top: 24px; padding: 13px 14px; color: #e2f1ff; border: 1px solid rgba(0,242,254,.25); border-radius: 2px; background: rgba(6,9,17,.84); box-shadow: none; }
+.launcher-shell.home-screen .launcher-guide b { display: block; color: #00f2fe; font-size: 12px; }
+.launcher-shell.home-screen .launcher-guide p { margin: 7px 0; font-size: 11px; line-height: 1.55; }
+.launcher-shell.home-screen .launcher-guide small { display: block; color: #5c7b99; font-size: 10px; line-height: 1.45; }
+.launcher-shell.home-screen .launcher-actions { position: relative; z-index: 1; display: grid; width: 100%; margin-top: 26px; gap: 12px; }
+.launcher-shell.home-screen .launcher-actions button { display: grid; min-height: 48px; margin: 0; padding: 0 18px; grid-template-columns: 28px 1fr 28px; align-items: center; color: #e2f1ff; border: 1px solid rgba(0,242,254,.25); border-radius: 2px; background: rgba(6,9,17,.84); box-shadow: none; backdrop-filter: blur(12px); font: 850 13px/normal -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; text-align: center; appearance: none; -webkit-appearance: none; }
+.launcher-shell.home-screen .launcher-actions button span { grid-column: 2; }
+.launcher-shell.home-screen .launcher-action-icon { display: block; width: 20px; height: 20px; grid-column: 1; grid-row: 1; justify-self: center; color: #00f2fe; }
+.launcher-shell.home-screen .launcher-actions .launcher-primary { color: #000; border-color: #00f2fe; background: #00f2fe; }
+.launcher-shell.home-screen .launcher-primary .launcher-action-icon { color: #000; }
+.launcher-shell.home-screen .launcher-actions .launcher-dark { color: #e2f1ff; border-color: rgba(0,242,254,.25); background: rgba(6,9,17,.9); }
+.launcher-shell.home-screen .launcher-announcement { position: relative; z-index: 1; width: 100%; margin-top: 12px; color: #e2f1ff; border: 1px solid rgba(0,242,254,.25); border-radius: 2px; background: rgba(6,9,17,.84); box-shadow: none; }
+.launcher-shell.home-screen .launcher-announcement-summary { display: flex; min-height: 58px; padding: 10px 13px; align-items: center; justify-content: space-between; gap: 12px; }
+.launcher-shell.home-screen .launcher-announcement-summary > span { display: grid; min-width: 0; gap: 4px; }
+.launcher-shell.home-screen .launcher-announcement-summary b { color: #00f2fe; font-size: 12px; }
+.launcher-shell.home-screen .launcher-announcement-summary small { color: #5c7b99; font-size: 10px; line-height: 1.4; }
+.launcher-shell.home-screen .launcher-announcement-summary button { flex: 0 0 auto; min-height: 32px; margin: 0; padding: 6px 10px; color: #00f2fe; border: 1px solid rgba(0,242,254,.45); border-radius: 999px; background: transparent; font: 10px/normal -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; appearance: none; -webkit-appearance: none; }
+.launcher-shell.home-screen .launcher-version { position: static; z-index: 1; bottom: auto; margin-top: 16px; flex: 0 0 auto; color: #5c7b99; font-size: 8px; letter-spacing: .07em; }
+.launcher-shell.home-screen [hidden] { display: none !important; }
+
+</style>
+    <script type="application/json" id="colorbox-skill-usage">{"skills":["colorbox-add-to-desktop","colorbox-auth-get-user-info","colorbox-close-webview","colorbox-cloud-auth","colorbox-cloud-request","colorbox-cloud-save-get-value","colorbox-cloud-save-set-value","colorbox-oss-upload-file","colorbox-request-bbs-open-post-editor","colorbox-security-check-audit","colorbox-track-report","colorbox-vatask-complete-reward-video","colorbox-vatask-get-activity-task-state"]}</script>
+    <script defer src="./assets/worker-codec-9c3fc8c0cb95e842.js"></script>
+<script defer src="./assets/worker-simulation-fac93a89398e8f82.js"></script>
+<script defer src="./assets/game.js?v=source-888fd158a8d64f86&skin=orig1"></script>
+  <style id="colorbox-selection-styles">
+    body { user-select: none; -webkit-user-select: none; }
+    input, textarea { user-select: text; -webkit-user-select: text; }
+  </style>
+<script src="./vendor/colorbox-ai_v2.2.28.js" crossorigin="anonymous"></script>
+<script>
+(function () {
+  window.__COLORBOX_AI_CONFIG__ = {
+    projectId: "app_2eeb0a1013",
+    settings: {"theme":{"skeletonColor":"#f5f5f5","webviewBackground":"#ffffff","containerBackground":"#ffffff"},"title":"篮球经理：征服联盟","shareCover":"","shareTitle":"篮球经理：征服联盟","bizCategory":"shaper","dayNightMode":"auto","trackingCode":"PHBS7947","shareSubtitle":"","disablePageSlide":true},
+    pagePi: "activity_shaper_app_2eeb0a1013",
+    ActivityId: "850",
+    PageId: "app_2eeb0a1013"
+  };
+  "use strict";
+(() => {
+  // src/iframe-runtime/fallbacks.ts
+  function createLocalFallbackApi() {
+    return {
+      getPostDetail: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      },
+      getTopicThreads: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      },
+      buildPostSchema: function() {
+        return "";
+      },
+      openPostEditor: function() {
+        return "";
+      }
+    };
+  }
+  function createLocalSecurityFallbackApi() {
+    return {
+      checkAudit: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      }
+    };
+  }
+  function createLocalScoreFallbackApi() {
+    return {
+      getScore: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      },
+      addScore: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      }
+    };
+  }
+  function createLocalOssFallbackApi() {
+    return {
+      uploadFile: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      }
+    };
+  }
+  function createLocalAuthFallbackApi() {
+    return {
+      getUserInfo: function() {
+        const info = window.userInfo || window.HupuBridge && window.HupuBridge.nainfo;
+        return Promise.resolve(info || null);
+      },
+      getAuthToken: function() {
+        const info = window.userInfo || window.HupuBridge && window.HupuBridge.nainfo;
+        const token = info && (info.authToken || info.token) || "";
+        return Promise.resolve(token);
+      }
+    };
+  }
+
+  // src/iframe-runtime/storage.ts
+  var MAX_STORAGE_BYTES = 5 * 1024 * 1024;
+  function createColorboxStorageApi(params) {
+    const pId = params.projectId;
+    function resolveScopedKey(key) {
+      return "cb_storage:" + pId + ":" + key;
+    }
+    function isStorageAvailable() {
+      try {
+        const testKey = "__colorbox_storage_test__";
+        window.localStorage.setItem(testKey, "test");
+        window.localStorage.removeItem(testKey);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    const isLocalAvailable = isStorageAvailable();
+    function safeB64Encode(str) {
+      try {
+        const base64 = window.btoa(unescape(encodeURIComponent(str)));
+        return base64;
+      } catch (error) {
+        logError("safeB64Encode failed.", error);
+        throw error;
+      }
+    }
+    function safeB64Decode(str) {
+      try {
+        const decoded = decodeURIComponent(escape(window.atob(str)));
+        return decoded;
+      } catch (error) {
+        logError("safeB64Decode failed.", error);
+        throw error;
+      }
+    }
+    function serializeStorageValue(value) {
+      if (value == null) return "";
+      const text = typeof value === "string" ? value : JSON.stringify(value);
+      try {
+        const encoded = safeB64Encode(text);
+        return "__b64__:" + encoded;
+      } catch (error) {
+        return text;
+      }
+    }
+    function parseStorageValue(value, scopedKey) {
+      if (value == null) return null;
+      if (typeof value !== "string") return value;
+      let text = value;
+      if (text.indexOf("__b64__:") === 0) {
+        text = safeB64Decode(text.slice(8));
+      }
+      if (text.charAt(0) !== "{" && text.charAt(0) !== "[") {
+        return text;
+      }
+      try {
+        const parsed = JSON.parse(text);
+        if (parsed && typeof parsed === "object") {
+          if (!Array.isArray(parsed) && scopedKey && parsed[scopedKey] != null) {
+            return parseStorageValue(parsed[scopedKey], scopedKey);
+          }
+        }
+        return text;
+      } catch (parseError) {
+        if (text.charAt(0) === "{" && text.charAt(text.length - 1) === "}") {
+          const escapedKey = (scopedKey || "").replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+          const pattern = new RegExp('^\\{\\s*"' + (escapedKey || '[^"]+') + '"\\s*:\\s*"(.*)"\\s*\\}\\s*$');
+          const match = text.match(pattern);
+          if (match) {
+            let rawValue = match[1];
+            rawValue = rawValue.replace(/\\"/g, '"').replace(/\\\\/g, "\\");
+            return parseStorageValue(rawValue, scopedKey);
+          }
+        }
+        return text;
+      }
+    }
+    function readLocalStorageValue(scopedKey) {
+      if (!isLocalAvailable) return null;
+      try {
+        return parseStorageValue(window.localStorage.getItem(scopedKey), scopedKey);
+      } catch (e) {
+        return null;
+      }
+    }
+    function writeLocalStorageValue(scopedKey, value) {
+      if (!isLocalAvailable) return false;
+      try {
+        window.localStorage.setItem(scopedKey, serializeStorageValue(value));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    function readLocalStorageAll() {
+      const result = {};
+      if (!isLocalAvailable) return result;
+      try {
+        const prefix = "cb_storage:" + pId + ":";
+        for (let i = 0; i < window.localStorage.length; i++) {
+          const k = window.localStorage.key(i);
+          if (k && k.indexOf(prefix) === 0) {
+            const rawKey = k.substring(prefix.length);
+            const val = readLocalStorageValue(k);
+            if (val !== null) {
+              result[rawKey] = val;
+            }
+          }
+        }
+      } catch (e) {
+      }
+      return result;
+    }
+    function calculateStorageSize() {
+      let size = 0;
+      if (!isLocalAvailable) return size;
+      try {
+        const prefix = "cb_storage:" + pId + ":";
+        for (let i = 0; i < window.localStorage.length; i++) {
+          const k = window.localStorage.key(i);
+          if (k && k.indexOf(prefix) === 0) {
+            const val = window.localStorage.getItem(k);
+            size += k.length + (val ? val.length : 0);
+          }
+        }
+      } catch (e) {
+      }
+      return size;
+    }
+    function deleteLocalStorageValue(scopedKey) {
+      if (!isLocalAvailable) return false;
+      try {
+        window.localStorage.removeItem(scopedKey);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    function resolveProjectId() {
+      return pId;
+    }
+    function logInfo(stage, detail) {
+      console.log("[ColorboxAI.Storage] " + stage, detail || {});
+    }
+    function logError(stage, error, extra) {
+      console.error("[ColorboxAI.Storage] Error: " + stage, error);
+    }
+    function shouldUseBridge() {
+      const ua = navigator.userAgent || "";
+      return /kanqiu/i.test(ua);
+    }
+    function writeBridgeValue(scopedKey, value) {
+      const payload = {
+        method: "hupu.common.setValue",
+        data: {
+          key: scopedKey,
+          value: serializeStorageValue(value)
+        }
+      };
+      return new Promise(function(resolve, reject) {
+        if (window.HupuBridge && typeof window.HupuBridge.send === "function") {
+          window.HupuBridge.send(payload.method, payload.data).then(resolve).catch(reject);
+        } else {
+          reject(new Error("HupuBridge not available for storage set"));
+        }
+      });
+    }
+    function readBridgeValue(scopedKey) {
+      const payload = {
+        method: "hupu.common.getValue",
+        data: { key: scopedKey }
+      };
+      return new Promise(function(resolve, reject) {
+        if (window.HupuBridge && typeof window.HupuBridge.send === "function") {
+          window.HupuBridge.send(payload.method, payload.data).then(function(res) {
+            const val = res && res.value;
+            resolve(parseStorageValue(val, scopedKey));
+          }).catch(reject);
+        } else {
+          reject(new Error("HupuBridge not available for storage get"));
+        }
+      });
+    }
+    function setValue(key, value) {
+      return Promise.resolve().then(function() {
+        if (key == null || typeof key === "object") {
+          const batch = key || {};
+          const keys = Object.keys(batch);
+          if (!keys.length) return { ok: true, size: calculateStorageSize(), bridgeSynced: false };
+          let currentSize2 = calculateStorageSize();
+          let delta2 = 0;
+          const writeTasks = [];
+          keys.forEach(function(k) {
+            const scopedKey2 = resolveScopedKey(k);
+            const val = batch[k];
+            const rawVal2 = JSON.stringify(val);
+            const oldRaw2 = isLocalAvailable ? window.localStorage.getItem(scopedKey2) : null;
+            const keyDelta = scopedKey2.length + rawVal2.length - (oldRaw2 ? scopedKey2.length + oldRaw2.length : 0);
+            delta2 += keyDelta;
+            writeTasks.push({ scopedKey: scopedKey2, val });
+          });
+          if (currentSize2 + delta2 > MAX_STORAGE_BYTES) {
+            throw new Error("Storage quota exceeded (max 5MB limit). Set value failed.");
+          }
+          let ok2 = true;
+          const bridgeKeys = [];
+          writeTasks.forEach(function(task) {
+            const success = writeLocalStorageValue(task.scopedKey, task.val);
+            if (!success) ok2 = false;
+            bridgeKeys.push(task.scopedKey);
+          });
+          if (shouldUseBridge()) {
+            const bridgePayload = {
+              method: "hupu.common.setValue",
+              data: {
+                keys: bridgeKeys,
+                values: keys.map(function(k) {
+                  return serializeStorageValue(batch[k]);
+                })
+              }
+            };
+            return new Promise(function(resolve) {
+              if (window.HupuBridge && typeof window.HupuBridge.send === "function") {
+                window.HupuBridge.send(bridgePayload.method, bridgePayload.data).then(function(res) {
+                  resolve({ ok: ok2, size: calculateStorageSize(), bridgeSynced: true, rawBridgeResult: res });
+                }).catch(function(err) {
+                  logError("Bridge batch write failed", err, { keys: bridgeKeys });
+                  resolve({ ok: ok2, size: calculateStorageSize(), bridgeSynced: false, error: err });
+                });
+              } else {
+                resolve({ ok: ok2, size: calculateStorageSize(), bridgeSynced: false });
+              }
+            }).then(function(result3) {
+              logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+                projectId: resolveProjectId(),
+                input: batch,
+                payload: bridgePayload,
+                result: result3
+              });
+              return result3;
+            });
+          }
+          const result2 = { ok: ok2, size: calculateStorageSize(), bridgeSynced: false };
+          logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+            projectId: resolveProjectId(),
+            input: batch,
+            payload: null,
+            result: result2
+          });
+          return result2;
+        }
+        const storageKey = String(key);
+        const scopedKey = resolveScopedKey(storageKey);
+        const rawVal = JSON.stringify(value);
+        const oldRaw = isLocalAvailable ? window.localStorage.getItem(scopedKey) : null;
+        const currentSize = calculateStorageSize();
+        const delta = scopedKey.length + rawVal.length - (oldRaw ? scopedKey.length + oldRaw.length : 0);
+        if (currentSize + delta > MAX_STORAGE_BYTES) {
+          throw new Error("Storage quota exceeded (max 5MB limit). Set value failed.");
+        }
+        let ok = true;
+        if (value === void 0) {
+          ok = deleteLocalStorageValue(scopedKey);
+        } else {
+          ok = writeLocalStorageValue(scopedKey, value);
+        }
+        if (shouldUseBridge()) {
+          const bridgePayload = {
+            method: "hupu.common.setValue",
+            data: {
+              key: scopedKey,
+              value: serializeStorageValue(value)
+            }
+          };
+          return writeBridgeValue(scopedKey, value).then(function(bridgeResult) {
+            return { ok, key: storageKey, size: calculateStorageSize(), bridgeSynced: bridgeResult !== null };
+          }).catch(function(err) {
+            logError("Bridge write failed for key " + storageKey, err, { key: storageKey });
+            return { ok, key: storageKey, size: calculateStorageSize(), bridgeSynced: false, error: err };
+          }).then(function(result2) {
+            logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+              projectId: resolveProjectId(),
+              input: value,
+              payload: bridgePayload,
+              result: result2
+            });
+            return result2;
+          });
+        }
+        const result = { ok, key: storageKey, size: calculateStorageSize(), bridgeSynced: false };
+        logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+          projectId: resolveProjectId(),
+          input: value,
+          payload: null,
+          result
+        });
+        return result;
+      }).catch(function(error) {
+        logError("\u5199\u5165\u5B58\u50A8\u6570\u636E\u5931\u8D25", error, { key });
+        return Promise.reject(error);
+      });
+    }
+    function getValue(key) {
+      const hasKey = key != null && key !== "";
+      const storageKey = hasKey ? String(key) : "";
+      return Promise.resolve().then(function() {
+        if (!hasKey) {
+          const allValues = readLocalStorageAll();
+          logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+            projectId: resolveProjectId(),
+            key: "",
+            scopedKey: "",
+            source: "localStorage",
+            result: allValues
+          });
+          return allValues;
+        }
+        const scopedKey = resolveScopedKey(storageKey);
+        if (!shouldUseBridge()) {
+          const localOnlyValue = readLocalStorageValue(scopedKey);
+          logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+            projectId: resolveProjectId(),
+            key: storageKey,
+            scopedKey,
+            source: "localStorage",
+            result: localOnlyValue
+          });
+          return localOnlyValue;
+        }
+        return readBridgeValue(scopedKey).catch(function(err) {
+          logError("Bridge read failed for key " + storageKey, err, { key: storageKey });
+          throw err;
+        }).then(function(bridgeValue) {
+          if (bridgeValue != null) {
+            logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+              projectId: resolveProjectId(),
+              key: storageKey,
+              scopedKey,
+              source: "hupu.common.getValue",
+              result: bridgeValue
+            });
+            return bridgeValue;
+          }
+          const localValue = readLocalStorageValue(scopedKey);
+          logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+            projectId: resolveProjectId(),
+            key: storageKey,
+            scopedKey,
+            source: "localStorage",
+            result: localValue
+          });
+          return localValue;
+        });
+      }).catch(function(error) {
+        logError("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u5931\u8D25", error, { key: storageKey });
+        return hasKey ? null : {};
+      });
+    }
+    return {
+      maxBytes: MAX_STORAGE_BYTES,
+      setValue,
+      getValue,
+      set: setValue,
+      get: getValue
+    };
+  }
+
+  // src/iframe-runtime/index.ts
+  (function() {
+    const config = window.__COLORBOX_AI_CONFIG__ || {
+      projectId: "",
+      settings: {
+        title: "",
+        trackingCode: "",
+        bizCategory: "",
+        shareTitle: "",
+        shareSubtitle: "",
+        shareCover: ""
+      },
+      pagePi: ""
+    };
+    const { settings, projectId, pagePi } = config;
+    const sessionId = "ai-runtime-" + Date.now() + "-" + Math.random().toString(36).slice(2);
+    window.__colorbox_runtime__ = true;
+    window.__colorbox_ai_runtime__ = true;
+    window.globalState = Object.assign({}, window.globalState || {}, {
+      name: settings.title,
+      pageTrackCode: settings.trackingCode,
+      wxShareTitle: settings.shareTitle,
+      wxShareSubTitle: settings.shareSubtitle,
+      wxShareImage: settings.shareCover,
+      bizCode: settings.bizCategory,
+      webViewColor: settings.theme && settings.theme.webviewBackground,
+      containerColor: settings.theme && settings.theme.containerBackground,
+      pi: pagePi
+    });
+    if (settings.title) {
+      document.title = settings.title;
+    }
+    function setupRuntimeIssueGuard() {
+      if (window.__colorbox_ai_runtime_issue_guard__) return;
+      window.__colorbox_ai_runtime_issue_guard__ = true;
+      let lastTick = Date.now();
+      window.setInterval(function() {
+        const now = Date.now();
+        const drift = now - lastTick - 1e3;
+        if (drift > 3e3) {
+          console.error("[ColorboxAI.Runtime] Main thread blocked for " + drift + "ms; possible long task or infinite loop.");
+        }
+        lastTick = now;
+      }, 1e3);
+    }
+    const frameTrackDebugLog = [];
+    function pushFrameTrackDebug(stage, detail) {
+      const entry = { stage, detail: detail || {}, ts: Date.now() };
+      frameTrackDebugLog.push(entry);
+      if (frameTrackDebugLog.length > 200) {
+        frameTrackDebugLog.shift();
+      }
+      try {
+        console.log("[ColorboxAI.Track] " + stage, detail || {});
+      } catch (error) {
+      }
+    }
+    function createTrackTraceId() {
+      return "trk_" + Date.now() + "_" + Math.random().toString(36).slice(2, 9);
+    }
+    function post(type, payload) {
+      const trackTraceId = payload && payload.trackTraceId;
+      try {
+        if (!window.parent || window.parent === window) {
+          if (type === "events.track") {
+            pushFrameTrackDebug("frame.post.skip", {
+              trackTraceId,
+              reason: "no_parent_or_same_window"
+            });
+          }
+          return;
+        }
+        window.parent.postMessage({
+          protocol: "colorbox-ai-bridge",
+          version: 1,
+          direction: "frame-to-host",
+          sessionId,
+          projectId,
+          type,
+          payload: payload || {},
+          timestamp: Date.now()
+        }, window.location.origin);
+        if (type === "events.track") {
+          pushFrameTrackDebug("frame.post.ok", { trackTraceId, projectId });
+        }
+      } catch (error) {
+        if (type === "events.track") {
+          pushFrameTrackDebug("frame.post.error", {
+            trackTraceId,
+            message: error && error.message || String(error)
+          });
+        }
+      }
+    }
+    window.ColorboxAI = window.ColorboxAI || {};
+    window.ColorboxAI.context = window.ColorboxAI.context || { appId: projectId };
+    window.ColorboxAI.project = window.ColorboxAI.project || {
+      id: projectId,
+      settings,
+      getSettings: function() {
+        return Promise.resolve(settings);
+      }
+    };
+    if (typeof window.ColorboxAI.configure === "function") {
+      window.ColorboxAI.configure({
+        trackingCode: settings.trackingCode,
+        pi: pagePi
+      });
+    }
+    window.__colorbox_ai_track_debug_frame__ = frameTrackDebugLog;
+    window.ColorboxAI.track = function (trackParams) {
+      const trackTraceId = createTrackTraceId();
+      pushFrameTrackDebug("frame.call", {
+        trackTraceId,
+        params: trackParams || {},
+        hasParent: !!(window.parent && window.parent !== window)
+      });
+      try {
+        const customDebugger = window.ColorboxCustomDebugger;
+        if (customDebugger && typeof customDebugger.addLog === "function") {
+          customDebugger.addLog(trackParams || {});
+        }
+      } catch (error) {
+        pushFrameTrackDebug("frame.debug.error", {
+          trackTraceId,
+          message: error && error.message || String(error)
+        });
+      }
+      post("events.track", { trackParams: trackParams || {}, trackTraceId });
+    };
+    window.ColorboxAI.navigateTo = function(url, target) {
+      post("navigation.open", { url, target });
+    };
+    window.ColorboxAI.openUrl = window.ColorboxAI.navigateTo;
+    window.ColorboxAI.bbs = window.ColorboxAI.bbs || createLocalFallbackApi();
+    window.ColorboxAI.security = window.ColorboxAI.security || createLocalSecurityFallbackApi();
+    window.ColorboxAI.score = window.ColorboxAI.score || createLocalScoreFallbackApi();
+    window.ColorboxAI.oss = window.ColorboxAI.oss || createLocalOssFallbackApi();
+    window.ColorboxAI.auth = window.ColorboxAI.auth || createLocalAuthFallbackApi();
+    window.ColorboxAI.storage = window.ColorboxAI.storage || createColorboxStorageApi({ projectId });
+    window.ColorboxAI.runtime = window.ColorboxAI.runtime || {};
+    window.ColorboxAI.runtime.log = function() {
+      post("runtime.log", { args: Array.prototype.slice.call(arguments) });
+    };
+    window.addEventListener("error", function(event) {
+      if (event.target && event.target !== window && event.target !== document) {
+        return;
+      }
+      const errorMsg = event.message || event.error && event.error.message || "Unknown error";
+      console.error("[ColorboxAI.Runtime] Uncaught error:", errorMsg);
+      post("runtime.error", {
+        message: errorMsg,
+        sourceFile: event.filename || "",
+        line: event.lineno || 0,
+        column: event.colno || 0,
+        stack: event.error && event.error.stack || ""
+      });
+    }, true);
+    window.addEventListener("unhandledrejection", function(event) {
+      const reason = event.reason || {};
+      console.error("[ColorboxAI.Runtime] Unhandled promise rejection:", reason);
+      post("runtime.error", {
+        message: reason.message || String(reason),
+        stack: reason.stack || ""
+      });
+    });
+    setupRuntimeIssueGuard();
+    post("runtime.ready", { href: location.href });
+  })();
+})();
+
+})();
+</script><script>(function () {
+      var emptyBbsConfig = { bbsTagId: "", bbsTagName: "", bbsTopicId: "", bbsTopicName: "" };
+      var pending = {};
+      window.addEventListener("message", function (event) {
+        var data = event && event.data;
+        if (!data || data.protocol !== "colorbox-ai-bridge" || data.direction !== "host-to-frame" || data.type !== "bbsConfig.get.callback") return;
+        if (event.origin !== window.location.origin) return;
+        if (event.source !== window.parent) return;
+        var payload = data.payload || {};
+        var waiter = pending[payload.requestId];
+        if (!waiter) return;
+        delete pending[payload.requestId];
+        window.clearTimeout(waiter.timer);
+        var bbsConfig = payload.bbsConfig && typeof payload.bbsConfig === "object" ? payload.bbsConfig : emptyBbsConfig;
+        waiter.resolve({
+          bbsTagId: typeof bbsConfig.bbsTagId === "string" ? bbsConfig.bbsTagId : "",
+          bbsTagName: typeof bbsConfig.bbsTagName === "string" ? bbsConfig.bbsTagName : "",
+          bbsTopicId: typeof bbsConfig.bbsTopicId === "string" ? bbsConfig.bbsTopicId : "",
+          bbsTopicName: typeof bbsConfig.bbsTopicName === "string" ? bbsConfig.bbsTopicName : ""
+        });
+      });
+      function getBbsConfig(key) {
+        return new Promise(function (resolve) {
+          function finish(bbsConfig) {
+            resolve(key == null || key === "" ? bbsConfig : bbsConfig[key]);
+          }
+          if (!window.parent || window.parent === window) {
+            finish(emptyBbsConfig);
+            return;
+          }
+          var requestId = "bbs_" + Date.now() + "_" + Math.random().toString(36).slice(2, 9);
+          pending[requestId] = {
+            resolve: finish,
+            timer: window.setTimeout(function () {
+              delete pending[requestId];
+              finish(emptyBbsConfig);
+            }, 1000)
+          };
+          window.parent.postMessage({
+            protocol: "colorbox-ai-bridge",
+            version: 1,
+            direction: "frame-to-host",
+            type: "bbsConfig.get",
+            payload: { requestId: requestId },
+            timestamp: Date.now()
+          }, window.location.origin);
+        });
+      }
+      window.ColorboxAI = window.ColorboxAI || {};
+      window.ColorboxAI.bbsConfig = window.ColorboxAI.bbsConfig || {};
+      window.ColorboxAI.bbsConfig.get = getBbsConfig;
+    })();</script>
+<link rel="stylesheet" href="./vendor/lamps/integration.css">
+<link rel="stylesheet" href="./comic.css">
+<link rel="stylesheet" href="./tutorial.css">
+</head>
+  <body>
+    <!-- Previous standalone startup screen retained for reference; intentionally not rendered.
+    <div id="root">
+      <main id="game-startup" aria-labelledby="game-startup-title">
+        <div class="startup-layout">
+          <header class="startup-header">
+            <div class="startup-brand">
+              <span>BASKETBALL<br>MANAGER</span>
+            </div>
+            <span class="startup-live" id="game-startup-status">开场准备中</span>
+          </header>
+          <section class="startup-hero">
+            <h1 id="game-startup-title" class="startup-wordmark" aria-label="篮球经理：征服联盟">
+              <span id="game-startup-wordmark-text" aria-hidden="true"><span class="startup-wordmark-main">篮球<span>经理</span></span><span class="startup-edition">征服联盟</span></span>
+              <img id="game-startup-logo" src="/branding/startup-title-logo.webp" alt="" aria-hidden="true" decoding="async" hidden>
+            </h1>
+            <p class="startup-tagline">新军入场，<br><span>联盟由你改写。</span></p>
+          </section>
+          <section class="startup-console" aria-label="启动进度">
+            <div class="startup-meter-heading"><span id="game-startup-stage">正在准备开场</span><span id="game-startup-count">0%</span></div>
+            <progress id="game-startup-progress" max="100" value="0" aria-label="启动进度">0%</progress>
+            <p id="game-startup-message" role="status" aria-live="polite">正在点亮球馆，准备开场…</p>
+            <div class="startup-timing" aria-live="off"><span>已用时间 <span id="game-startup-elapsed">0.0 秒</span></span><span id="game-startup-hint">完成后自动进入</span></div>
+            <button id="game-startup-retry" type="button" hidden>重新载入</button>
+            <noscript>
+              <style>#game-startup .startup-meter-heading,#game-startup progress,#game-startup-message,#game-startup .startup-timing,#game-startup .startup-live { display:none; }</style>
+              <p role="alert">请启用 JavaScript 后重新载入。已有存档不会被删除。</p>
+            </noscript>
+          </section>
+        </div>
+      </main>
+    </div>
+    -->
+    <div id="root">
+      <link rel="preload" as="image" href="./branding/home-logo-display.webp" fetchPriority="high"/><main class="launcher-shell home-screen startup-home-shell" style="background-image:linear-gradient(180deg, rgba(2, 6, 16, .28) 0%, rgba(2, 6, 16, .7) 47%, rgba(2, 6, 16, .96) 100%), url(&quot;./story/opening-arena.jpg&quot;)" aria-label="篮球经理：征服联盟" aria-busy="true"><section class="launcher-center"><div class="launcher-mark"><span id="game-startup-wordmark-text" role="img" aria-label="篮球经理：征服联盟" style="display:grid;place-content:center;width:100%;height:100%;color:#f5ce84;font-size:clamp(24px, 8vw, 48px);font-weight:900;text-align:center;position:absolute;inset:0">篮球经理<br/>征服联盟</span><img id="game-startup-logo" src="./branding/home-logo-display.webp" alt="" width="660" height="660" fetchPriority="high" decoding="async" hidden="" style="position:absolute;inset:0"/></div><h1>篮球经理：征服联盟</h1><p>创建扩军新军，或接手现有球队，改写联盟历史</p></section><section class="launcher-guide" aria-label="游戏说明"><b>游戏简介</b><p>创建一支扩军球队，或接手现有30支球队之一，应对联盟扩军。经历选秀、交易、自由市场与完整赛季，打造属于你的球队生涯。</p><small>每个决定都会影响薪资空间、球队适配度与未来竞争力。</small></section><section class="launcher-actions"><button class="launcher-primary" data-testid="start-new-game" disabled=""><svg class="launcher-action-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="18" rx="4" stroke="currentColor" stroke-width="2"></rect><polygon points="10,8 16,12 10,16" fill="currentColor"></polygon></svg><span>开始新游戏</span></button><button disabled=""><svg class="launcher-action-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M3 7C3 5.89543 3.89543 5 5 5H9.58579C10.1162 5 10.625 5.21071 11 5.58579L12.4142 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7Z" stroke="currentColor" stroke-width="2"></path><path d="M12 10V15M12 15L9.5 12.5M12 15L14.5 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>读取存档</span></button><button class="launcher-dark" disabled=""><svg class="launcher-action-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M 12 4 A 8 8 0 1 1 5.5 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M 4 4 L 5.5 8 L 9.5 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><polygon points="10.5,10 14.5,12 10.5,14" fill="currentColor"></polygon></svg><span>继续上次进度</span></button></section><section class="launcher-announcement" aria-label="更新公告"><div class="launcher-announcement-summary"><span><b>更新公告 · 2026年10月24日</b><small>本次游戏优化和修复内容</small></span><button type="button" aria-haspopup="dialog" disabled="">查看详情</button></div></section><small class="launcher-version">从扩军开始，打造你的王朝</small></main>
+    </div>
+    <div id="game-startup" class="launcher-loading-backdrop league-rollover-backdrop" role="status" aria-live="polite" aria-labelledby="game-startup-stage">
+      <section class="launcher-loading-card league-rollover-card home-loading-card" aria-label="首页加载进度">
+        <svg class="basketball-seam-loader" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="startup-basketball-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00F2FE"/><stop offset="58%" stop-color="#00F2FE"/><stop offset="100%" stop-color="#ff9100"/></linearGradient></defs>
+          <g class="basketball-seam-bg"><circle cx="50" cy="50" r="44"/><path d="M50 6V94"/><path d="M6 50H94"/><path d="M21 16A44 44 0 0 1 21 84"/><path d="M79 16A44 44 0 0 0 79 84"/></g>
+          <path class="basketball-seam-flow" stroke="url(#startup-basketball-gradient)" d="M50 6A44 44 0 1 1 49.999 6 M50 6V94 M6 50H94 M21 16A44 44 0 0 1 21 84 M79 16A44 44 0 0 0 79 84"/>
+        </svg>
+        <b id="game-startup-stage">正在准备主界面</b>
+        <p id="game-startup-message">正在载入篮球经理，请稍候…</p>
+        <div class="startup-meter-heading"><span id="game-startup-status">开场准备中</span><span id="game-startup-count">0%</span></div>
+        <progress id="game-startup-progress" max="100" value="0" aria-label="首页加载进度">0%</progress>
+        <div class="startup-timing" aria-live="off"><span>已用时间 <span id="game-startup-elapsed">0.0 秒</span></span><span id="game-startup-hint">完成后自动进入</span></div>
+        <button id="game-startup-retry" type="button" hidden>重新载入</button>
+        <noscript>
+          <style>#game-startup .startup-meter-heading,#game-startup progress,#game-startup-message,#game-startup .startup-timing,#game-startup-stage{display:none}</style>
+          <p role="alert">请启用 JavaScript 后重新载入。已有存档不会被删除。</p>
+        </noscript>
+      </section>
+    </div>
+    <script data-game-startup>
+      (function () {
+        var key = "nba-manager:runtime-diagnostics:v1";
+        var durableKey = key + ":last-failure";
+        var startup = window.__NBA_STARTUP__ = { phase: "loading", progress: 0, startedAt: Date.now(), failures: [], previousFailures: [] };
+        var lastPersisted = 0;
+        var renderFailed = false;
+        function elapsed() {
+          var text = document.getElementById("game-startup-elapsed");
+          if (text) text.textContent = (Math.max(0, Date.now() - startup.startedAt) / 1000).toFixed(1) + " 秒";
+        }
+        var clock = setInterval(elapsed, 500);
+        function stopClock() { if (clock) { elapsed(); clearInterval(clock); clock = 0; } }
+        // Weighted startup milestones; this is not a byte-download percentage.
+        function progress(value, stage, message) {
+          startup.progress = value;
+          var count = document.getElementById("game-startup-count");
+          var meter = document.getElementById("game-startup-progress");
+          var label = document.getElementById("game-startup-stage");
+          var text = document.getElementById("game-startup-message");
+          if (count) count.textContent = value + "%";
+          if (meter) { meter.setAttribute("value", String(value)); meter.textContent = value + "%"; }
+          if (label) label.textContent = stage;
+          if (text) text.textContent = message;
+        }
+        startup.initializing = function () {
+          if (startup.phase !== "loading") return;
+          progress(85, "正在准备主界面", "核心已载入，正在初始化界面…");
+        };
+        startup.preparingSaves = function (value, stage, message) {
+          if (startup.phase !== "loading") return;
+          startup.preparingLocalSaves = true;
+          progress(Math.max(startup.progress, value), stage, message);
+        };
+        function clean(value, limit) {
+          return String(value || "").replace(/(https?:\/\/[^\s?#)]+)[?#]([^\s)]*)/g, function (_, path, query) {
+            var position = query.match(/:\d+:\d+$/);
+            return path + (position ? position[0] : "");
+          }).slice(0, limit);
+        }
+        try {
+          var previous = window.sessionStorage.getItem(key);
+          if (previous && previous.length < 32000) {
+            var saved = JSON.parse(previous);
+            if (saved.version === 1 && Array.isArray(saved.failures)) startup.previousFailures = saved.failures.slice(-8);
+          }
+        } catch (_) { /* Storage access must never prevent the first screen. */ }
+        try {
+          var durable = window.localStorage.getItem(durableKey);
+          if (durable && durable.length < 32000) {
+            var savedDurable = JSON.parse(durable);
+            var age = Date.now() - savedDurable.savedAt;
+            if (savedDurable.version === 1 && age >= 0 && age <= 7 * 86400000 && Array.isArray(savedDurable.failures)) {
+              var merged = savedDurable.failures.slice(-8).concat(startup.previousFailures);
+              var seen = Object.create(null);
+              startup.previousFailures = merged.filter(function (entry) {
+                if (!entry || typeof entry !== "object") return false;
+                var identity = JSON.stringify([entry.at, entry.kind, entry.message, entry.stack]);
+                if (seen[identity]) return false;
+                seen[identity] = true;
+                return true;
+              }).slice(-8);
+            }
+          }
+        } catch (_) { /* A new WebView may have blocked or expired local evidence. */ }
+        function showFailure(message, renderFailure) {
+          if (renderFailed && !renderFailure) return;
+          if (startup.phase === "mounted" && !renderFailure) return;
+          if (renderFailure) renderFailed = true;
+          startup.phase = "failed";
+          stopClock();
+          var screen = document.getElementById("game-startup");
+          var status = document.getElementById("game-startup-status");
+          var stage = document.getElementById("game-startup-stage");
+          var hint = document.getElementById("game-startup-hint");
+          if (screen) { screen.setAttribute("data-state", renderFailure ? "render-failed" : "failed"); if (renderFailure) screen.hidden = false; }
+          if (status) status.textContent = "等待重新开场";
+          if (stage) stage.textContent = renderFailure ? "页面显示出现异常" : "启动暂时中断";
+          if (hint) hint.textContent = "请重新载入";
+          var text = document.getElementById("game-startup-message");
+          var retry = document.getElementById("game-startup-retry");
+          if (text) text.textContent = message;
+          if (retry) retry.hidden = false;
+        }
+        startup.record = function (kind, message, source, stack) {
+          try {
+            var at = Date.now();
+            var build = String(source || "").match(/source-[0-9a-f]{16}/);
+            startup.failures.push({ kind: clean(kind, 24), at: at, message: clean(message, 240),
+              buildId: build ? build[0] : startup.buildId || "unknown",
+              source: String(source || "").split(/[?#]/)[0].slice(0, 240), stack: clean(stack, 2000) });
+            if (startup.failures.length > 8) {
+              var remove = 0;
+              for (var i = 0; i < startup.failures.length; i++) {
+                if (startup.failures[i].kind === "resource") { remove = i; break; }
+              }
+              startup.failures.splice(remove, 1);
+            }
+            // Image bursts are retained in memory without synchronous writes per image.
+            if (kind !== "resource" || at - lastPersisted > 1000) {
+              lastPersisted = at;
+              try { window.sessionStorage.setItem(key, JSON.stringify({ version: 1, failures: startup.failures })); } catch (_) {}
+            }
+            // Persist only actual JS/render failures across new WebView sessions.
+            // Image/script resource bursts keep their existing session records;
+            // they must not add synchronous persistent writes for each failure.
+            if (kind !== "resource") {
+              try { window.localStorage.setItem(durableKey, JSON.stringify({ version: 1, savedAt: at,
+                failures: startup.failures.filter(function (entry) { return entry.kind !== "resource"; }).slice(-8) })); } catch (_) {}
+            }
+          } catch (_) { /* Diagnostics must not replace or hide the original error. */ }
+        };
+        window.addEventListener("error", function (event) {
+          var target = event.target;
+          if (target && target !== window) {
+            var source = target.currentSrc || target.src || target.href || "";
+            startup.record("resource", "资源加载失败", source);
+            if (target.tagName === "SCRIPT" && /(?:\/assets\/game\.js|\/src\/main\.tsx)(?:[?#]|$)/.test(source)) {
+              showFailure("游戏文件加载失败，请检查网络后重新载入。已有存档仍保留。");
+            }
+            return;
+          }
+          startup.record("runtime", event.message || "页面运行异常", event.filename, event.error && event.error.stack);
+          showFailure("游戏启动出现异常，可以重新载入。已有存档仍保留。");
+        }, true);
+        window.addEventListener("unhandledrejection", function (event) {
+          var reason = event.reason;
+          startup.record("promise", reason && reason.message || "异步任务异常", "", reason && reason.stack);
+        });
+        var timer = setTimeout(function () {
+          if (startup.phase !== "loading") return;
+          var text = document.getElementById("game-startup-message");
+          var retry = document.getElementById("game-startup-retry");
+          if (text) text.textContent = startup.preparingLocalSaves ? "首次整理存档列表用时较长，可以继续等待，或重新载入；已有存档仍保留。" : "载入用时较长，请检查网络。可以继续等待，或重新载入；已有存档仍保留。";
+          if (retry) retry.hidden = false;
+        }, 20000);
+        startup.showRenderFailure = function () { showFailure("已保存的进度仍保留，重新载入后可继续。未保存的进度可能丢失。", true); };
+        startup.complete = function () { if (renderFailed) return; startup.phase = "mounted"; startup.mountedAt = Date.now(); progress(100, "准备就绪", "球馆已就绪，即将进入主界面。"); stopClock(); clearTimeout(timer); setTimeout(function () { if (startup.phase !== "mounted") return; var screen = document.getElementById("game-startup"); if (screen) screen.hidden = true; if (document.documentElement) document.documentElement.removeAttribute("data-startup-loading"); }, 120); };
+        progress(15, "正在载入游戏核心", "正在载入篮球经理，请稍候…");
+        document.getElementById("game-startup-retry").onclick = function () { window.location.reload(); };
+        (function () {
+          var logo = document.getElementById("game-startup-logo");
+          var logoText = document.getElementById("game-startup-wordmark-text");
+          if (!logo || !logoText) return;
+          var updateLogo = function () {
+            var ready = logo.complete && logo.naturalWidth > 0;
+            logo.hidden = !ready;
+            logoText.hidden = ready;
+          };
+          logo.addEventListener("load", updateLogo);
+          logo.addEventListener("error", updateLogo);
+          updateLogo();
+        })();
+      })();
+    </script>
+        <script src="./vendor/lamps/game-progress-bridge.js"></script>
+    <script src="./vendor/lamps/game-progress-platform.js"></script>
+    <script src="./vendor/lamps/game-leaderboard-bridge.js"></script>
+    <script src="./vendor/lamps/game-leaderboard-platform.js"></script>
+    <script src="./vendor/lamps/game-rewarded-video-bridge.js"></script>
+    <script src="./vendor/lamps/game-rewarded-video-platform.js"></script>
+    <script src="./vendor/lamps/integration.js"></script>
+  <script src="./comic.js"></script>
+<script src="./poster-fallback.js"></script>
+<script src="./tutorial-steps.js"></script>
+<script src="./tutorial.js"></script>
+</body>
+</html>

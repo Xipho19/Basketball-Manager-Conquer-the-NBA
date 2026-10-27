@@ -1,0 +1,260 @@
+/* ============================================================
+   COMIC RED / WHITE — standalone leaderboard page
+   Loaded only by leaderboard/index.html. Visual overrides only.
+   ============================================================ */
+
+@font-face {
+  font-family: "ComicCN";
+  src: url("./assets/fonts/ZCOOLQingKeHuangYou-Regular.ttf") format("truetype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+:root {
+  --accent-primary: #e01b24 !important;
+  --accent-primary-rgb: 224, 27, 36 !important;
+  color-scheme: dark;
+  color: #f7f1e3;
+  background: #08080a;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(224, 27, 36, 0.24), transparent 36%),
+    radial-gradient(circle at 1px 1px, rgba(224, 27, 36, 0.16) 1px, transparent 1.5px),
+    linear-gradient(180deg, #150b0d, #08080a 58%) !important;
+  background-size: auto, 8px 8px, auto !important;
+  color: #f7f1e3 !important;
+}
+
+/* ---------- sticky chrome ---------- */
+header {
+  background: #0b0b0e !important;
+  border-bottom: 3px solid #e01b24 !important;
+}
+
+.back,
+.refresh {
+  color: #f7f1e3 !important;
+  border: 2px solid #f7f1e3 !important;
+  background: #141416 !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 #e01b24;
+}
+
+.back:hover,
+.refresh:hover {
+  color: #ffffff !important;
+  background: #e01b24 !important;
+  box-shadow: 3px 3px 0 #f7f1e3;
+}
+
+/* ---------- headings ---------- */
+.ranking-hero small,
+.section-title small {
+  color: #ff4b55 !important;
+}
+
+.ranking-hero h2,
+.section-title h2,
+.mine-heading b,
+.mine-values strong {
+  font-family: "ComicCN", "Microsoft YaHei", "SimHei", system-ui, sans-serif !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 900 !important;
+}
+
+.ranking-hero h2,
+.section-title h2 {
+  color: #f7f1e3 !important;
+  text-shadow: 2px 2px 0 #000 !important;
+}
+
+.ranking-hero p {
+  color: #bdb5a7 !important;
+}
+
+/* ---------- metric tabs ---------- */
+.metric-tabs button {
+  color: #bdb5a7 !important;
+  border: 2px solid rgba(247, 241, 227, 0.35) !important;
+  background: #111114 !important;
+  border-radius: 0 !important;
+}
+
+.metric-tabs button[aria-pressed="true"] {
+  color: #ffffff !important;
+  border-color: #f7f1e3 !important;
+  background: #e01b24 !important;
+  box-shadow: 3px 3px 0 #f7f1e3;
+}
+
+/* ---------- my rank panel ---------- */
+.mine {
+  border: 2px solid #f7f1e3 !important;
+  border-top: 6px solid #e01b24 !important;
+  background:
+    radial-gradient(circle at 90% 5%, rgba(224, 27, 36, 0.20), transparent 34%),
+    linear-gradient(135deg, #171215, #0c0c0e 75%) !important;
+  border-radius: 0 !important;
+  box-shadow: 5px 5px 0 #e01b24;
+}
+
+.mine-heading {
+  border-bottom: 1px solid rgba(247, 241, 227, 0.28) !important;
+}
+
+.mine-heading span {
+  color: #ff4b55 !important;
+}
+
+.mine-heading b {
+  color: #f7f1e3 !important;
+}
+
+.mine-heading small,
+.mine-identity small,
+.mine-values small {
+  color: #bdb5a7 !important;
+}
+
+.mine-identity .mine-title,
+.manager-title {
+  color: #ff4b55 !important;
+}
+
+.mine-values {
+  border-top: 1px solid rgba(247, 241, 227, 0.28) !important;
+  border-bottom: 1px solid rgba(247, 241, 227, 0.28) !important;
+}
+
+.mine-values strong {
+  color: #f7f1e3 !important;
+}
+
+.mine-values b {
+  color: #ff4b55 !important;
+}
+
+.mine-emblem,
+.row .avatar,
+.podium .avatar {
+  border: 1px solid #f7f1e3 !important;
+  background: #1a1a1e !important;
+  color: #f7f1e3 !important;
+}
+
+.mine-qualification,
+.mine-facts {
+  color: #bdb5a7 !important;
+}
+
+/* ---------- sync notice ---------- */
+.submit {
+  border: 2px solid rgba(247, 241, 227, 0.40) !important;
+  background: #111114 !important;
+  border-radius: 0 !important;
+}
+
+.submit p {
+  color: #bdb5a7 !important;
+}
+
+.submit .message {
+  color: #ff8a90 !important;
+}
+
+.submit button {
+  color: #ffffff !important;
+  background: #e01b24 !important;
+  border: 2px solid #141414 !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 #f7f1e3;
+}
+
+.section-title > span {
+  color: #bdb5a7 !important;
+}
+
+/* ---------- podium ---------- */
+.podium article {
+  border: 2px solid var(--medal-border) !important;
+  background: linear-gradient(155deg, var(--medal-wash), #111114 76%) !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 #e01b24;
+}
+
+.podium article:nth-child(1) {
+  --medal: #ff4b55;
+  --medal-border: #e01b24;
+  --medal-wash: #3a0c10;
+}
+
+.podium article:nth-child(2) {
+  --medal: #f7f1e3;
+  --medal-border: #f7f1e3;
+  --medal-wash: #2a2a2e;
+}
+
+.podium article:nth-child(3) {
+  --medal: #d99a88;
+  --medal-border: #9e1018;
+  --medal-wash: #231012;
+}
+
+.podium b {
+  color: #f7f1e3 !important;
+}
+
+.podium small {
+  color: #bdb5a7 !important;
+}
+
+/* ---------- list ---------- */
+.list {
+  border: 2px solid rgba(247, 241, 227, 0.50) !important;
+  background: #0e0e11 !important;
+  border-radius: 0 !important;
+}
+
+.row {
+  border-bottom: 1px solid rgba(247, 241, 227, 0.14) !important;
+}
+
+.row .rank {
+  color: #bdb5a7 !important;
+}
+
+.row.top-rank .rank {
+  color: #ff4b55 !important;
+}
+
+.row .name b {
+  color: #f7f1e3 !important;
+}
+
+.row .name small,
+.row .score-column > small {
+  color: #bdb5a7 !important;
+}
+
+.row .score {
+  color: #ff4b55 !important;
+}
+
+.row.mine-row {
+  background: rgba(224, 27, 36, 0.12) !important;
+  box-shadow: inset 3px 0 0 #e01b24;
+}
+
+.state {
+  color: #bdb5a7 !important;
+}
+
+.state.error {
+  color: #ff8a90 !important;
+}
+
+.rule {
+  color: #a49c90 !important;
+}

@@ -1,0 +1,267 @@
+/* Lamps cloud save panel. Uses the host game's theme variables. */
+
+.lamps-cloud-root {
+  position: fixed;
+  inset: 0;
+  z-index: 12500;
+  display: none;
+  pointer-events: none;
+  font-family: Inter, "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+}
+
+.lamps-cloud-root.is-on {
+  display: block;
+}
+
+.lamps-cloud-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 6, 10, 0.78);
+  pointer-events: auto;
+}
+
+.lamps-cloud-card {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 12502;
+  width: min(420px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+  padding: 16px 17px 15px;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  color: var(--text-main, #eaf3fa);
+  background: var(--bg-card, #141416);
+  border: 2px solid var(--border-color, rgba(247, 241, 227, 0.7));
+  border-radius: var(--card-radius, 0);
+  box-shadow: 6px 6px 0 var(--accent-primary, #e01b24);
+  pointer-events: auto;
+}
+
+.lamps-cloud-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.lamps-cloud-stamp {
+  display: inline-block;
+  padding: 3px 7px;
+  color: #141414;
+  background: var(--text-main, #f7f1e3);
+  border: 2px solid var(--accent-primary, #e01b24);
+  box-shadow: 2px 2px 0 #141414;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.lamps-cloud-close {
+  width: 28px;
+  height: 28px;
+  margin-left: auto;
+  padding: 0;
+  color: var(--text-main, #f7f1e3);
+  background: transparent;
+  border: 2px solid var(--border-soft, rgba(247, 241, 227, 0.35));
+  border-radius: 0;
+  font: 700 18px/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.lamps-cloud-close:hover {
+  color: #fff;
+  background: var(--accent-primary, #e01b24);
+  border-color: var(--accent-primary, #e01b24);
+}
+
+.lamps-cloud-title {
+  margin: 0 0 8px;
+  color: var(--text-main, #f7f1e3);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.lamps-cloud-title::after {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 4px;
+  margin-top: 6px;
+  background: var(--accent-primary, #e01b24);
+  box-shadow: 2px 2px 0 #141414;
+}
+
+.lamps-cloud-body {
+  margin: 0 0 11px;
+  color: var(--text-sub, #bdb5a7);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.lamps-cloud-select {
+  width: 100%;
+  min-height: 36px;
+  margin: 0 0 10px;
+  padding: 0 8px;
+  color: var(--text-main, #f7f1e3);
+  background: var(--bg-page, #08080a);
+  border: 2px solid var(--border-soft, rgba(247, 241, 227, 0.35));
+  border-radius: 0;
+  font: 700 12px/1.4 inherit;
+}
+
+.lamps-cloud-status {
+  min-height: 18px;
+  margin: 0 0 10px;
+  color: var(--text-sub, #bdb5a7);
+  font-size: 11px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.lamps-cloud-status.is-ok {
+  color: var(--accent-primary, #e01b24);
+}
+
+.lamps-cloud-status.is-error {
+  color: #ff7b72;
+}
+
+.lamps-cloud-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.lamps-cloud-card button.lamps-cloud-primary,
+.lamps-cloud-card button.lamps-cloud-secondary {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 2px solid var(--border-color, rgba(247, 241, 227, 0.7));
+  border-radius: 0;
+  box-shadow: 3px 3px 0 #141414;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.lamps-cloud-card button.lamps-cloud-primary {
+  color: var(--bg-page, #081018);
+  background: var(--accent-primary, #00f2fe);
+}
+
+html.comic-skin .lamps-cloud-card button.lamps-cloud-primary {
+  color: #fff;
+}
+
+.lamps-cloud-card button.lamps-cloud-secondary {
+  color: var(--text-main, #f7f1e3);
+  background: transparent;
+}
+
+.lamps-cloud-card button.lamps-cloud-primary:hover,
+.lamps-cloud-card button.lamps-cloud-secondary:hover {
+  filter: brightness(1.08);
+}
+
+.lamps-cloud-card button[disabled] {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.lamps-cloud-note {
+  margin: 10px 0 0;
+  color: var(--text-sub, #bdb5a7);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.lamps-cloud-confirm {
+  display: none;
+  margin: 11px 0 0;
+  padding: 10px 11px;
+  border: 2px solid var(--accent-primary, #e01b24);
+  background: var(--bg-page, #08080a);
+}
+
+.lamps-cloud-confirm.is-on {
+  display: block;
+}
+
+.lamps-cloud-confirm p {
+  margin: 0 0 8px;
+  color: var(--text-main, #f7f1e3);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.lamps-cloud-confirm-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Lamps hard requirement: no free-text input. The bundle patch turns the
+   inputs into hidden/range controls; hide the now-empty search chrome. */
+.draft-player-search,
+.player-watch-search,
+.option-phase-log-search {
+  display: none !important;
+}
+
+.fa-league-search > label,
+.fa-league-search > div:not(.fa-league-status) {
+  display: none !important;
+}
+
+.fa-offer-money-input input[type="range"] {
+  width: 100%;
+  min-width: 0;
+  max-width: 160px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  accent-color: var(--accent-primary, #e01b24);
+}
+
+.rotation-minute-value input[type="range"] {
+  width: 34px;
+  min-width: 0;
+  max-width: 34px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  accent-color: var(--accent-primary, #e01b24);
+}
+
+/* Settings entry, injected at runtime next to the other settings rows. */
+.settings-options .lamps-settings-entry {
+  border-left: 3px solid var(--accent-primary, #e01b24) !important;
+}
+
+@media (max-width: 520px) {
+  .lamps-cloud-card {
+    width: calc(100vw - 20px);
+    padding: 14px 14px 13px;
+  }
+  .lamps-cloud-title {
+    font-size: 20px;
+  }
+  .lamps-cloud-actions .lamps-cloud-primary,
+  .lamps-cloud-actions .lamps-cloud-secondary,
+  .lamps-cloud-confirm-actions .lamps-cloud-primary,
+  .lamps-cloud-confirm-actions .lamps-cloud-secondary {
+    flex: 1;
+    min-width: 0;
+  }
+}

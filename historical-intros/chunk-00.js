@@ -1,0 +1,11 @@
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77074"]===null)d["nba:77074"]="代表球队：圣路易斯／亚特兰大老鹰。主要荣誉：6次NBA全明星、1970年NBA最佳阵容二阵。球风：以流畅的中距离跳投著称，是稳定高效的得分手。 现实 NBA 经历：1966-67 至 1978-79 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:78097"]===null)d["nba:78097"]="代表球队：菲尼克斯太阳、波士顿凯尔特人。主要荣誉：1976年NBA总冠军、3次NBA全明星、1971年ABA并列最佳新秀。球风：能承担大量得分任务的后卫，ABA时期场均得分超过30分。 现实 NBA 经历：1971-72 至 1979-80 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:78350"]===null)d["nba:78350"]="代表球队：休斯顿火箭。主要荣誉：5次NBA全明星。球风：以锋线得分和篮板为主要贡献，是火箭早期的进攻主力。 现实 NBA 经历：1970-71 至 1980-81 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:470"]===null)d["nba:470"]="代表球队：亚特兰大老鹰。主要荣誉：NBA全明星。球风：注重组织串联的后卫，NBA生涯场均5.7次助攻。 现实 NBA 经历：1983-84 至 1995-96 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76392"]===null)d["nba:76392"]="代表球队：克利夫兰骑士。主要荣誉：NBA总冠军。球风：兼顾内线得分与篮板，NBA生涯场均12.3分、8.3篮板。 现实 NBA 经历：1974-75 至 1981-82 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:78482"]===null)d["nba:78482"]="代表球队：堪萨斯城国王、波士顿凯尔特人。主要荣誉：NBA总冠军、NBA全明星、NBA最佳防守阵容。球风：兼顾前场防守与篮板，NBA生涯场均4.8篮板。 现实 NBA 经历：1974-75 至 1986-87 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1630560"]===null)d["nba:1630560"]="代表球队：篮网。球风：擅长单打创造出手，能以运球急停和接球跳投连续取分。 现实 NBA 经历：2021-22 至 2025-26 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1630175"]===null)d["nba:1630175"]="代表球队：魔术。球风：偏重得分的后卫，比赛态度强硬，也积极参与篮板争抢。 现实 NBA 经历：2020-21 至 2025-26 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:140"]===null)d["nba:140"]="代表球队：魔术。球风：主要司职前锋，NBA生涯场均6.3分、2.8篮板。 现实 NBA 经历：1989-90 至 1997-98 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:173"]===null)d["nba:173"]="代表球队：热火。球风：主要司职锋卫球员，NBA生涯场均3.8分、2.9篮板。 现实 NBA 经历：1990-91 至 1998-99 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1628998"]===null)d["nba:1628998"]="代表球队：夏洛特黄蜂。球风：重视防守的锋卫，常承担盯防对手主要侧翼得分手的任务。 现实 NBA 经历：2019-20 至 2025-26 赛季。";}

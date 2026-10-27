@@ -1,0 +1,12 @@
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:78392"]===null)d["nba:78392"]="代表球队：巴尔的摩／华盛顿子弹。主要荣誉：1978年NBA总冠军、1969年NBA常规赛MVP、1978年NBA总决赛MVP。球风：卡位抢板和身体对抗扎实，擅长长传发动快攻。 现实 NBA 经历：1968-69 至 1980-81 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77160"]===null)d["nba:77160"]="代表球队：密尔沃基雄鹿、洛杉矶快船。主要荣誉：5次NBA全明星、1979年NBA最佳阵容一阵、2次NBA最佳阵容二阵。球风：兼顾得分、篮板与策应的锋线，进攻职责较全面。 现实 NBA 经历：1977-78 至 1989-90 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77193"]===null)d["nba:77193"]="代表球队：费城76人、丹佛掘金。主要荣誉：1983年NBA总冠军、1983年NBA最佳第六人、8次NBA最佳防守一阵。球风：跑动和弹跳出色，重视追身封盖、拦截传球与团队防守，善做配角。 现实 NBA 经历：1976-77 至 1985-86 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77380"]===null)d["nba:77380"]="代表球队：印第安纳步行者（ABA）。主要荣誉：3次ABA总冠军、1972年ABA季后赛MVP、1975年ABA全明星赛MVP。球风：基本功扎实，传球、投篮和防守都能为后场提供帮助。 现实 NBA 经历：1966-67 至 1976-77 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76170"]===null)d["nba:76170"]="代表球队：堪萨斯城国王、新泽西篮网。主要荣誉：4次NBA全明星、1981年NBA最佳阵容二阵。球风：以得分见长的后卫，能稳定承担后场进攻任务。 现实 NBA 经历：1977-78 至 1988-89 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:193"]===null)d["nba:193"]="代表球队：纽约尼克斯、夏洛特黄蜂。主要荣誉：NBA最佳第六人、NBA全明星、NBA最佳阵容。球风：兼顾前场防守与篮板，NBA生涯场均8.3篮板。 现实 NBA 经历：1989-90 至 2002-03 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:78150"]===null)d["nba:78150"]="代表球队：圣安东尼奥马刺。主要荣誉：ABA全明星。球风：以关键时刻的得分见长，是马刺早期的后场核心。 现实 NBA 经历：1976-77 至 1981-82 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:270"]===null)d["nba:270"]="代表球队：芝加哥公牛。主要荣誉：NBA总冠军、NBA全明星、NBA最佳防守阵容。球风：重视防守与篮板的内线，NBA生涯场均8.1篮板。 现实 NBA 经历：1987-88 至 2003-04 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76093"]===null)d["nba:76093"]="代表球队：圣安东尼奥马刺。球风：兼顾前场得分与篮板，NBA生涯场均11.3分、5.8篮板。 现实 NBA 经历：1981-82 至 1986-87 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:281"]===null)d["nba:281"]="代表球队：公牛。主要荣誉：NBA总冠军。球风：主要司职前场球员，NBA生涯场均5.1分、4.7篮板。 现实 NBA 经历：1990-91 至 2004-05 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:380"]===null)d["nba:380"]="代表球队：湖人。球风：主要司职后卫，NBA生涯场均5.5分、1.9助攻。 现实 NBA 经历：1990-91 至 2000-01 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:78381"]===null)d["nba:78381"]="代表球队：魔术。主要荣誉：奥运会金牌。球风：主要司职前锋，NBA生涯场均6.0分、3.3篮板。 现实 NBA 经历：1984-85 至 1995-96 赛季。";}

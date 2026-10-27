@@ -1,0 +1,9 @@
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1747"]===null)d["nba:1747"]="代表球队：休斯顿火箭、奥兰多魔术。球风：控球变化丰富，擅长用运球摆脱防守并组织进攻。 现实 NBA 经历：1999-00 至 2009-10 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1725"]===null)d["nba:1725"]="代表球队：马刺。主要荣誉：NBA总冠军。球风：主要司职中锋，NBA生涯场均6.8分、5.1篮板。 现实 NBA 经历：1998-99 至 2009-10 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2407"]===null)d["nba:2407"]="代表球队：尼克斯。球风：主要司职前锋，NBA生涯场均4.8分、4.1篮板。 现实 NBA 经历：2002-03 至 2012-13 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1505"]===null)d["nba:1505"]="代表球队：掘金。球风：主要司职锋卫球员，NBA生涯场均7.8分、3.3篮板。 现实 NBA 经历：1997-98 至 2003-04 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1956"]===null)d["nba:1956"]="代表球队：骑士。球风：主要司职锋卫球员，NBA生涯场均5.1分、2.9篮板。 现实 NBA 经历：2000-01 至 2007-08 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2418"]===null)d["nba:2418"]="代表球队：太阳。球风：主要司职后卫，NBA生涯场均5.2分、1.1助攻。 现实 NBA 经历：2002-03 至 2007-08 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2429"]===null)d["nba:2429"]="代表球队：雄鹿。球风：主要司职中锋，NBA生涯场均4.7分、4.4篮板。 现实 NBA 经历：2002-03 至 2011-12 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:1934"]===null)d["nba:1934"]="代表球队：新泽西篮网。球风：主要司职锋卫球员，NBA生涯场均6.4分、2.6篮板。 现实 NBA 经历：1999-00 至 2004-05 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:203949"]===null)d["nba:203949"]="代表球队：勇士。主要荣誉：NBA总冠军。球风：主要司职前锋，NBA生涯场均3.0分、1.7篮板。 现实 NBA 经历：2014-15 至 2017-18 赛季。";}

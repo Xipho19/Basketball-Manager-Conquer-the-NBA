@@ -1,0 +1,37 @@
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76750"]===null)d["nba:76750"]="代表球队：纽约尼克斯。主要荣誉：2次NBA总冠军、7次NBA全明星、7次NBA最佳防守一阵。球风：防守手快而沉着，进攻端结合流畅突破与中距离跳投。 现实 NBA 经历：1967-68 至 1979-80 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76882"]===null)d["nba:76882"]="代表球队：锡拉丘兹民族／费城76人。主要荣誉：1967年NBA总冠军、10次NBA全明星、7次NBA最佳阵容二阵。球风：单手跳投精准、快攻犀利，是稳定的后场得分手。 现实 NBA 经历：1958-59 至 1972-73 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76970"]===null)d["nba:76970"]="代表球队：波士顿凯尔特人。主要荣誉：8次NBA总冠军、1974年NBA总决赛MVP、13次NBA全明星。球风：体能和耐力出色，以攻防两端持续跑动和无球移动见长。 现实 NBA 经历：1962-63 至 1977-78 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77498"]===null)d["nba:77498"]="代表球队：布法罗勇敢者、洛杉矶湖人。主要荣誉：2次NBA总冠军、1975年NBA常规赛MVP、3次NBA得分王。球风：大个子投篮手感出众，打板、转身跳投和低位进攻兼备。 现实 NBA 经历：1972-73 至 1985-86 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:78510"]===null)d["nba:78510"]="代表球队：波士顿凯尔特人。主要荣誉：2次NBA总冠军、1976年NBA总决赛MVP、7次NBA全明星。球风：基本功扎实、耐力出色，是快攻体系中的稳定后场核心。 现实 NBA 经历：1969-70 至 1980-81 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76673"]===null)d["nba:76673"]="代表球队：丹佛掘金。主要荣誉：8次NBA全明星、1983年NBA得分王、3次NBA最佳阵容二阵。球风：投篮和突破流畅高效，善于在快节奏中得分，也能自行创造出手机会。 现实 NBA 经历：1976-77 至 1990-91 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76134"]===null)d["nba:76134"]="代表球队：丹佛火箭／掘金。主要荣誉：2次ABA全明星。球风：以篮板和内线得分为主要贡献，可兼任前锋与中锋。 现实 NBA 经历：1976-77 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:157"]===null)d["nba:157"]="代表球队：达拉斯独行侠、纽约尼克斯。主要荣誉：2次NBA最佳防守二阵。球风：兼顾组织与外线防守的控卫，能承担主要传球任务。 现实 NBA 经历：1983-84 至 1998-99 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76981"]===null)d["nba:76981"]="代表球队：西雅图超音速、丹佛火箭（ABA）。主要荣誉：1970年ABA常规赛MVP、1970年ABA最佳新秀、2次NBA最佳阵容一阵。球风：以得分和篮板为主要贡献，内线产量突出。 现实 NBA 经历：1970-71 至 1982-83 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77685"]===null)d["nba:77685"]="代表球队：菲尼克斯太阳、克利夫兰骑士。主要荣誉：NBA全明星、NBA最佳防守阵容、NBA扣篮大赛冠军。球风：以封盖守护禁区的前锋，兼具稳定的得分与篮板贡献。 现实 NBA 经历：1981-82 至 1993-94 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2072"]===null)d["nba:2072"]="代表球队：密尔沃基雄鹿。主要荣誉：NBA全明星、NBA最佳阵容。球风：为后场提供得分与传球，NBA生涯场均19分、2.1次助攻。 现实 NBA 经历：2000-01 至 2011-12 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:124"]===null)d["nba:124"]="代表球队：洛杉矶湖人、萨克拉门托国王。主要荣誉：2001年NBA全明星、NBA最佳新秀阵容。球风：擅长中锋策应，传球流畅，脚步灵活，能用篮下假动作完成终结。 现实 NBA 经历：1989-90 至 2004-05 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77751"]===null)d["nba:77751"]="代表球队：底特律活塞、巴尔的摩子弹。主要荣誉：5次NBA全明星。球风：以得分为主要任务的后卫，也能兼顾一定的组织工作。 现实 NBA 经历：1960-61 至 1969-70 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:78532"]===null)d["nba:78532"]="代表球队：洛杉矶湖人、金州勇士。主要荣誉：4次NBA总冠军、1975年NBA最佳新秀、3次NBA全明星。球风：投篮姿势独特、手感柔和，也能贡献防守和篮板。 现实 NBA 经历：1974-75 至 1985-86 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77993"]===null)d["nba:77993"]="代表球队：菲尼克斯太阳。主要荣誉：NBA全明星、NBA最佳阵容。球风：篮板能力突出的前锋，NBA生涯场均15.5分、9.4篮板。 现实 NBA 经历：1974-75 至 1984-85 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:2050"]===null)d["nba:2050"]="代表球队：多伦多猛龙。主要荣誉：NBA最佳新秀阵容。球风：为后场提供得分与传球，NBA生涯场均10.7分、1.5次助攻。 现实 NBA 经历：2000-01 至 2010-11 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:78202"]===null)d["nba:78202"]="代表球队：克利夫兰骑士。球风：为锋线提供得分，NBA生涯场均12.6分。 现实 NBA 经历：1969-70 至 1979-80 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76233"]===null)d["nba:76233"]="代表球队：纽约尼克斯。主要荣誉：NBA总冠军、NBA全明星、篮球名人堂。球风：兼顾得分与传球的前锋，NBA生涯场均12.4分、3.4次助攻。 现实 NBA 经历：1967-68 至 1976-77 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76497"]===null)d["nba:76497"]="代表球队：芝加哥公牛、洛杉矶快船。主要荣誉：NBA最佳新秀阵容。球风：为后场提供得分与传球，NBA生涯场均14.1分、2.3次助攻。 现实 NBA 经历：1982-83 至 1991-92 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:70"]===null)d["nba:70"]="代表球队：芝加哥公牛、圣安东尼奥马刺。主要荣誉：NBA总冠军、NBA三分大赛冠军。球风：以精准三分投射支援球队，是善于把握空位的后场射手。 现实 NBA 经历：1988-89 至 2002-03 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:179"]===null)d["nba:179"]="代表球队：丹佛掘金。球风：为后场提供得分与传球，NBA生涯场均10.1分、2次助攻。 现实 NBA 经历：1992-93 至 2002-03 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77377"]===null)d["nba:77377"]="代表球队：亚特兰大老鹰、芝加哥公牛。主要荣誉：NBA总冠军。球风：兼顾前场得分与篮板，NBA生涯场均7.1分、5.2篮板。 现实 NBA 经历：1982-83 至 1994-95 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:894"]===null)d["nba:894"]="代表球队：密尔沃基雄鹿。主要荣誉：NBA最佳第六人、NBA全明星。球风：擅长从替补席迅速提供得分，是板凳火力点。 现实 NBA 经历：1982-83 至 1997-98 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:278"]===null)d["nba:278"]="代表球队：亚特兰大老鹰。主要荣誉：NBA最佳新秀阵容。球风：锋卫轮换球员，NBA生涯场均8分、3.2篮板。 现实 NBA 经历：1991-92 至 2005-06 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:762"]===null)d["nba:762"]="代表球队：独行侠。主要荣誉：NBA最佳新秀阵容。球风：身材高大的护框中锋，以封盖干扰对手在篮下的进攻。 现实 NBA 经历：1993-94 至 2004-05 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:201161"]===null)d["nba:201161"]="代表球队：热火。球风：主要司职后卫，NBA生涯场均6.4分、0.7助攻。 现实 NBA 经历：2007-08 至 2012-13 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:399"]===null)d["nba:399"]="代表球队：快船。球风：主要司职中锋，NBA生涯场均6.2分、3.8篮板。 现实 NBA 经历：1992-93 至 2003-04 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76453"]===null)d["nba:76453"]="代表球队：公牛。球风：主要司职中锋，NBA生涯场均8.5分、5.9篮板。 现实 NBA 经历：1978-79 至 1990-91 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:201590"]===null)d["nba:201590"]="代表球队：国王。球风：主要司职前锋，NBA生涯场均6.1分、2.4篮板。 现实 NBA 经历：2008-09 至 2012-13 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76365"]===null)d["nba:76365"]="代表球队：雄鹿。球风：主要司职中锋，NBA生涯场均3.2分、5.0篮板。 现实 NBA 经历：1974-75 至 1984-85 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:101160"]===null)d["nba:101160"]="代表球队：灰熊。球风：主要司职前锋，NBA生涯场均3.8分、3.6篮板。 现实 NBA 经历：2005-06 至 2006-07 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:77047"]===null)d["nba:77047"]="代表球队：开拓者。球风：主要司职后卫，NBA生涯场均6.2分、3.0助攻。 现实 NBA 经历：1984-85 至 1989-90 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:355"]===null)d["nba:355"]="代表球队：超音速。球风：主要司职后卫，NBA生涯场均7.1分、2.2助攻。 现实 NBA 经历：1987-88 至 1997-98 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:76552"]===null)d["nba:76552"]="代表球队：活塞。主要荣誉：NBA总冠军。球风：主要司职前锋，NBA生涯场均1.2分、0.7篮板。 现实 NBA 经历：1988-89 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:201172"]===null)d["nba:201172"]="代表球队：凯尔特人。球风：主要司职后卫，NBA生涯场均2.0分、0.8助攻。 现实 NBA 经历：2007-08 至 2008-09 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:146"]===null)d["nba:146"]="代表球队：公牛。主要荣誉：NBA总冠军。球风：主要司职锋卫球员，NBA生涯场均3.3分、1.8篮板。 现实 NBA 经历：1990-91 至 2001-02 赛季。";}
+{const d=window.HISTORICAL_PLAYER_INTROS;if(d&&d["nba:203493"]===null)d["nba:203493"]="代表球队：尼克斯。球风：主要司职锋卫球员，NBA生涯场均7.3分、2.6篮板。 现实 NBA 经历：2013-14 至 2023-24 赛季。";}

@@ -1,0 +1,338 @@
+/* ============================================================
+   COMIC RED / WHITE SKIN  —  visual only, no gameplay changes
+   ============================================================ */
+
+@font-face {
+  font-family: "ComicCN";
+  src: url("./assets/fonts/ZCOOLQingKeHuangYou-Regular.ttf") format("truetype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+:root {
+  --accent-primary: #e01b24 !important;
+  --accent-primary-rgb: 224, 27, 36 !important;
+  --accent-hover: #ff3b30 !important;
+  --bg-page: #08080a !important;
+  --bg-card: #141416f2 !important;
+  --bg-sub-card: rgba(224, 27, 36, 0.08) !important;
+  --text-main: #f7f1e3 !important;
+  --text-sub: #bdb5a7 !important;
+  --border-color: rgba(247, 241, 227, 0.7) !important;
+  --border-soft: rgba(247, 241, 227, 0.24) !important;
+  --card-radius: 0px !important;
+  --warm-accent: #e01b24 !important;
+  --warm-accent-strong: #9e1018 !important;
+  --warm-border: #141414 !important;
+  --warm-card: #fffaf0 !important;
+  --warm-app: #f7f1e3 !important;
+  --warm-ink: #141414 !important;
+}
+
+html.comic-skin,
+html.comic-skin body {
+  background: #08080a !important;
+}
+
+/* ---------- ink paper page ---------- */
+html.comic-skin .app-shell {
+  --team-color: #e01b24 !important;
+  background-color: #08080a !important;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(224, 27, 36, 0.16) 1px, transparent 1.5px) !important;
+  background-size: 8px 8px !important;
+  color: var(--text-main) !important;
+}
+
+/* ---------- headline lettering ---------- */
+html.comic-skin h1,
+html.comic-skin h2,
+html.comic-skin h3,
+html.comic-skin .launcher-shell h1,
+html.comic-skin .launcher-shell h2,
+html.comic-skin .launcher-guide b,
+html.comic-skin .launcher-announcement b,
+html.comic-skin .team-name,
+html.comic-skin .reference-player-name {
+  font-family: "ComicCN", "Microsoft YaHei", "SimHei", system-ui, sans-serif !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 900 !important;
+}
+
+html.comic-skin h2 {
+  text-shadow: 2px 2px 0 #000, 0 0 0 #e01b24 !important;
+}
+
+/* red rule under major headings */
+html.comic-skin h2::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 4px;
+  margin-top: 6px;
+  background: #e01b24;
+  box-shadow: 2px 2px 0 #000;
+}
+
+/* ---------- panels become comic frames ---------- */
+html.comic-skin .flow-card,
+html.comic-skin .season-demo-card,
+html.comic-skin .season-demo-summary,
+html.comic-skin .team-roster-panel,
+html.comic-skin .preseason-terminal,
+html.comic-skin .reference-player-card,
+html.comic-skin .player-card-overview,
+html.comic-skin .launcher-guide,
+html.comic-skin .launcher-announcement,
+html.comic-skin article[class*="-card"],
+html.comic-skin section[class*="-card"] {
+  border: 2px solid rgba(247, 241, 227, 0.9) !important;
+  box-shadow: 4px 4px 0 #e01b24 !important;
+  border-radius: 0 !important;
+  background-color: #121215f2 !important;
+}
+
+/* paper cards keep dark ink text */
+html.comic-skin .launcher-guide,
+html.comic-skin .launcher-announcement {
+  background-color: #f7f1e3 !important;
+  background-image: radial-gradient(circle at 1px 1px, rgba(224, 27, 36, 0.18) 1px, transparent 1.5px) !important;
+  background-size: 7px 7px !important;
+  border-color: #141414 !important;
+  box-shadow: 6px 6px 0 #e01b24 !important;
+}
+html.comic-skin .launcher-guide *,
+html.comic-skin .launcher-announcement * {
+  color: #141414 !important;
+}
+html.comic-skin .launcher-announcement button {
+  background: #fffaf0 !important;
+  border: 2px solid #141414 !important;
+  box-shadow: 3px 3px 0 #141414 !important;
+  border-radius: 0 !important;
+}
+
+/* ---------- chrome / navigation ---------- */
+html.comic-skin .game-chrome {
+  background: #0b0b0e !important;
+  border-bottom: 3px solid #e01b24 !important;
+}
+html.comic-skin .season-navigation {
+  background: #0b0b0e !important;
+  border-top: 3px solid #e01b24 !important;
+  box-shadow: 0 -4px 0 #000 !important;
+}
+html.comic-skin .season-navigation button {
+  color: #bdb5a7 !important;
+  border-radius: 0 !important;
+  font-weight: 900 !important;
+}
+html.comic-skin .season-navigation button.active {
+  color: #fff !important;
+  background: #e01b24 !important;
+  box-shadow: 3px 3px 0 #000 !important;
+}
+
+/* ---------- buttons ---------- */
+html.comic-skin button {
+  border-radius: 0 !important;
+}
+html.comic-skin .launcher-primary,
+html.comic-skin .season-command-primary,
+html.comic-skin .team-honor-primary,
+html.comic-skin .trade-desk-final-action,
+html.comic-skin .fa-market-settle-button,
+html.comic-skin .draft-terminal-prospect-action {
+  border: 2px solid #f7f1e3 !important;
+  box-shadow: 4px 4px 0 #000 !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.02em !important;
+}
+html.comic-skin button:not(:disabled):active {
+  transform: translate(2px, 2px);
+}
+
+/* ---------- tables / rows ---------- */
+html.comic-skin table th,
+html.comic-skin .standings-head {
+  background: #e01b24 !important;
+  color: #fff !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.03em !important;
+}
+html.comic-skin tr:nth-child(even) {
+  background: rgba(247, 241, 227, 0.035) !important;
+}
+
+/* ---------- home / launcher as a comic cover ---------- */
+html.comic-skin .launcher-shell {
+  background-color: #0a0a0c !important;
+  color: #f7f1e3 !important;
+}
+html.comic-skin .launcher-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(135deg, rgba(224, 27, 36, 0.07) 0 2px, transparent 2px 9px),
+    radial-gradient(circle at 1px 1px, rgba(247, 241, 227, 0.12) 1px, transparent 1.5px);
+  background-size: auto, 9px 9px;
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+html.comic-skin .launcher-shell > * {
+  position: relative;
+  z-index: 1;
+}
+html.comic-skin .launcher-shell::after {
+  content: "COMIC EDITION · 001";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 8px;
+  background: #e01b24;
+  color: #fff;
+  border: 3px solid #111;
+  box-shadow: 3px 3px 0 #111;
+  font: 900 10px/1 "ComicCN", "Microsoft YaHei", sans-serif;
+  letter-spacing: 0.08em;
+  transform: rotate(-3deg);
+  z-index: 6;
+}
+
+html.comic-skin .launcher-shell h1 {
+  color: #f7f1e3 !important;
+  text-shadow: 3px 3px 0 #000, 6px 6px 0 rgba(224, 27, 36, 0.85) !important;
+}
+html.comic-skin .launcher-shell .launcher-center p {
+  color: rgba(247, 241, 227, 0.86) !important;
+}
+html.comic-skin #game-startup-logo,
+html.comic-skin .launcher-mark img {
+  filter: drop-shadow(7px 7px 0 rgba(0, 0, 0, 0.9)) drop-shadow(0 0 0 rgba(224, 27, 36, 0.9));
+}
+html.comic-skin .launcher-mark {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  color: #141414 !important;
+}
+
+html.comic-skin .launcher-actions button {
+  background: #f7f1e3 !important;
+  color: #141414 !important;
+  border: 3px solid #141414 !important;
+  box-shadow: 5px 5px 0 #e01b24 !important;
+  font-weight: 900 !important;
+  border-radius: 0 !important;
+}
+html.comic-skin .launcher-actions button:disabled {
+  opacity: 0.5 !important;
+}
+html.comic-skin .launcher-actions .launcher-primary {
+  background: #e01b24 !important;
+  color: #fff !important;
+  border-color: #111 !important;
+  box-shadow: 5px 5px 0 #111 !important;
+}
+html.comic-skin .launcher-version {
+  color: #f7f1e3 !important;
+  text-shadow: 2px 2px 0 #000 !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* ---------- warm (paper) screens ---------- */
+html.comic-skin {
+  --warm-card: #fffaf0 !important;
+  --warm-app: #f7f1e3 !important;
+  --warm-ink: #141414 !important;
+  --warm-border: #141414 !important;
+  --warm-accent: #e01b24 !important;
+}
+
+/* ---------- scrollbar ---------- */
+html.comic-skin ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+html.comic-skin ::-webkit-scrollbar-thumb {
+  background: #e01b24;
+  border: 2px solid #08080a;
+}
+html.comic-skin ::-webkit-scrollbar-track {
+  background: #08080a;
+}
+
+/* ---------- primary CTAs: white lettering on comic red ---------- */
+html.comic-skin .primary-cta,
+html.comic-skin button.btn-primary,
+html.comic-skin button.save-drawer-primary,
+html.comic-skin button.cloud-save-primary,
+html.comic-skin button.terminal-primary-button,
+html.comic-skin button.career-overview-primary,
+html.comic-skin button.trade-detail-asset-primary,
+html.comic-skin button.trade-target-offer-primary,
+html.comic-skin button.season-command-primary,
+html.comic-skin button.team-honor-primary {
+  color: #fff !important;
+  font-weight: 900 !important;
+}
+
+/* ---------- kill leftover team-colour chrome ---------- */
+html.comic-skin .logo-disc {
+  background: linear-gradient(145deg, #e01b24, #5b090e) !important;
+}
+html.comic-skin article[style*="border-top-color"] {
+  border-top-color: #e01b24 !important;
+}
+
+/* ---------- player rating stays readable, but warmed up ---------- */
+html.comic-skin .ovr,
+html.comic-skin [class*="ovr"] b {
+  color: #fff !important;
+  text-shadow: 1px 1px 0 #e01b24, 2px 2px 0 #000 !important;
+}
+
+/* ---------- red-background controls ---------- */
+html.comic-skin button.primary,
+html.comic-skin button.danger,
+html.comic-skin .gemini-draft-trade-button,
+html.comic-skin .trade-inquiry-submit,
+html.comic-skin .trade-refresh-button,
+html.comic-skin [class*="position-filter"] button.active,
+html.comic-skin .draft-current-roster-filter button.active,
+html.comic-skin .save-drawer-tabs button.active,
+html.comic-skin .cloud-save-tabs button.active,
+html.comic-skin .gemini-tabs button.active {
+  color: #fff !important;
+}
+
+/* ---------- attribute meters: red ink ---------- */
+html.comic-skin .reference-progress-bg em,
+html.comic-skin .reference-progress-bg .high,
+html.comic-skin .reference-progress-bg .mid,
+html.comic-skin .reference-progress-bg .low {
+  background: #e01b24 !important;
+}
+
+/* ---------- rookie draft: keep the prospect list usable on short screens ----------
+   Mobile safe areas and browser chrome can leave the draft card less vertical
+   space than its natural height. The game's middle column clips the card, so
+   the candidate list and its "选中球员" buttons can fall below the fold. Let
+   that column scroll while keeping the card at its natural height. The inner
+   prospect list keeps its own scroll. */
+html.comic-skin .rookie-draft-shell > section:not(.status-strip) {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+html.comic-skin .reference-rookie-draft {
+  min-height: 736px !important;
+}
+
+/* ---------- save feedback entry removed ---------- */
+html.comic-skin .save-problem-entry {
+  display: none !important;
+}
