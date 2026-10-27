@@ -185,6 +185,15 @@ html.comic-skin .launcher-shell > * {
   position: relative;
   z-index: 1;
 }
+/* The generic rule above must not pull overlay backdrops into the launcher's
+   scroll flow. Keep them pinned to the launcher viewport so the read-save
+   dialog is not pushed below the fold. */
+html.comic-skin .home-load-backdrop,
+html.comic-skin .save-drawer-backdrop {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 30 !important;
+}
 html.comic-skin .launcher-shell::after {
   content: "COMIC EDITION · 001";
   position: absolute;
@@ -334,5 +343,11 @@ html.comic-skin .reference-rookie-draft {
 
 /* ---------- save feedback entry removed ---------- */
 html.comic-skin .save-problem-entry {
+  display: none !important;
+}
+
+/* ---------- native cloud-save entry removed (Lamps cloud save lives in Settings) ---------- */
+html.comic-skin .cloud-save-link,
+html.comic-skin .cloud-save-help {
   display: none !important;
 }

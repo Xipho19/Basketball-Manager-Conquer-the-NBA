@@ -31,6 +31,7 @@
     cleanSettingsMenu();
     cleanTeamNameContribution();
     hideSaveProblemEntry();
+    hideNativeCloudSave();
     disableFreeText();
     hidePlayerWatch();
   }
@@ -106,6 +107,41 @@
     }
   }
 
+  function hideNativeCloudSave() {
+    var tabs = document.querySelectorAll(
+      ".save-drawer-tabs button, .cloud-save-tabs button"
+    );
+    for (var i = 0; i < tabs.length; i++) {
+      var tabText = (tabs[i].textContent || "").replace(/\s+/g, "");
+      if (tabText.indexOf("云存档") === 0) {
+        tabs[i].style.setProperty("display", "none", "important");
+        tabs[i].setAttribute("aria-hidden", "true");
+        if (tabs[i].classList.contains("active")) {
+          var firstTab = document.querySelector(".save-drawer-tabs button");
+          if (firstTab) firstTab.click();
+        }
+      }
+    }
+
+    var links = document.querySelectorAll(".cloud-save-link");
+    for (var j = 0; j < links.length; j++) {
+      var label = (links[j].textContent || "").replace(/\s+/g, "");
+      if (
+        label.indexOf("重试云同步") >= 0 ||
+        label.indexOf("处理云端冲突") >= 0
+      ) {
+        links[j].style.setProperty("display", "none", "important");
+        links[j].setAttribute("aria-hidden", "true");
+      }
+    }
+
+    var helps = document.querySelectorAll(".cloud-save-help");
+    for (var k = 0; k < helps.length; k++) {
+      helps[k].style.setProperty("display", "none", "important");
+      helps[k].setAttribute("aria-hidden", "true");
+    }
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", apply);
   } else {
@@ -136,6 +172,7 @@
       cleanSettingsMenu();
       cleanTeamNameContribution();
       hideSaveProblemEntry();
+      hideNativeCloudSave();
       disableFreeText();
       hidePlayerWatch();
     }, 350);
@@ -151,6 +188,7 @@
       setTimeout(cleanSettingsMenu, 30);
       setTimeout(cleanTeamNameContribution, 30);
       setTimeout(hideSaveProblemEntry, 30);
+      setTimeout(hideNativeCloudSave, 30);
       setTimeout(disableFreeText, 30);
       setTimeout(hidePlayerWatch, 30);
     },
