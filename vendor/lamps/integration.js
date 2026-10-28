@@ -487,7 +487,7 @@
       values[1].textContent = championshipsText(cache.championships);
       values[2].textContent = scoreText(cache.score);
       var metas = document.querySelectorAll(".career-leaderboard-meta em");
-      if (metas[0]) metas[0].textContent = "Lamps 账号最高成绩";
+      if (metas[0]) metas[0].textContent = "账号最高成绩";
       if (metas[1]) metas[1].textContent = "平台榜单已同步";
     });
   }
@@ -686,14 +686,14 @@
     panel.innerHTML =
       '<div class="lamps-cloud-backdrop"></div>' +
       '<section class="lamps-cloud-card" role="dialog" aria-modal="true" aria-labelledby="lamps-cloud-title">' +
-      '<div class="lamps-cloud-head"><span class="lamps-cloud-stamp">LAMPS CLOUD</span><button type="button" class="lamps-cloud-close" aria-label="关闭 Lamps 云存档">×</button></div>' +
-      '<div class="lamps-cloud-title" id="lamps-cloud-title">Lamps 云存档</div>' +
-      '<p class="lamps-cloud-body">把当前生涯保存到 Lamps 云端，或从云端恢复到本地。云端只保留最近一次保存。</p>' +
+      '<div class="lamps-cloud-head"><span class="lamps-cloud-stamp">云存档</span><button type="button" class="lamps-cloud-close" aria-label="关闭云存档">×</button></div>' +
+      '<div class="lamps-cloud-title" id="lamps-cloud-title">云存档</div>' +
+      '<p class="lamps-cloud-body">把当前生涯保存到云端，或从云端恢复到本地。云端只保留最近一次保存。</p>' +
       '<select class="lamps-cloud-select" aria-label="选择要保存的本地生涯"></select>' +
       '<p class="lamps-cloud-status"></p>' +
       '<div class="lamps-cloud-actions">' +
-      '<button type="button" class="lamps-cloud-primary lamps-cloud-save">保存到 Lamps</button>' +
-      '<button type="button" class="lamps-cloud-secondary lamps-cloud-load">从 Lamps 恢复</button>' +
+      '<button type="button" class="lamps-cloud-primary lamps-cloud-save">保存到云端</button>' +
+      '<button type="button" class="lamps-cloud-secondary lamps-cloud-load">从云端恢复</button>' +
       "</div>" +
       '<div class="lamps-cloud-confirm"><p></p><div class="lamps-cloud-confirm-actions"><button type="button" class="lamps-cloud-primary lamps-cloud-confirm-yes">确认恢复</button><button type="button" class="lamps-cloud-secondary lamps-cloud-confirm-no">取消</button></div></div>' +
       '<p class="lamps-cloud-note">只保存所选槽位的主存档；恢复会覆盖本地同槽位存档。保存失败时请保留本地进度。</p>' +
@@ -800,12 +800,12 @@
       return;
     }
     if (!hasProgressApi()) {
-      setStatus(panelParts.status, "Lamps 云存档能力暂不可用。", "error");
+      setStatus(panelParts.status, "云存档能力暂不可用。", "error");
       return;
     }
     setBusy(true);
     hideConfirm();
-    setStatus(panelParts.status, "正在保存到 Lamps 云端…", "");
+    setStatus(panelParts.status, "正在保存到云端…", "");
     var payload = {
       version: 1,
       kind: "bm-career",
@@ -830,7 +830,7 @@
         }
         setStatus(
           panelParts.status,
-          "已保存到 Lamps 云端 · 槽位 0" +
+          "已保存到云端 · 槽位 0" +
             record.slot +
             " · " +
             record.teamName +
@@ -853,12 +853,12 @@
 
   function loadCloudRecord() {
     if (!hasProgressApi()) {
-      setStatus(panelParts.status, "Lamps 云存档能力暂不可用。", "error");
+      setStatus(panelParts.status, "云存档能力暂不可用。", "error");
       return;
     }
     setBusy(true);
     hideConfirm();
-    setStatus(panelParts.status, "正在读取 Lamps 云端存档…", "");
+    setStatus(panelParts.status, "正在读取云端存档…", "");
     window.LampsPlatform.getGameProgress()
       .then(function (result) {
         if (!result || !result.ok) {
@@ -984,7 +984,7 @@
       '<path d="M17.5 19a4.5 4.5 0 0 0 .5-8.98A6 6 0 0 0 6.2 8.2 4.5 4.5 0 0 0 7 17h10.5Z"></path>' +
       '<path d="M12 12v6M9.5 15.5 12 18l2.5-2.5"></path>' +
       "</svg>" +
-      "<span><b>Lamps 云存档</b><small>保存或恢复平台云存档</small></span>" +
+      "<span><b>云存档</b><small>保存或恢复云端存档</small></span>" +
       "<em>›</em>";
     button.addEventListener("click", function () {
       closeSettingsDialog();
