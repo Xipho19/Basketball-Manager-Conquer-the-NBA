@@ -36,7 +36,6 @@
     .ai-desktop-entry-button { appearance: none; border: 0; border-radius: 6px; padding: 12px 24px; color: #fff; background: #e60012; font: inherit; font-size: 16px; line-height: 1.5; cursor: pointer; }
   </style>
   <script>document.title = "篮球经理：征服联盟"; window.__colorbox_ai_project__ = {"kind":"preview","projectId":"app_2eeb0a1013","settings":{"theme":{"skeletonColor":"#f5f5f5","webviewBackground":"#ffffff","containerBackground":"#ffffff"},"title":"篮球经理：征服联盟","shareCover":"","shareTitle":"篮球经理：征服联盟","bizCategory":"shaper","dayNightMode":"auto","trackingCode":"PHBS7947","shareSubtitle":"","disablePageSlide":true}}; window.__COLORBOX_GAME_URL__ = window.location.href; window.__COLORBOX_GAME_ICON_URL__ = "./branding/review-cover.jpg"; window.__COLORBOX_BBS_CONFIG__ = {"bbsTagId":"","bbsTagName":"","bbsTopicId":"","bbsTopicName":""};</script>
-  <script src="./vendor/hupu-js-bridge_v1.1.8.js"  <script src="./vendor/hupu-js-bridge_v1.1.8.js" crossorigin="anonymous"></script>
   <script>
 (function () {
   window.__COLORBOX_AI_SHELL_CONFIG__ = {
@@ -221,17 +220,7 @@
     return !!res && (res.status === 200 || res.status === "200" || res.status === 0 || res.status === void 0);
   }
   function sendViaLegacyHupuBridge(method, data) {
-    if (!isHupuAppEnv() || !window.HupuBridge || typeof window.HupuBridge.send !== "function") {
-      return null;
-    }
-    console.log("[ColorboxAI.Shell.rawBridgeSend] Routing via window.HupuBridge.send");
-    return window.HupuBridge.send(method, data || {}).then(function(res) {
-      console.log("[ColorboxAI.Shell.rawBridgeSend] HupuBridge.send resolved:", JSON.stringify(res));
-      return res;
-    }).catch(function(err) {
-      console.warn("[ColorboxAI.Shell.rawBridgeSend] HupuBridge.send call failed:", err);
-      return null;
-    });
+    return null;
   }
   function rawBridgeSend(method, data) {
     if (method === "hupu.common.shortcut.add") {
@@ -260,7 +249,7 @@
         if (!isBridgeSuccess(res)) {
           const legacyRequest2 = sendViaLegacyHupuBridge(method, data);
           if (legacyRequest2) {
-            console.warn("[ColorboxAI.Shell.rawBridgeSend] HupuBridgeModule returned non-success status, falling back to HupuBridge.send:", JSON.stringify(res));
+            console.warn("[ColorboxAI.Shell.rawBridgeSend] HupuBridgeModule returned non-success status, native bridge fallback disabled:", JSON.stringify(res));
             return legacyRequest2;
           }
         }
@@ -486,10 +475,7 @@
     return payload;
   }
   function setNativeShare(shareData) {
-    const data = Object.assign({}, shareData, {
-      linkUrl: window.location.href
-    });
-    rawBridgeSend("hupu.share.setNative", data);
+    /* Native share bridge disabled in the Lamps build. */
   }
 
   // src/shell-runtime/index.ts

@@ -102,7 +102,6 @@
     body { user-select: none; -webkit-user-select: none; }
     input, textarea { user-select: text; -webkit-user-select: text; }
   </style>
-<script src="./vendor/colorbox-ai_v2.2.28.js" crossorigin="anonymous"></script>
 <script>
 (function () {
   window.__COLORBOX_AI_CONFIG__ = {
@@ -173,363 +172,56 @@
   var MAX_STORAGE_BYTES = 5 * 1024 * 1024;
   function createColorboxStorageApi(params) {
     const pId = params.projectId;
-    function resolveScopedKey(key) {
-      return "cb_storage:" + pId + ":" + key;
+    const prefix = "cb_storage:" + pId + ":";
+    function scopedKey(key) {
+      return prefix + key;
     }
-    function isStorageAvailable() {
+    function readLocal(key) {
       try {
-        const testKey = "__colorbox_storage_test__";
-        window.localStorage.setItem(testKey, "test");
-        window.localStorage.removeItem(testKey);
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }
-    const isLocalAvailable = isStorageAvailable();
-    function safeB64Encode(str) {
-      try {
-        const base64 = window.btoa(unescape(encodeURIComponent(str)));
-        return base64;
-      } catch (error) {
-        logError("safeB64Encode failed.", error);
-        throw error;
-      }
-    }
-    function safeB64Decode(str) {
-      try {
-        const decoded = decodeURIComponent(escape(window.atob(str)));
-        return decoded;
-      } catch (error) {
-        logError("safeB64Decode failed.", error);
-        throw error;
-      }
-    }
-    function serializeStorageValue(value) {
-      if (value == null) return "";
-      const text = typeof value === "string" ? value : JSON.stringify(value);
-      try {
-        const encoded = safeB64Encode(text);
-        return "__b64__:" + encoded;
-      } catch (error) {
-        return text;
-      }
-    }
-    function parseStorageValue(value, scopedKey) {
-      if (value == null) return null;
-      if (typeof value !== "string") return value;
-      let text = value;
-      if (text.indexOf("__b64__:") === 0) {
-        text = safeB64Decode(text.slice(8));
-      }
-      if (text.charAt(0) !== "{" && text.charAt(0) !== "[") {
-        return text;
-      }
-      try {
-        const parsed = JSON.parse(text);
-        if (parsed && typeof parsed === "object") {
-          if (!Array.isArray(parsed) && scopedKey && parsed[scopedKey] != null) {
-            return parseStorageValue(parsed[scopedKey], scopedKey);
-          }
-        }
-        return text;
-      } catch (parseError) {
-        if (text.charAt(0) === "{" && text.charAt(text.length - 1) === "}") {
-          const escapedKey = (scopedKey || "").replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
-          const pattern = new RegExp('^\\{\\s*"' + (escapedKey || '[^"]+') + '"\\s*:\\s*"(.*)"\\s*\\}\\s*$');
-          const match = text.match(pattern);
-          if (match) {
-            let rawValue = match[1];
-            rawValue = rawValue.replace(/\\"/g, '"').replace(/\\\\/g, "\\");
-            return parseStorageValue(rawValue, scopedKey);
-          }
-        }
-        return text;
-      }
-    }
-    function readLocalStorageValue(scopedKey) {
-      if (!isLocalAvailable) return null;
-      try {
-        return parseStorageValue(window.localStorage.getItem(scopedKey), scopedKey);
+        const raw = window.localStorage.getItem(scopedKey(key));
+        return raw == null ? null : JSON.parse(raw);
       } catch (e) {
         return null;
       }
     }
-    function writeLocalStorageValue(scopedKey, value) {
-      if (!isLocalAvailable) return false;
+    function writeLocal(key, value) {
       try {
-        window.localStorage.setItem(scopedKey, serializeStorageValue(value));
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }
-    function readLocalStorageAll() {
-      const result = {};
-      if (!isLocalAvailable) return result;
-      try {
-        const prefix = "cb_storage:" + pId + ":";
-        for (let i = 0; i < window.localStorage.length; i++) {
-          const k = window.localStorage.key(i);
-          if (k && k.indexOf(prefix) === 0) {
-            const rawKey = k.substring(prefix.length);
-            const val = readLocalStorageValue(k);
-            if (val !== null) {
-              result[rawKey] = val;
-            }
-          }
-        }
-      } catch (e) {
-      }
-      return result;
-    }
-    function calculateStorageSize() {
-      let size = 0;
-      if (!isLocalAvailable) return size;
-      try {
-        const prefix = "cb_storage:" + pId + ":";
-        for (let i = 0; i < window.localStorage.length; i++) {
-          const k = window.localStorage.key(i);
-          if (k && k.indexOf(prefix) === 0) {
-            const val = window.localStorage.getItem(k);
-            size += k.length + (val ? val.length : 0);
-          }
-        }
-      } catch (e) {
-      }
-      return size;
-    }
-    function deleteLocalStorageValue(scopedKey) {
-      if (!isLocalAvailable) return false;
-      try {
-        window.localStorage.removeItem(scopedKey);
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }
-    function resolveProjectId() {
-      return pId;
-    }
-    function logInfo(stage, detail) {
-      console.log("[ColorboxAI.Storage] " + stage, detail || {});
-    }
-    function logError(stage, error, extra) {
-      console.error("[ColorboxAI.Storage] Error: " + stage, error);
-    }
-    function shouldUseBridge() {
-      const ua = navigator.userAgent || "";
-      return /kanqiu/i.test(ua);
-    }
-    function writeBridgeValue(scopedKey, value) {
-      const payload = {
-        method: "hupu.common.setValue",
-        data: {
-          key: scopedKey,
-          value: serializeStorageValue(value)
-        }
-      };
-      return new Promise(function(resolve, reject) {
-        if (window.HupuBridge && typeof window.HupuBridge.send === "function") {
-          window.HupuBridge.send(payload.method, payload.data).then(resolve).catch(reject);
+        if (value === void 0) {
+          window.localStorage.removeItem(scopedKey(key));
         } else {
-          reject(new Error("HupuBridge not available for storage set"));
+          window.localStorage.setItem(scopedKey(key), JSON.stringify(value));
         }
-      });
-    }
-    function readBridgeValue(scopedKey) {
-      const payload = {
-        method: "hupu.common.getValue",
-        data: { key: scopedKey }
-      };
-      return new Promise(function(resolve, reject) {
-        if (window.HupuBridge && typeof window.HupuBridge.send === "function") {
-          window.HupuBridge.send(payload.method, payload.data).then(function(res) {
-            const val = res && res.value;
-            resolve(parseStorageValue(val, scopedKey));
-          }).catch(reject);
-        } else {
-          reject(new Error("HupuBridge not available for storage get"));
-        }
-      });
+        return { ok: true, key: String(key), size: 0, bridgeSynced: false };
+      } catch (e) {
+        return { ok: false, key: String(key), size: 0, bridgeSynced: false, error: e };
+      }
     }
     function setValue(key, value) {
-      return Promise.resolve().then(function() {
-        if (key == null || typeof key === "object") {
-          const batch = key || {};
-          const keys = Object.keys(batch);
-          if (!keys.length) return { ok: true, size: calculateStorageSize(), bridgeSynced: false };
-          let currentSize2 = calculateStorageSize();
-          let delta2 = 0;
-          const writeTasks = [];
-          keys.forEach(function(k) {
-            const scopedKey2 = resolveScopedKey(k);
-            const val = batch[k];
-            const rawVal2 = JSON.stringify(val);
-            const oldRaw2 = isLocalAvailable ? window.localStorage.getItem(scopedKey2) : null;
-            const keyDelta = scopedKey2.length + rawVal2.length - (oldRaw2 ? scopedKey2.length + oldRaw2.length : 0);
-            delta2 += keyDelta;
-            writeTasks.push({ scopedKey: scopedKey2, val });
-          });
-          if (currentSize2 + delta2 > MAX_STORAGE_BYTES) {
-            throw new Error("Storage quota exceeded (max 5MB limit). Set value failed.");
-          }
-          let ok2 = true;
-          const bridgeKeys = [];
-          writeTasks.forEach(function(task) {
-            const success = writeLocalStorageValue(task.scopedKey, task.val);
-            if (!success) ok2 = false;
-            bridgeKeys.push(task.scopedKey);
-          });
-          if (shouldUseBridge()) {
-            const bridgePayload = {
-              method: "hupu.common.setValue",
-              data: {
-                keys: bridgeKeys,
-                values: keys.map(function(k) {
-                  return serializeStorageValue(batch[k]);
-                })
-              }
-            };
-            return new Promise(function(resolve) {
-              if (window.HupuBridge && typeof window.HupuBridge.send === "function") {
-                window.HupuBridge.send(bridgePayload.method, bridgePayload.data).then(function(res) {
-                  resolve({ ok: ok2, size: calculateStorageSize(), bridgeSynced: true, rawBridgeResult: res });
-                }).catch(function(err) {
-                  logError("Bridge batch write failed", err, { keys: bridgeKeys });
-                  resolve({ ok: ok2, size: calculateStorageSize(), bridgeSynced: false, error: err });
-                });
-              } else {
-                resolve({ ok: ok2, size: calculateStorageSize(), bridgeSynced: false });
-              }
-            }).then(function(result3) {
-              logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
-                projectId: resolveProjectId(),
-                input: batch,
-                payload: bridgePayload,
-                result: result3
-              });
-              return result3;
-            });
-          }
-          const result2 = { ok: ok2, size: calculateStorageSize(), bridgeSynced: false };
-          logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
-            projectId: resolveProjectId(),
-            input: batch,
-            payload: null,
-            result: result2
-          });
-          return result2;
-        }
-        const storageKey = String(key);
-        const scopedKey = resolveScopedKey(storageKey);
-        const rawVal = JSON.stringify(value);
-        const oldRaw = isLocalAvailable ? window.localStorage.getItem(scopedKey) : null;
-        const currentSize = calculateStorageSize();
-        const delta = scopedKey.length + rawVal.length - (oldRaw ? scopedKey.length + oldRaw.length : 0);
-        if (currentSize + delta > MAX_STORAGE_BYTES) {
-          throw new Error("Storage quota exceeded (max 5MB limit). Set value failed.");
-        }
-        let ok = true;
-        if (value === void 0) {
-          ok = deleteLocalStorageValue(scopedKey);
-        } else {
-          ok = writeLocalStorageValue(scopedKey, value);
-        }
-        if (shouldUseBridge()) {
-          const bridgePayload = {
-            method: "hupu.common.setValue",
-            data: {
-              key: scopedKey,
-              value: serializeStorageValue(value)
-            }
-          };
-          return writeBridgeValue(scopedKey, value).then(function(bridgeResult) {
-            return { ok, key: storageKey, size: calculateStorageSize(), bridgeSynced: bridgeResult !== null };
-          }).catch(function(err) {
-            logError("Bridge write failed for key " + storageKey, err, { key: storageKey });
-            return { ok, key: storageKey, size: calculateStorageSize(), bridgeSynced: false, error: err };
-          }).then(function(result2) {
-            logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
-              projectId: resolveProjectId(),
-              input: value,
-              payload: bridgePayload,
-              result: result2
-            });
-            return result2;
-          });
-        }
-        const result = { ok, key: storageKey, size: calculateStorageSize(), bridgeSynced: false };
-        logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
-          projectId: resolveProjectId(),
-          input: value,
-          payload: null,
-          result
+      if (key != null && typeof key === "object") {
+        Object.keys(key).forEach(function (k) {
+          writeLocal(k, key[k]);
         });
-        return result;
-      }).catch(function(error) {
-        logError("\u5199\u5165\u5B58\u50A8\u6570\u636E\u5931\u8D25", error, { key });
-        return Promise.reject(error);
-      });
+        return Promise.resolve({ ok: true, size: 0, bridgeSynced: false });
+      }
+      return Promise.resolve(writeLocal(key, value));
     }
     function getValue(key) {
-      const hasKey = key != null && key !== "";
-      const storageKey = hasKey ? String(key) : "";
-      return Promise.resolve().then(function() {
-        if (!hasKey) {
-          const allValues = readLocalStorageAll();
-          logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
-            projectId: resolveProjectId(),
-            key: "",
-            scopedKey: "",
-            source: "localStorage",
-            result: allValues
-          });
-          return allValues;
-        }
-        const scopedKey = resolveScopedKey(storageKey);
-        if (!shouldUseBridge()) {
-          const localOnlyValue = readLocalStorageValue(scopedKey);
-          logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
-            projectId: resolveProjectId(),
-            key: storageKey,
-            scopedKey,
-            source: "localStorage",
-            result: localOnlyValue
-          });
-          return localOnlyValue;
-        }
-        return readBridgeValue(scopedKey).catch(function(err) {
-          logError("Bridge read failed for key " + storageKey, err, { key: storageKey });
-          throw err;
-        }).then(function(bridgeValue) {
-          if (bridgeValue != null) {
-            logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
-              projectId: resolveProjectId(),
-              key: storageKey,
-              scopedKey,
-              source: "hupu.common.getValue",
-              result: bridgeValue
-            });
-            return bridgeValue;
+      if (key == null || key === "") {
+        const all = {};
+        try {
+          for (let i = 0; i < window.localStorage.length; i += 1) {
+            const fullKey = window.localStorage.key(i);
+            if (fullKey && fullKey.indexOf(prefix) === 0) {
+              all[fullKey.slice(prefix.length)] = readLocal(fullKey.slice(prefix.length));
+            }
           }
-          const localValue = readLocalStorageValue(scopedKey);
-          logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
-            projectId: resolveProjectId(),
-            key: storageKey,
-            scopedKey,
-            source: "localStorage",
-            result: localValue
-          });
-          return localValue;
-        });
-      }).catch(function(error) {
-        logError("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u5931\u8D25", error, { key: storageKey });
-        return hasKey ? null : {};
-      });
+        } catch (e) {}
+        return Promise.resolve(all);
+      }
+      return Promise.resolve(readLocal(key));
     }
     return {
-      maxBytes: MAX_STORAGE_BYTES,
+      maxBytes: 5 * 1024 * 1024,
       setValue,
       getValue,
       set: setValue,
@@ -672,6 +364,7 @@
     };
     window.ColorboxAI.openUrl = window.ColorboxAI.navigateTo;
     window.ColorboxAI.bbs = window.ColorboxAI.bbs || createLocalFallbackApi();
+    window.ColorboxAI.request = window.ColorboxAI.request || { bbs: window.ColorboxAI.bbs };
     window.ColorboxAI.security = window.ColorboxAI.security || createLocalSecurityFallbackApi();
     window.ColorboxAI.score = window.ColorboxAI.score || createLocalScoreFallbackApi();
     window.ColorboxAI.oss = window.ColorboxAI.oss || createLocalOssFallbackApi();
