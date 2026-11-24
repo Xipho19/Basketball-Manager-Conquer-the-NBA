@@ -10,6 +10,12 @@
 }
 
 :root {
+  /* Live 2026-11 build uses --color-* tokens for the startup overlay. */
+  --color-accent-primary: #e01b24 !important;
+  --color-accent-strong: #ff3b30 !important;
+  --color-accent-primary-rgb: 224, 27, 36 !important;
+  --color-warning: #ff4b55 !important;
+  --color-danger: #ff4b55 !important;
   --accent-primary: #e01b24 !important;
   --accent-primary-rgb: 224, 27, 36 !important;
   --accent-hover: #ff3b30 !important;
