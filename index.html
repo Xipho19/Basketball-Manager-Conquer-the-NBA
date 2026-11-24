@@ -1,937 +1,2694 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-<script>/* 本地离线镜像：拦截阻塞式 alert（账号/云存档不可用提示），改为控制台警告 */
+<html data-startup-build="source-5c54a129d626ddfa" lang="zh-CN" data-startup-loading>
+  <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self' data: blob:; worker-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';"><script>/* 本地离线镜像：拦截阻塞式 alert（云端能力不可用提示），改为控制台警告 */
 (function () {
   var _alert = window.alert;
   window.alert = function (msg) {
     try { console.warn('[本地镜像] 已拦截弹窗：' + (msg == null ? '' : String(msg))); } catch (e) {}
   };
-})();</script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src * data: blob:; object-src 'none'; base-uri 'self';">
-  <meta name="spm-id" content="PHBS7947">
-  <title>篮球经理：征服联盟</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="篮球经理：征服联盟">
-  <link rel="apple-touch-icon" href="./branding/review-cover.jpg">
-  <script>
-    (function () {
-      var fixedEnv = "";
-      var env = new URLSearchParams(window.location.search).get("env") || fixedEnv;
-      if (env) window.__COLORBOX_ENV__ = env;
-    })();
-  </script>
+  /* 漫画红白皮肤只提供深色主题，启动前把主题锁定为 dark。 */
+  try { window.localStorage.setItem('basketball-manager:ui-theme', 'dark'); } catch (e) {}
+})();</script><script data-shaper-web-guard-context>(function () {
+    function newVisitId() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 3 | 8)).toString(16);
+      });
+    }
+    // Resolve preview identity synchronously, before the SDK's first event.
+    var isPreview = new URLSearchParams(location.search).get('shaper_preview') === '1';
+    try {
+      var parentSession = window.parent !== window && window.parent.__SHAPER_WEB_GUARD_SESSION__;
+      if (parentSession && parentSession.applicationId === "app_2eeb0a1013" && parentSession.deploymentKind === 'preview') isPreview = true;
+      if (window.frameElement && window.frameElement.getAttribute('data-shaper-preview') === 'true') isPreview = true;
+    } catch (_) { /* Cross-origin console previews carry the URL marker. */ }
+    var session = window.__SHAPER_WEB_GUARD_SESSION__ = {
+      applicationId: "app_2eeb0a1013", releaseId: "appv_a07d892b618246729764764b061e70de",
+      frameRole: "content",
+      deploymentKind: !isPreview && /\/shaper\/published\//.test(location.pathname) ? 'published' : 'preview',
+      telemetryEnvironment: !isPreview && /\/shaper\/published\//.test(location.pathname) ? 'prod' : "dev",
+      visitId: newVisitId(),
+      navigationStart: performance.timeOrigin || (performance.timing && performance.timing.navigationStart) || Date.now()
+    };
+    window.__SHAPER_DIAGNOSTICS_CONFIG__ = {"enabled":true,"sampleRate":0.5,"profiling":true,"profileSampleRate":0.2,"policyVersion":"evidence-v1-cc571eb844398706"};
+    window.__SHAPER_WEB_GUARD_CONTEXT__ = function () {
+      var root = session;
+      try {
+        var candidate = window.parent !== window && window.parent.__SHAPER_WEB_GUARD_SESSION__;
+        if (candidate && candidate.applicationId === session.applicationId) root = candidate;
+      } catch (error) { /* Cross-origin documents have independent visits. */ }
+      return {
+        application_id: session.applicationId, release_id: session.releaseId || root.releaseId,
+        build_id: window.__SHAPER_DIAGNOSTIC_BUILD_ID__ || null,
+        frame_role: session.frameRole, deployment_kind: session.deploymentKind,
+        collection_end_reason: session.collectionEndReason || root.collectionEndReason || null,
+        collection_end_at: session.collectionEndAt || root.collectionEndAt || null,
+        visit_id: root.visitId, root_navigation_start: root.navigationStart,
+        root_navigation_valid: root !== session ? root.frameRole === 'shell' : window.parent === window
+      };
+    };
+    window.addEventListener('pageshow', function (event) {
+      if (!event.persisted) return;
+      session.visitId = newVisitId(); session.navigationStart = Date.now();
+    });
+  })();(function () {
+    var session = window.__SHAPER_WEB_GUARD_SESSION__;
+    var parentVisible = true;
+    var intersects = window.parent === window || typeof IntersectionObserver !== 'function';
+    var childIntersects = true;
+    var rewardFlow = null;
+    var observedFrame;
+    var parentOrigin;
+    try {
+      parentOrigin = location.ancestorOrigins && location.ancestorOrigins[0];
+      if (!parentOrigin && document.referrer) parentOrigin = new URL(document.referrer).origin;
+    } catch (_) {}
+    try {
+      var parentSession = window.parent !== window && window.parent.__SHAPER_WEB_GUARD_SESSION__;
+      if (parentSession && parentSession.applicationId === session.applicationId) {
+        if (typeof parentSession.visible === 'boolean') parentVisible = parentSession.visible;
+        session.collectionEndReason = parentSession.collectionEndReason || null;
+        session.collectionEndAt = parentSession.collectionEndAt || null;
+      }
+    } catch (_) { /* Cross-origin visibility arrives through the parent protocol. */ }
 
-  <link rel="icon" href="./branding/review-cover.jpg">
-  <style>
-    html, body, #ai-render-root { width: 100%; height: 100%; min-height: 100%; margin: 0; padding: 0; background: #ffffff; }
-    body { overflow: hidden; font-family: 'Helvetica Neue', 'PingFang SC', system-ui, -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; --bg: #ffffff; }
-    #ai-render-root { position: fixed; inset: 0; display: flex; justify-content: center; background: #ffffff; }
-    .ai-render-frame { width: 100%; max-width: 750px; height: 100%; border: 0; background: #ffffff; }
-    .ai-desktop-entry { box-sizing: border-box; width: 100%; max-width: 750px; min-height: 100%; padding: 64px 24px 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #171717; background: #ffffff; }
-    .ai-desktop-entry-icon { width: 88px; height: 88px; border-radius: 20px; object-fit: cover; margin-bottom: 20px; }
-    .ai-desktop-entry-title { margin: 0 0 28px; font-size: 20px; line-height: 1.4; font-weight: 600; }
-    .ai-desktop-entry-button { appearance: none; border: 0; border-radius: 6px; padding: 12px 24px; color: #fff; background: #e60012; font: inherit; font-size: 16px; line-height: 1.5; cursor: pointer; }
+    function sendToChild(force) {
+      var frame = document.getElementById('ai-render-frame');
+      if (!frame || !frame.contentWindow) return;
+      var rect = frame.getBoundingClientRect();
+      var visible = session.visible && childIntersects && rect.width > 0 && rect.height > 0 &&
+        rect.bottom > 0 && rect.right > 0 && rect.top < innerHeight && rect.left < innerWidth;
+      for (var element = frame; visible && element; element = element.parentElement) {
+        var style = getComputedStyle(element);
+        visible = style.display !== 'none' && style.visibility !== 'hidden' && style.visibility !== 'collapse' &&
+          style.contentVisibility !== 'hidden' && Number(style.opacity) !== 0;
+      }
+      if (!force && frame.__shaperTelemetryVisible === visible) return;
+      frame.__shaperTelemetryVisible = visible;
+      try {
+        var child = frame.contentWindow;
+        if (child.__SHAPER_WEB_GUARD_SESSION__ && child.__SHAPER_WEB_GUARD_SESSION__.applicationId === session.applicationId &&
+            typeof child.__SHAPER_SET_PARENT_VISIBILITY__ === 'function') {
+          child.__SHAPER_SET_PARENT_VISIBILITY__(visible, session.collectionEndReason, session.collectionEndAt);
+          return;
+        }
+      } catch (_) { /* Cross-origin frames use the same protocol. */ }
+      try {
+        var origin = new URL(frame.src || location.href, location.href).origin;
+        if (origin !== 'null') frame.contentWindow.postMessage({
+          type: 'shaper:telemetry:visibility', visible: visible,
+          collectionEndReason: session.collectionEndReason, collectionEndAt: session.collectionEndAt
+        }, origin);
+      } catch (_) {}
+    }
+
+    function update() {
+      // Native overlays need not change document.visibilityState. Pause until
+      // native confirms closure/failure; foreground or reward alone is not closure.
+      session.visible = !session.collectionEndReason && parentVisible && intersects && document.visibilityState === 'visible';
+      if (window.WebGuard && typeof window.WebGuard.setPageVisibility === 'function') {
+        window.WebGuard.setPageVisibility(session.visible);
+      }
+      sendToChild(false);
+    }
+    window.__SHAPER_SET_PARENT_VISIBILITY__ = function (visible, reason, at) {
+      if (typeof visible !== 'boolean') return;
+      parentVisible = visible;
+      session.collectionEndReason = reason === 'reward-ad' ? reason : null;
+      session.collectionEndAt = session.collectionEndReason && typeof at === 'number' ? at : null;
+      update();
+    };
+    function terminalRewardStatus(result) {
+      if (typeof result === 'string') {
+        try { result = JSON.parse(result); } catch (_) { return null; }
+      }
+      if (!result || typeof result !== 'object') return null;
+      var name = result.callbackName;
+      return name === 'onClose' || name === 'onReqError' || name === 'onLoadError' || name === 'onShowError' ? name : null;
+    }
+    function resumeRewardFlow(method, status) {
+      if (!rewardFlow || typeof method !== 'string' || !status || (method !== 'hupu.adver.rewardFlowStatusCallBack' &&
+          method !== rewardFlow.successcb && method !== rewardFlow.errorcb)) return;
+      rewardFlow = null;
+      session.collectionEndReason = null;
+      session.collectionEndAt = null;
+      try {
+        if (window.WebGuard && typeof window.WebGuard.markPerformanceBoundary === 'function') {
+          window.WebGuard.markPerformanceBoundary(status === 'onClose' ? 'reward-ad-close' : 'reward-ad-failed');
+        }
+      } catch (_) { /* Diagnostics must not prevent restoration. */ }
+      update();
+      // Also clear inherited pause metadata if the frame is still offscreen.
+      sendToChild(true);
+    }
+    window.addEventListener('onHupuJSBridgeHandle', function (event) {
+      var detail = event && event.detail;
+      if (session.frameRole === 'shell' && detail && detail.method === 'hupu.adver.rewardFlowStatusCallBack') {
+        resumeRewardFlow(detail.method, terminalRewardStatus(detail.result));
+      }
+    });
+    window.addEventListener('message', function (event) {
+      var data = event.data;
+      if (!data) return;
+      if (window.parent !== window && event.source === window.parent && (!parentOrigin || event.origin === parentOrigin) &&
+          data.type === 'shaper:telemetry:visibility' && typeof data.visible === 'boolean') {
+        window.__SHAPER_SET_PARENT_VISIBILITY__(data.visible, data.collectionEndReason, data.collectionEndAt);
+      }
+      // The shell runtime forwards native _handle_ events and request replies.
+      // Relay only terminal status labels, never raw bridge response payloads.
+      if (window.parent !== window && event.source === window.parent && (!parentOrigin || event.origin === parentOrigin) &&
+          data.protocol === 'colorbox-ai-bridge' && data.version === 1 && data.direction === 'host-to-frame' && data.payload) {
+        var method;
+        var result;
+        if (data.type === 'bridge.event' && data.payload.method === 'hupu.adver.rewardFlowStatusCallBack') {
+          method = data.payload.method;
+          result = data.payload.result;
+        } else if (data.type === 'bridge.callback') {
+          method = data.payload.callbackName;
+          result = data.payload.args && data.payload.args[0];
+        }
+        var status = terminalRewardStatus(result);
+        if (typeof method === 'string' && status) window.parent.postMessage({
+          type: 'shaper:telemetry:reward-ad-result', method: method, status: status
+        }, event.origin);
+      }
+      var frame = document.getElementById('ai-render-frame');
+      if (session.frameRole === 'shell' && frame && event.source === frame.contentWindow && event.origin === location.origin &&
+          data.type === 'shaper:telemetry:reward-ad-result') {
+        resumeRewardFlow(data.method, terminalRewardStatus({ callbackName: data.status }));
+      }
+      // Installed before the shell runtime's bridge proxy: synchronously pause
+      // the same-origin game's observation BEFORE the next listener calls native.
+      // Match the proxy's source/origin/protocol checks; unrelated frames and
+      // preflight failures (login/task lookup) must not pause game observation.
+      if (session.frameRole === 'shell' && frame && event.source === frame.contentWindow && event.origin === location.origin &&
+          data.protocol === 'colorbox-ai-bridge' && data.version === 1 && data.direction === 'frame-to-host' &&
+          data.type === 'bridge.call' && data.payload && data.payload.payload &&
+          data.payload.payload.method === 'hupu.adver.beginRewardFlow') {
+        if (!rewardFlow) {
+          session.collectionEndAt = performance.timeOrigin ? performance.timeOrigin + performance.now() : Date.now();
+          rewardFlow = {
+            successcb: data.payload.payload.successcb,
+            errorcb: data.payload.payload.errorcb
+          };
+        }
+        session.collectionEndReason = 'reward-ad';
+        try {
+          if (window.WebGuard && typeof window.WebGuard.markPerformanceBoundary === 'function') {
+            window.WebGuard.markPerformanceBoundary('reward-ad-request');
+          }
+        } catch (_) { /* Diagnostics must never prevent native calls or visibility propagation. */ }
+        update();
+      }
+      if (frame && event.source === frame.contentWindow && data.type === 'shaper:telemetry:ready') {
+        try { if (event.origin === new URL(frame.src, location.href).origin) sendToChild(true); } catch (_) {}
+      }
+    });
+    document.addEventListener('visibilitychange', update);
+    window.addEventListener('pageshow', function (event) {
+      // Only BFCache starts a new visit. Ordinary foreground restoration cannot
+      // override an active ad; native close/failure resumes the existing visit.
+      if (event.persisted) {
+        rewardFlow = null;
+        session.collectionEndReason = null;
+        session.collectionEndAt = null;
+      }
+      update();
+      if (window.parent !== window) window.parent.postMessage({ type: 'shaper:telemetry:ready' }, parentOrigin || '*');
+    });
+    if (window.parent !== window && typeof IntersectionObserver === 'function') {
+      var ownObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          // A zero-height content root is not evidence that its viewport is hidden.
+          intersects = entry.isIntersecting;
+          update();
+        });
+      });
+      ownObserver.observe(document.documentElement);
+    }
+    function bindChild() {
+      var frame = document.getElementById('ai-render-frame');
+      if (!frame || observedFrame === frame) return;
+      observedFrame = frame;
+      frame.addEventListener('load', function () { sendToChild(true); });
+      if (typeof IntersectionObserver === 'function') {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            childIntersects = entry.isIntersecting && entry.intersectionRect.width > 0 && entry.intersectionRect.height > 0;
+            sendToChild(false);
+          });
+        });
+        observer.observe(frame);
+      }
+      var mutations = new MutationObserver(function () { sendToChild(false); });
+      mutations.observe(document.documentElement, { subtree: true, attributes: true, childList: true,
+        attributeFilter: ['style', 'class', 'hidden', 'open'] });
+      window.addEventListener('scroll', function () { sendToChild(false); }, { capture: true, passive: true });
+      window.addEventListener('resize', function () { sendToChild(false); });
+      sendToChild(true);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindChild, { once: true });
+    else bindChild();
+    update();
+    if (window.parent !== window) window.parent.postMessage({ type: 'shaper:telemetry:ready' }, parentOrigin || '*');
+  })();(function () {
+    var businessReady = false;
+    var sdkInitialized = false;
+    var delivered = false;
+    var resetTimer;
+    var content = window.__SHAPER_WEB_GUARD_SESSION__.frameRole === 'content';
+
+    function state() {
+      return { businessReady: businessReady, sdkInitialized: sdkInitialized, delivered: delivered };
+    }
+    function flush() {
+      if (!content || !businessReady || !sdkInitialized || delivered) return;
+      if (!window.WebGuard || typeof window.WebGuard.markReady !== 'function') return;
+      window.WebGuard.markReady();
+      delivered = true;
+      document.documentElement.setAttribute('data-shaper-performance-ready', 'explicit');
+    }
+    window.ShaperPerformance = {
+      markReady: function () {
+        if (!content) return;
+        businessReady = true;
+        flush();
+      },
+      markStage: function (name, status) {
+        if (!content || !/^(bootstrap|engine-init|assets|scene|first-frame|interactive)$/.test(name)) return;
+        if (sdkInitialized && window.WebGuard && window.WebGuard.markStage) window.WebGuard.markStage(name, status);
+        // Do not replay queued stages with a fabricated timestamp.
+      },
+      startDiagnosticProfile: function () {
+        return !!(content && sdkInitialized && window.WebGuard && window.WebGuard.startDiagnosticProfile && window.WebGuard.startDiagnosticProfile());
+      },
+      getReadiness: state
+    };
+    // Injected SDK bootstraps call this instead of init directly. Checking for
+    // the exported markReady function alone cannot prove init has completed.
+    window.__SHAPER_INIT_WEB_GUARD__ = function (sdk, options, queued) {
+      options = Object.assign({}, options, { diagnostics: window.__SHAPER_DIAGNOSTICS_CONFIG__ });
+      var result = sdk.init(options, queued);
+      return Promise.resolve(result).then(function (value) {
+        sdkInitialized = true;
+        flush();
+        return value;
+      });
+    };
+    window.addEventListener('pageshow', function (event) {
+      if (!event.persisted || !content) return;
+      businessReady = false;
+      delivered = false;
+      document.documentElement.removeAttribute('data-shaper-performance-ready');
+      // WebGuard resets its telemetry in its own pageshow listener. Ask the
+      // business to recheck only after all synchronous reset listeners finish.
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(function () {
+        window.dispatchEvent(new Event('shaper:performance:reset'));
+      }, 0);
+    });
+  })();</script>
+
+    <script defer src="./assets/opening-rights-data.js?v=source-5c54a129d626ddfa"></script>
+
+    <script defer src="./assets/capability-data.js?v=source-5c54a129d626ddfa"></script>
+
+    <script defer src="./assets/announcement-data.js?v=source-5c54a129d626ddfa"></script>
+
+    <meta charset="UTF-8" />
+<link rel="preload" as="image" href="./branding/home-logo-display.webp" fetchPriority="high"/>
+<link rel="preload" as="image" href="./story/opening-arena.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f4ef" />
+    <script defer src="./leaderboard/config.js"></script>
+    <style data-theme-palette>
+/* Shared by the game, its first paint and the standalone leaderboard. */
+/* Keep completed calendar results readable; status colors already distinguish outcomes. */
+html[data-theme="light"] .season-command-date-strip .past {
+  opacity: 1;
+  filter: none;
+}
+html[data-theme="light"] .season-command-date-strip .win em {
+  color: #285F46;
+}
+
+:root {
+  --color-canvas: #060911;
+  --color-shell: #080d1b;
+  --color-card: #101830;
+  --color-inset: #050914;
+  --color-text-main: #e2f1ff;
+  --color-text-secondary: #5c7b99;
+  --color-text-muted: #43617f;
+  --color-text-inverse: #031216;
+  --color-accent-primary: #00F2FE;
+  --color-accent-strong: #00F2FE;
+  --color-accent-soft: #0b2330;
+  --color-border: #174552;
+  --color-border-soft: #102e3a;
+  --color-overlay: #020610;
+  --color-success: #00ff87;
+  --color-warning: #ffc37a;
+  --color-danger: #ff9b9b;
+  --color-info: #82a1b9;
+  --theme-color-scheme: dark;
+  --theme-startup-overlay: rgba(2, 8, 19, .34);
+  --theme-accent-ghost: rgba(0, 242, 254, .14);
+  color-scheme: var(--theme-color-scheme);
+}
+
+html[data-theme="light"] {
+  --color-canvas: #E8E2D5;
+  --color-shell: #EFECE1;
+  --color-card: #F4EFE4;
+  --color-inset: #E2D3BE;
+  --color-text-main: #2B2219;
+  --color-text-secondary: #52463A;
+  --color-text-muted: #807162;
+  --color-text-inverse: #F4EFE4;
+  --color-accent-primary: #B83227;
+  --color-accent-strong: #9C271D;
+  --color-accent-soft: #EAD3CE;
+  --color-border: #CBBBA6;
+  --color-border-soft: #D9CDBB;
+  --color-overlay: #C8BAA7;
+  --color-success: #2D6A4F;
+  --color-warning: #87500A;
+  --color-danger: #9C271D;
+  --color-info: #2B5B84;
+  --theme-color-scheme: light;
+
+  /* Only light mode defines these. Existing dark declaration fallbacks stay exact. */
+  --theme-canvas: var(--color-canvas);
+  --theme-shell: var(--color-shell);
+  --theme-card: var(--color-card);
+  --theme-inset: var(--color-inset);
+  --theme-text-main: var(--color-text-main);
+  --theme-text-secondary: var(--color-text-secondary);
+  --theme-text-muted: var(--color-text-muted);
+  --theme-text-inverse: var(--color-text-inverse);
+  --theme-accent-primary: var(--color-accent-primary);
+  --theme-accent-strong: var(--color-accent-strong);
+  --theme-accent-soft: var(--color-accent-soft);
+  --theme-border: var(--color-border);
+  --theme-border-soft: var(--color-border-soft);
+  --theme-overlay: var(--color-overlay);
+  --theme-success: var(--color-success);
+  --theme-warning: var(--color-warning);
+  --theme-danger: var(--color-danger);
+  --theme-info: var(--color-info);
+  --theme-medal-silver: #46576A;
+  --theme-medal-bronze: #883A1C;
+  --theme-accent-rgb: 184, 50, 39;
+  --theme-image-top: rgba(244, 239, 228, .20);
+  --theme-image-mid: rgba(244, 239, 228, .65);
+  --theme-image-bottom: rgba(244, 239, 228, .94);
+  --theme-startup-overlay: rgba(200, 186, 167, .34);
+  --theme-accent-ghost: rgba(184, 50, 39, .14);
+
+  /* Compatibility names used by the existing screen and portal styles. */
+  --bg-page: var(--color-canvas);
+  --bg-card: var(--color-card);
+  --bg-sub-card: var(--color-inset);
+  --portrait-bg: var(--color-inset);
+  --text-main: var(--color-text-main);
+  --text-sub: var(--color-text-secondary);
+  --text-muted: var(--color-text-secondary);
+  --text-dim: var(--color-text-muted);
+  --border-color: var(--color-border);
+  --border: var(--color-border);
+  --border-soft: var(--color-border-soft);
+  --accent-primary: var(--color-accent-primary);
+  --accent-primary-rgb: var(--theme-accent-rgb);
+  --accent-hover: var(--color-accent-strong);
+  --accent-green-bg: rgba(45, 106, 79, .12);
+  --accent-green-text: var(--color-success);
+  --accent-orange: var(--color-warning);
+  --log-bg: var(--color-inset);
+  --log-border: var(--color-border);
+  --brand-main: var(--color-accent-primary);
+  --brand-main-strong: var(--color-accent-strong);
+  --brand-dark: var(--color-text-main);
+  --brand-accent: var(--color-accent-primary);
+  --surface-root: var(--color-canvas);
+  --surface-app: var(--color-shell);
+  --surface-card: var(--color-card);
+  --surface-raised: var(--color-card);
+  --surface-inset: var(--color-inset);
+  --warm-canvas: var(--color-canvas);
+  --warm-root: var(--color-canvas);
+  --warm-app: var(--color-shell);
+  --warm-card: var(--color-card);
+  --warm-inset: var(--color-inset);
+  --warm-soft: var(--color-inset);
+  --warm-border: var(--color-border);
+  --warm-ink: var(--color-text-main);
+  --warm-muted: var(--color-text-secondary);
+  --warm-accent: var(--color-accent-primary);
+  --warm-accent-strong: var(--color-accent-strong);
+  --warm-accent-soft: var(--color-accent-soft);
+  --stage-canvas: var(--color-shell);
+  --stage-surface: var(--color-card);
+  --stage-raised: var(--color-card);
+  --stage-inset: var(--color-inset);
+  --stage-border: var(--color-border);
+  --stage-text: var(--color-text-main);
+  --stage-muted: var(--color-text-secondary);
+  --stage-accent: var(--color-accent-primary);
+  --stage-accent-strong: var(--color-accent-strong);
+}
+
+/* Reuse the existing score colors to select distinct paper inks, without reclassifying scores. */
+html[data-theme="light"] [style*="--player-rating-color"] {
+  --player-rating-paper-color: #1B528A;
+}
+/* Unsupported color functions in custom properties otherwise make fills transparent. */
+@supports (color: color-mix(in srgb, #00B0FF 40%, #102852)) {
+  html[data-theme="light"] [style*="--player-rating-color"] {
+    /* Supported engines retain the existing continuous under-60 blue gradient. */
+    --player-rating-paper-color: color-mix(in srgb, var(--player-rating-color) 40%, #102852);
+  }
+}
+html[data-theme="light"] [style*="--player-rating-color"][style*="#FF3D00" i] {
+  --player-rating-paper-color: #AF1636;
+}
+html[data-theme="light"] [style*="--player-rating-color"][style*="#FF9100" i] {
+  --player-rating-paper-color: #9C4000;
+}
+html[data-theme="light"] [style*="--player-rating-color"][style*="#FFD600" i] {
+  --player-rating-paper-color: #755600;
+}
+html[data-theme="light"] [style*="--player-rating-color"][style*="#00E676" i] {
+  --player-rating-paper-color: #006940;
+}
+html[data-theme="light"] .player-rating-tone {
+  color: var(--player-rating-paper-color) !important;
+}
+html[data-theme="light"] .player-rating-surface {
+  color: var(--player-rating-paper-color);
+  border-color: var(--player-rating-paper-color) !important;
+  background: color-mix(in srgb, var(--player-rating-paper-color) 10%, var(--color-card)) !important;
+}
+html[data-theme="light"] .player-rating-fill {
+  background: var(--player-rating-paper-color) !important;
+}
+
+html[data-theme="light"] [style*="--postgame-team-color-light"] {
+  --postgame-team-readable: var(--postgame-team-color-light);
+}
+
+/* Business states keep their meaning while gaining readable light-mode ink. */
+html[data-theme="light"] .incoming-trade-dialog .incoming-trade-package h3,
+html[data-theme="light"] .incoming-trade-list-card header .is-declined,
+html[data-theme="light"] .incoming-trade-list-assets .incoming-trade-list-send,
+html[data-theme="light"] .incoming-trade-actions [data-testid="incoming-trade-decline"] {
+  color: var(--color-danger);
+}
+html[data-theme="light"] .incoming-trade-package-receive h3,
+html[data-theme="light"] .incoming-trade-list-card header .is-accepted,
+html[data-theme="light"] .incoming-trade-list-assets .incoming-trade-list-receive {
+  color: var(--color-success);
+}
+html[data-theme="light"] .team-honor-confirm [role="alert"] {
+  color: var(--color-danger);
+}
+/* Awards use stronger inks on paper while retaining their category colors. */
+html[data-theme="light"] .season-award-team-category {
+  --honor-accent: var(--theme-warning);
+  --honor-rgb: 135, 80, 10;
+}
+html[data-theme="light"] .season-award-team-category[data-award-category="defense"] {
+  --honor-accent: var(--theme-info);
+  --honor-rgb: 43, 91, 132;
+}
+html[data-theme="light"] .season-award-team-category[data-award-category="rookie"] {
+  --honor-accent: var(--theme-success);
+  --honor-rgb: 45, 106, 79;
+}
+html[data-theme="light"] .season-award-team-category[data-award-category="allstar"] {
+  --honor-accent: #6540A1;
+  --honor-rgb: 101, 64, 161;
+}
+html[data-theme="light"] .season-award-team-category[data-award-category="league"] .season-award-team-roster[data-award-tier="2"],
+html[data-theme="light"] .season-award-team-category[data-award-category="league"] .season-award-roster-tabs > button[data-award-tier="2"] {
+  --honor-accent: var(--theme-medal-silver);
+  --honor-rgb: 70, 87, 106;
+}
+html[data-theme="light"] .season-award-team-category[data-award-category="league"] .season-award-team-roster[data-award-tier="3"],
+html[data-theme="light"] .season-award-team-category[data-award-category="league"] .season-award-roster-tabs > button[data-award-tier="3"] {
+  --honor-accent: var(--theme-medal-bronze);
+  --honor-rgb: 136, 58, 28;
+}
+html[data-theme="light"] .draft-result-pick-list > li.podium-pick .draft-result-order em {
+  color: #755600;
+}
+html[data-theme="light"] .draft-result-pick-list > li.podium-pick--2 .draft-result-order em {
+  color: var(--theme-medal-silver);
+}
+html[data-theme="light"] .draft-result-pick-list > li.podium-pick--3 .draft-result-order em {
+  color: var(--theme-medal-bronze);
+}
+html[data-theme="light"] .trade-pick-badge.first-round {
+  --pick-badge-color: var(--theme-warning);
+}
+html[data-theme="light"] .trade-pick-badge.mixed-assets {
+  --pick-badge-color: var(--theme-info);
+}
+html[data-theme="light"] .player-role-trust.status-stable {
+  color: var(--theme-success);
+}
+html[data-theme="light"] .player-role-trust.status-declining {
+  color: var(--theme-warning);
+}
+html[data-theme="light"] .player-role-trust.status-low {
+  color: var(--theme-danger);
+}
+html[data-theme="light"] .league-stat-primary small,
+html[data-theme="light"] .career-overview-secondary small {
+  color: var(--color-text-secondary);
+}
+html[data-theme="light"] .career-overview-primary small,
+html[data-theme="light"] .career-overview-primary strong,
+html[data-theme="light"] .career-overview-primary i,
+html[data-theme="light"] .career-overview-primary span {
+  color: var(--color-text-inverse);
+}
+html[data-theme="light"] .team-inbox-trigger b {
+  color: var(--color-text-inverse);
+  background: var(--color-danger);
+}
+/* Alpha variants keep existing overlay geometry and opacity; only the tint changes. */
+html[data-theme="light"] {
+  --theme-overlay-1000: rgba(200, 186, 167, 1);
+  --theme-overlay-120: rgba(200, 186, 167, 0.12);
+  --theme-overlay-140: rgba(200, 186, 167, 0.14);
+  --theme-overlay-160: rgba(200, 186, 167, 0.16);
+  --theme-overlay-170: rgba(200, 186, 167, 0.17);
+  --theme-overlay-18: rgba(200, 186, 167, 0.018);
+  --theme-overlay-180: rgba(200, 186, 167, 0.18);
+  --theme-overlay-20: rgba(200, 186, 167, 0.02);
+  --theme-overlay-200: rgba(200, 186, 167, 0.2);
+  --theme-overlay-220: rgba(200, 186, 167, 0.22);
+  --theme-overlay-240: rgba(200, 186, 167, 0.24);
+  --theme-overlay-25: rgba(200, 186, 167, 0.025);
+  --theme-overlay-250: rgba(200, 186, 167, 0.25);
+  --theme-overlay-280: rgba(200, 186, 167, 0.28);
+  --theme-overlay-30: rgba(200, 186, 167, 0.03);
+  --theme-overlay-300: rgba(200, 186, 167, 0.3);
+  --theme-overlay-340: rgba(200, 186, 167, 0.34);
+  --theme-overlay-35: rgba(200, 186, 167, 0.035);
+  --theme-overlay-350: rgba(200, 186, 167, 0.35);
+  --theme-overlay-380: rgba(200, 186, 167, 0.38);
+  --theme-overlay-40: rgba(200, 186, 167, 0.04);
+  --theme-overlay-400: rgba(200, 186, 167, 0.4);
+  --theme-overlay-420: rgba(200, 186, 167, 0.42);
+  --theme-overlay-45: rgba(200, 186, 167, 0.045);
+  --theme-overlay-450: rgba(200, 186, 167, 0.45);
+  --theme-overlay-460: rgba(200, 186, 167, 0.46);
+  --theme-overlay-480: rgba(200, 186, 167, 0.48);
+  --theme-overlay-50: rgba(200, 186, 167, 0.05);
+  --theme-overlay-500: rgba(200, 186, 167, 0.5);
+  --theme-overlay-520: rgba(200, 186, 167, 0.52);
+  --theme-overlay-533: rgba(200, 186, 167, 0.5333333333333333);
+  --theme-overlay-55: rgba(200, 186, 167, 0.055);
+  --theme-overlay-550: rgba(200, 186, 167, 0.55);
+  --theme-overlay-580: rgba(200, 186, 167, 0.58);
+  --theme-overlay-60: rgba(200, 186, 167, 0.06);
+  --theme-overlay-600: rgba(200, 186, 167, 0.6);
+  --theme-overlay-620: rgba(200, 186, 167, 0.62);
+  --theme-overlay-650: rgba(200, 186, 167, 0.65);
+  --theme-overlay-667: rgba(200, 186, 167, 0.6666666666666666);
+  --theme-overlay-680: rgba(200, 186, 167, 0.68);
+  --theme-overlay-700: rgba(200, 186, 167, 0.7);
+  --theme-overlay-720: rgba(200, 186, 167, 0.72);
+  --theme-overlay-722: rgba(200, 186, 167, 0.7215686274509804);
+  --theme-overlay-733: rgba(200, 186, 167, 0.7333333333333333);
+  --theme-overlay-750: rgba(200, 186, 167, 0.75);
+  --theme-overlay-760: rgba(200, 186, 167, 0.76);
+  --theme-overlay-780: rgba(200, 186, 167, 0.78);
+  --theme-overlay-788: rgba(200, 186, 167, 0.788235294117647);
+  --theme-overlay-80: rgba(200, 186, 167, 0.08);
+  --theme-overlay-800: rgba(200, 186, 167, 0.8);
+  --theme-overlay-820: rgba(200, 186, 167, 0.82);
+  --theme-overlay-850: rgba(200, 186, 167, 0.85);
+  --theme-overlay-851: rgba(200, 186, 167, 0.8509803921568627);
+  --theme-overlay-860: rgba(200, 186, 167, 0.86);
+  --theme-overlay-880: rgba(200, 186, 167, 0.88);
+  --theme-overlay-90: rgba(200, 186, 167, 0.09);
+  --theme-overlay-900: rgba(200, 186, 167, 0.9);
+  --theme-overlay-902: rgba(200, 186, 167, 0.9019607843137255);
+}
+</style>
+    <script data-theme-preference>(function() {
+	/** Also serialized into generated classic scripts, before their first global access.
+	* Keep this function self-contained and compatible with Chrome WebView 62. */
+	function installEarlyRuntimeCompatibility() {
+		const scope = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : undefined;
+		if (scope && typeof scope.globalThis === "undefined") {
+			Object.defineProperty(scope, "globalThis", {
+				value: scope,
+				configurable: true,
+				writable: true
+			});
+		}
+		if (typeof Object.fromEntries !== "function") {
+			Object.defineProperty(Object, "fromEntries", {
+				configurable: true,
+				writable: true,
+				value: function fromEntries(entries) {
+					const result = {};
+					for (const entry of entries) {
+						if (entry === null || typeof entry !== "object" && typeof entry !== "function") {
+							throw new TypeError("Object.fromEntries requires entry objects");
+						}
+						Object.defineProperty(result, entry[0], {
+							value: entry[1],
+							configurable: true,
+							enumerable: true,
+							writable: true
+						});
+					}
+					return result;
+				}
+			});
+		}
+		function speciesConstructor(source, fallback) {
+			const constructor = source.constructor;
+			if (constructor === undefined) return fallback;
+			if (constructor === null || typeof constructor !== "object" && typeof constructor !== "function") {
+				throw new TypeError("Invalid constructor");
+			}
+			const species = typeof Symbol === "function" && Symbol.species ? constructor[Symbol.species] : undefined;
+			if (species == null) return fallback;
+			if (typeof species !== "function") throw new TypeError("Invalid species constructor");
+			return species;
+		}
+		if (typeof Array.prototype.flat !== "function" || typeof Array.prototype.flatMap !== "function") {
+			const lengthOf = (value) => Math.min(Math.max(Math.trunc(+value) || 0, 0), Number.MAX_SAFE_INTEGER);
+			const flatten = (source, requestedDepth, mapper, receiver, mapping = false) => {
+				const length = lengthOf(source.length);
+				const depth = mapping ? 1 : requestedDepth === undefined ? 1 : Math.trunc(+requestedDepth) || 0;
+				if (mapping && typeof mapper !== "function") throw new TypeError("flatMap requires a callback");
+				const Constructor = Array.isArray(source) ? speciesConstructor(source, Array) : Array;
+				const result = new Constructor(0);
+				let targetIndex = 0;
+				const visit = (values, count, remaining, applyMapper) => {
+					for (let index = 0; index < count; index += 1) {
+						// HasProperty includes inherited indices and skips sparse holes.
+						if (!(index in values)) continue;
+						const value = applyMapper ? mapper.call(receiver, values[index], index, source) : values[index];
+						if (remaining > 0 && Array.isArray(value)) visit(value, lengthOf(value.length), remaining - 1, false);
+						else {
+							if (targetIndex >= Number.MAX_SAFE_INTEGER) throw new TypeError("Flattened array is too large");
+							Object.defineProperty(result, targetIndex++, {
+								value,
+								configurable: true,
+								enumerable: true,
+								writable: true
+							});
+						}
+					}
+				};
+				visit(source, length, depth, mapping);
+				return result;
+			};
+			if (typeof Array.prototype.flat !== "function") {
+				Object.defineProperty(Array.prototype, "flat", {
+					configurable: true,
+					writable: true,
+					value: function flat(depth) {
+						"use strict";
+						if (this == null) throw new TypeError("Array.prototype.flat requires a receiver");
+						return flatten(Object(this), depth);
+					}
+				});
+			}
+			if (typeof Array.prototype.flatMap !== "function") {
+				Object.defineProperty(Array.prototype, "flatMap", {
+					configurable: true,
+					writable: true,
+					value: function flatMap(mapper, receiver) {
+						"use strict";
+						if (this == null) throw new TypeError("Array.prototype.flatMap requires a receiver");
+						return flatten(Object(this), 1, mapper, receiver, true);
+					}
+				});
+			}
+			if (typeof Symbol === "function" && Symbol.unscopables) {
+				const unscopables = Array.prototype[Symbol.unscopables];
+				if (unscopables) {
+					unscopables.flat = true;
+					unscopables.flatMap = true;
+				}
+			}
+		}
+		if (typeof Promise.prototype.finally !== "function") {
+			Object.defineProperty(Promise.prototype, "finally", {
+				configurable: true,
+				writable: true,
+				value: function finallyCompat(onFinally) {
+					"use strict";
+					if (this === null || typeof this !== "object" && typeof this !== "function") throw new TypeError("Promise.prototype.finally requires an object");
+					const Constructor = speciesConstructor(this, Promise);
+					if (typeof onFinally !== "function") return this.then(onFinally, onFinally);
+					// PromiseResolve uses the species constructor, not an overridable .resolve.
+					const cleanup = () => new Constructor((resolve) => resolve(onFinally()));
+					return this.then((value) => cleanup().then(() => value), (reason) => cleanup().then(() => {
+						throw reason;
+					}));
+				}
+			});
+		}
+	}
+	installEarlyRuntimeCompatibility();
+})();
+(function() {
+	"use strict";
+	if (window.BasketballTheme) return;
+	var key = "basketball-manager:ui-theme";
+	var listeners = [];
+	var current = "dark";
+	var isEmbedded = window.parent && window.parent !== window;
+	var targetOrigin = window.location.protocol === "file:" ? "*" : window.location.origin;
+	function valid(value) {
+		return value === "dark" || value === "light";
+	}
+	function trustedOrigin(origin) {
+		return window.location.protocol === "file:" ? origin === "null" : origin === window.location.origin;
+	}
+	function gameFrames() {
+		return document.querySelectorAll("iframe[data-game-theme]");
+	}
+	function send(target) {
+		try {
+			target.postMessage({
+				type: "basketball-manager:theme",
+				theme: current
+			}, targetOrigin);
+		} catch (_) {}
+	}
+	function updateMeta() {
+		try {
+			var meta = document.querySelector("meta[name=\"theme-color\"]");
+			var color = window.getComputedStyle(document.documentElement).getPropertyValue("--color-canvas").trim();
+			if (meta && color) meta.setAttribute("content", color);
+		} catch (_) {}
+	}
+	function apply(theme, persist, notify) {
+		if (!valid(theme)) return current;
+		var changed = theme !== current;
+		current = theme;
+		document.documentElement.setAttribute("data-theme", theme);
+		document.documentElement.style.colorScheme = theme;
+		updateMeta();
+		if (persist && changed) {
+			try {
+				window.localStorage.setItem(key, theme);
+			} catch (_) {}
+		}
+		if (changed && notify) {
+			listeners.slice().forEach(function(listener) {
+				try {
+					listener(theme);
+				} catch (_) {}
+			});
+			Array.prototype.forEach.call(gameFrames(), function(frame) {
+				if (frame.contentWindow) send(frame.contentWindow);
+			});
+		}
+		return current;
+	}
+	var initial = "dark";
+	try {
+		var stored = window.localStorage.getItem(key);
+		if (valid(stored)) initial = stored;
+	} catch (_) {}
+	if (isEmbedded) {
+		var requested = new URLSearchParams(window.location.search).get("theme");
+		if (valid(requested)) initial = requested;
+	}
+	apply(initial, false, false);
+	window.BasketballTheme = Object.freeze({
+		getTheme: function() {
+			return current;
+		},
+		setTheme: function(theme) {
+			return apply(theme, true, true);
+		},
+		subscribe: function(listener) {
+			if (typeof listener !== "function") return function() {};
+			listeners.push(listener);
+			return function() {
+				var index = listeners.indexOf(listener);
+				if (index !== -1) listeners.splice(index, 1);
+			};
+		}
+	});
+	window.addEventListener("DOMContentLoaded", updateMeta);
+	window.addEventListener("storage", function(event) {
+		if (event.key === key) apply(valid(event.newValue) ? event.newValue : "dark", false, true);
+	});
+	window.addEventListener("message", function(event) {
+		if (!trustedOrigin(event.origin)) return;
+		var message = event.data;
+		if (!message || typeof message !== "object") return;
+		if (message.type === "basketball-manager:theme" && isEmbedded && event.source === window.parent && valid(message.theme)) {
+			apply(message.theme, false, true);
+		} else if (message.type === "basketball-manager:theme-ready") {
+			Array.prototype.forEach.call(gameFrames(), function(frame) {
+				if (frame.contentWindow && event.source === frame.contentWindow) send(frame.contentWindow);
+			});
+		}
+	});
+	if (isEmbedded) {
+		try {
+			window.parent.postMessage({ type: "basketball-manager:theme-ready" }, targetOrigin);
+		} catch (_) {}
+	}
+})();
+</script>
+    <script data-fullscreen-safe-top>(function() {
+	/** Also serialized into generated classic scripts, before their first global access.
+	* Keep this function self-contained and compatible with Chrome WebView 62. */
+	function installEarlyRuntimeCompatibility() {
+		const scope = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : undefined;
+		if (scope && typeof scope.globalThis === "undefined") {
+			Object.defineProperty(scope, "globalThis", {
+				value: scope,
+				configurable: true,
+				writable: true
+			});
+		}
+		if (typeof Object.fromEntries !== "function") {
+			Object.defineProperty(Object, "fromEntries", {
+				configurable: true,
+				writable: true,
+				value: function fromEntries(entries) {
+					const result = {};
+					for (const entry of entries) {
+						if (entry === null || typeof entry !== "object" && typeof entry !== "function") {
+							throw new TypeError("Object.fromEntries requires entry objects");
+						}
+						Object.defineProperty(result, entry[0], {
+							value: entry[1],
+							configurable: true,
+							enumerable: true,
+							writable: true
+						});
+					}
+					return result;
+				}
+			});
+		}
+		function speciesConstructor(source, fallback) {
+			const constructor = source.constructor;
+			if (constructor === undefined) return fallback;
+			if (constructor === null || typeof constructor !== "object" && typeof constructor !== "function") {
+				throw new TypeError("Invalid constructor");
+			}
+			const species = typeof Symbol === "function" && Symbol.species ? constructor[Symbol.species] : undefined;
+			if (species == null) return fallback;
+			if (typeof species !== "function") throw new TypeError("Invalid species constructor");
+			return species;
+		}
+		if (typeof Array.prototype.flat !== "function" || typeof Array.prototype.flatMap !== "function") {
+			const lengthOf = (value) => Math.min(Math.max(Math.trunc(+value) || 0, 0), Number.MAX_SAFE_INTEGER);
+			const flatten = (source, requestedDepth, mapper, receiver, mapping = false) => {
+				const length = lengthOf(source.length);
+				const depth = mapping ? 1 : requestedDepth === undefined ? 1 : Math.trunc(+requestedDepth) || 0;
+				if (mapping && typeof mapper !== "function") throw new TypeError("flatMap requires a callback");
+				const Constructor = Array.isArray(source) ? speciesConstructor(source, Array) : Array;
+				const result = new Constructor(0);
+				let targetIndex = 0;
+				const visit = (values, count, remaining, applyMapper) => {
+					for (let index = 0; index < count; index += 1) {
+						// HasProperty includes inherited indices and skips sparse holes.
+						if (!(index in values)) continue;
+						const value = applyMapper ? mapper.call(receiver, values[index], index, source) : values[index];
+						if (remaining > 0 && Array.isArray(value)) visit(value, lengthOf(value.length), remaining - 1, false);
+						else {
+							if (targetIndex >= Number.MAX_SAFE_INTEGER) throw new TypeError("Flattened array is too large");
+							Object.defineProperty(result, targetIndex++, {
+								value,
+								configurable: true,
+								enumerable: true,
+								writable: true
+							});
+						}
+					}
+				};
+				visit(source, length, depth, mapping);
+				return result;
+			};
+			if (typeof Array.prototype.flat !== "function") {
+				Object.defineProperty(Array.prototype, "flat", {
+					configurable: true,
+					writable: true,
+					value: function flat(depth) {
+						"use strict";
+						if (this == null) throw new TypeError("Array.prototype.flat requires a receiver");
+						return flatten(Object(this), depth);
+					}
+				});
+			}
+			if (typeof Array.prototype.flatMap !== "function") {
+				Object.defineProperty(Array.prototype, "flatMap", {
+					configurable: true,
+					writable: true,
+					value: function flatMap(mapper, receiver) {
+						"use strict";
+						if (this == null) throw new TypeError("Array.prototype.flatMap requires a receiver");
+						return flatten(Object(this), 1, mapper, receiver, true);
+					}
+				});
+			}
+			if (typeof Symbol === "function" && Symbol.unscopables) {
+				const unscopables = Array.prototype[Symbol.unscopables];
+				if (unscopables) {
+					unscopables.flat = true;
+					unscopables.flatMap = true;
+				}
+			}
+		}
+		if (typeof Promise.prototype.finally !== "function") {
+			Object.defineProperty(Promise.prototype, "finally", {
+				configurable: true,
+				writable: true,
+				value: function finallyCompat(onFinally) {
+					"use strict";
+					if (this === null || typeof this !== "object" && typeof this !== "function") throw new TypeError("Promise.prototype.finally requires an object");
+					const Constructor = speciesConstructor(this, Promise);
+					if (typeof onFinally !== "function") return this.then(onFinally, onFinally);
+					// PromiseResolve uses the species constructor, not an overridable .resolve.
+					const cleanup = () => new Constructor((resolve) => resolve(onFinally()));
+					return this.then((value) => cleanup().then(() => value), (reason) => cleanup().then(() => {
+						throw reason;
+					}));
+				}
+			});
+		}
+	}
+	installEarlyRuntimeCompatibility();
+})();
+(function() {
+	"use strict";
+	var root = document.documentElement;
+	var script = document.currentScript;
+	// Embedded leaderboard content starts inside its parent's reserved viewport.
+	if (script && script.hasAttribute("data-safe-top-in-parent") && window.parent !== window) {
+		root.style.setProperty("--app-safe-top", "0px");
+		return;
+	}
+	// The Hupu package leaves native top spacing to its container. Keep only
+	// the browser's real inset; TapTap retains the fullscreen adaptation below.
+	if (root.getAttribute("data-game-platform") !== "taptap") {
+		root.style.setProperty("--app-safe-top", "env(safe-area-inset-top, 0px)");
+		root.setAttribute("data-fullscreen-safe-top-status", "host-managed");
+		return;
+	}
+	var settled = false;
+	var queried = false;
+	var timers = [];
+	function finish() {
+		settled = true;
+		timers.forEach(clearTimeout);
+		timers = [];
+		document.removeEventListener("DOMContentLoaded", readSafeTop);
+		document.removeEventListener("load", scriptLoaded, true);
+		window.removeEventListener("load", readSafeTop);
+	}
+	function readSafeTop() {
+		if (settled || !window.ColorboxAI || typeof window.ColorboxAI.getFullscreenSafeTop !== "function") return;
+		queried = true;
+		// Once the method exists, only lifecycle events and bounded timers retry it.
+		document.removeEventListener("load", scriptLoaded, true);
+		var top = 0;
+		var status = "unavailable";
+		try {
+			var value = window.ColorboxAI.getFullscreenSafeTop();
+			if (typeof value === "number" && Number.isFinite(value) && value >= 0) {
+				top = value;
+				status = top > 0 ? "ready" : "zero";
+			}
+		} catch (_) {
+			status = "error";
+		}
+		// Host and browser values describe the same top obstruction. Use the larger one.
+		root.style.setProperty("--app-safe-top", "max(" + top + "px, env(safe-area-inset-top, 0px))");
+		root.setAttribute("data-fullscreen-safe-top", String(top));
+		root.setAttribute("data-fullscreen-safe-top-status", status);
+		// Zero also means "not available yet" in the SDK contract.
+		if (top > 0) finish();
+	}
+	function scriptLoaded(event) {
+		if (event.target && event.target.tagName === "SCRIPT") readSafeTop();
+	}
+	readSafeTop();
+	if (!settled) {
+		// Script-load events also cover a host SDK loaded after this first-paint script.
+		document.addEventListener("DOMContentLoaded", readSafeTop, { once: true });
+		if (!queried) document.addEventListener("load", scriptLoaded, true);
+		window.addEventListener("load", readSafeTop, { once: true });
+		// Cover native SDK injection without a SCRIPT load event. Stop after startup;
+		// this is not ongoing polling, and successful values cancel every pending retry.
+		[
+			1e3,
+			3e3,
+			1e4
+		].forEach(function(delay) {
+			timers.push(setTimeout(function() {
+				readSafeTop();
+				if (delay === 1e4 && !settled) finish();
+			}, delay));
+		});
+	}
+})();
+</script>
+    <link rel="icon" type="image/png" href="./branding/favicon.png?skin=icon1" />
+    <link rel="apple-touch-icon" href="./branding/game-logo.png?skin=icon1" />
+    <title>篮球经理：征服联盟</title>
+    <!-- Previous standalone startup screen retained for reference; intentionally not rendered.
+    <style>
+      #game-startup { position:fixed;inset:0;z-index:1000;overflow:auto;color:#e2f1ff;background:#060911;font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+      #game-startup::before { content:"";position:absolute;z-index:-1;pointer-events:none;left:50%;top:50%;width:min(100%,calc(85vh * 2 / 3));height:85vh;transform:translate(-50%,-50%);background-image:linear-gradient(180deg,rgba(2,6,16,.38) 0%,rgba(2,6,16,.08) 42%,rgba(2,6,16,.18) 65%,rgba(2,6,16,.88) 100%),url("/story/startup-court-ball.webp");background-position:center;background-size:cover;-webkit-mask-image:radial-gradient(ellipse at center,#000 58%,transparent 80%);mask-image:radial-gradient(ellipse at center,#000 58%,transparent 80%); }
+      #game-startup * { box-sizing:border-box; }
+      #game-startup .startup-layout { width:100%;max-width:480px;min-height:100%;margin:auto;padding:28px 26px 24px;padding-top:max(28px,var(--app-safe-top, env(safe-area-inset-top)));padding-bottom:max(24px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:32px; }
+      #game-startup .startup-header { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+      #game-startup .startup-brand { color:#91a8ba;font-size:9px;font-weight:600;line-height:1.6;letter-spacing:2px; }
+      #game-startup .startup-live { display:flex;align-items:center;gap:7px;color:#b1cadb;font-size:11px;white-space:nowrap; }
+      #game-startup .startup-live:before { content:"";width:5px;height:5px;border-radius:50%;background:#00f2fe;box-shadow:0 0 12px #00f2fe66;animation:startup-pulse 1.8s ease-in-out infinite; }
+      #game-startup .startup-hero { flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding-top:clamp(34px,8vh,72px); }
+      #game-startup .startup-wordmark { position:relative;align-self:flex-start;margin:0;width:min(100%,360px);height:clamp(90px,31vw,120px);font-size:inherit;line-height:1; }
+      #game-startup #game-startup-logo { position:absolute;inset:0;width:100%;height:100%;object-fit:contain; }
+      #game-startup #game-startup-wordmark-text { position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center; }
+      #game-startup .startup-wordmark-main { display:block;font-size:clamp(44px,14vw,60px);line-height:1.18;font-weight:900;letter-spacing:2px;transform:skew(-7deg);text-shadow:1px 1px 0 #15516b,2px 2px 0 #082a3e,0 7px 24px #020610b3; }
+      #game-startup .startup-wordmark-main span { color:#00f2fe; }
+      #game-startup .startup-edition { display:flex;align-items:center;gap:10px;margin:14px 0 0;color:#d5e8f3;font-size:14px;line-height:1.6;font-weight:600;letter-spacing:4px; }
+      #game-startup .startup-edition:before,#game-startup .startup-edition:after { content:"";width:20px;height:1px;background:#00f2fe; }
+      #game-startup .startup-edition:after { width:40px;background:#00f2fe55; }
+      #game-startup .startup-tagline { margin:26px 0 0;color:#b1cadb;font-size:23px;font-weight:500;line-height:1.55;letter-spacing:1px;text-shadow:0 2px 16px #020610; }
+      #game-startup .startup-tagline span { color:#e2f1ff; }
+      #game-startup .startup-console { padding:20px;border:1px solid #00f2fe40;border-radius:4px;background:rgba(6,9,17,.86);box-shadow:0 0 28px #00f2fe08; }
+      #game-startup .startup-meter-heading { display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;color:#e2f1ff;font-size:12px; }
+      #game-startup #game-startup-count { color:#00f2fe;font:600 24px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0;font-variant-numeric:tabular-nums; }
+      #game-startup progress { display:block;width:100%;height:4px;border:0;border-radius:0;background:#00f2fe1c;color:#00f2fe;appearance:none; }
+      #game-startup progress::-webkit-progress-bar { background:#00f2fe1c; }
+      #game-startup progress::-webkit-progress-value { background:#00f2fe; }
+      #game-startup progress::-moz-progress-bar { background:#00f2fe; }
+      #game-startup #game-startup-message { min-height:40px;margin:18px 0 0;color:#a9c4da;font-size:12px;line-height:1.8; }
+      #game-startup .startup-timing { display:flex;justify-content:space-between;gap:12px;margin-top:8px;color:#91a8ba;font-size:10px;letter-spacing:.5px; }
+      #game-startup #game-startup-elapsed { color:#c6deed;font-variant-numeric:tabular-nums; }
+      #game-startup #game-startup-retry { width:100%;min-height:46px;margin-top:18px;padding:12px 18px;border:1px solid #00f2fe;border-radius:4px;background:#00f2fe;color:#021713;font:inherit;font-size:14px;font-weight:600;cursor:pointer; }
+      #game-startup #game-startup-retry:focus-visible { outline:2px solid #e2f1ff;outline-offset:4px; }
+      #game-startup [hidden] { display:none!important; }
+      #game-startup[data-state="failed"] .startup-live:before { background:#efa38b;box-shadow:none;animation:none; }
+      #game-startup[data-state="failed"] #game-startup-message { color:#eed6c9; }
+      @keyframes startup-pulse { 50% { opacity:.35; } }
+      @media (max-height:740px) { #game-startup .startup-layout { gap:22px;padding-top:max(20px,var(--app-safe-top, env(safe-area-inset-top)));padding-bottom:max(18px,env(safe-area-inset-bottom)); } #game-startup .startup-hero { padding-top:30px; } #game-startup .startup-wordmark-main { font-size:44px; } #game-startup .startup-edition { margin-top:10px;font-size:12px;letter-spacing:3px; } #game-startup .startup-tagline { margin-top:20px;font-size:20px; } #game-startup .startup-console { padding:16px; } #game-startup #game-startup-message { min-height:22px;margin-top:14px; } }
+      @media (min-width:640px) and (max-height:540px) { #game-startup::before { left:26%; } #game-startup .startup-layout { max-width:960px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px;align-content:center;padding:20px 32px; } #game-startup .startup-header { grid-column:1/-1; } #game-startup .startup-hero { padding:0; } #game-startup .startup-wordmark { max-width:300px;height:100px; } #game-startup .startup-wordmark-main { font-size:40px; } #game-startup .startup-tagline { margin-top:16px;font-size:18px; } #game-startup .startup-console { align-self:center; } }
+      @media (prefers-reduced-motion:reduce) { #game-startup .startup-live:before { animation:none; } #game-startup progress::-webkit-progress-value { transition:none; } }
+    </style>
+    -->
+    <style>html[data-startup-loading] #root{filter:blur(6px);pointer-events:none;-webkit-user-select:none;user-select:none}html,body{background:var(--color-canvas,#060911);min-height:100%;margin:0}.startup-home-shell,.startup-home-shell *,#game-startup,#game-startup *{box-sizing:border-box}#game-startup{z-index:1000;padding:max(18px,var(--app-safe-top,env(safe-area-inset-top))) max(18px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));background:color-mix(in srgb, var(--color-overlay,#020813) 34%, transparent);-webkit-backdrop-filter:none;backdrop-filter:none;place-items:center;font:14px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;display:grid;position:fixed;top:0;bottom:0;left:0;right:0}#game-startup .home-loading-card{width:min(100%,340px);max-height:calc(100vh - max(18px,var(--app-safe-top,env(safe-area-inset-top))) - max(18px,env(safe-area-inset-bottom)));max-height:calc(100dvh - max(18px,var(--app-safe-top,env(safe-area-inset-top))) - max(18px,env(safe-area-inset-bottom)));color:var(--color-text-main,#effaff);border:1px solid var(--color-accent-primary,#00f2fe);background:var(--color-card,#0d1b2d);box-shadow:none;text-align:center;border-radius:12px;justify-items:center;gap:10px;padding:28px 22px;display:grid;overflow-y:auto}#game-startup .basketball-seam-loader{contain:layout paint;flex:none;width:48px;height:48px;margin-bottom:6px;display:block;overflow:visible}#game-startup .basketball-seam-bg{fill:none;stroke:color-mix(in srgb, var(--color-accent-primary,#00f2fe) 14%, transparent);stroke-width:2.5px;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}#game-startup .basketball-seam-flow{fill:none;stroke-width:3px;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:28 132;stroke-dashoffset:160px;vector-effect:non-scaling-stroke;animation:1.65s linear infinite startup-basketball-flow}#game-startup b{font-size:18px}#game-startup-status{color:var(--color-accent-primary,#00f2fe);font-size:11px}#game-startup .startup-meter-heading{width:100%;color:var(--color-text-secondary,#92a9bc);justify-content:space-between;align-items:center;gap:12px;font-size:12px;display:flex}#game-startup #game-startup-count{color:var(--color-accent-primary,#00f2fe);letter-spacing:0;font-variant-numeric:tabular-nums;font:600 22px/1.2 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}#game-startup progress{background:color-mix(in srgb, var(--color-accent-primary,#00f2fe) 11%, transparent);width:100%;height:5px;color:var(--color-accent-primary,#00f2fe);-webkit-appearance:none;appearance:none;border:0;border-radius:3px;display:block}#game-startup progress::-webkit-progress-bar{background:color-mix(in srgb, var(--color-accent-primary,#00f2fe) 11%, transparent);border-radius:3px}#game-startup progress::-webkit-progress-value{background:var(--color-accent-primary,#00f2fe);border-radius:3px}#game-startup progress::-moz-progress-bar{background:var(--color-accent-primary,#00f2fe);border-radius:3px}#game-startup #game-startup-message{color:var(--color-text-secondary,#92a9bc);margin:0;font-size:11px;line-height:1.5}#game-startup .startup-timing{width:100%;color:var(--color-text-secondary,#92a9bc);justify-content:space-between;gap:12px;font-size:10px;display:flex}#game-startup #game-startup-elapsed{font-variant-numeric:tabular-nums}#game-startup #game-startup-retry{border:1px solid var(--color-accent-primary,#00f2fe);width:100%;min-height:44px;color:var(--color-accent-primary,#00f2fe);font:inherit;cursor:pointer;background:0 0;border-radius:8px;margin-top:6px;padding:10px 14px;font-size:13px}#game-startup #game-startup-retry:focus-visible{outline:2px solid var(--color-text-main,#e2f1ff);outline-offset:4px}#game-startup[hidden],#game-startup [hidden],.startup-home-shell [hidden]{display:none!important}#game-startup[data-state=failed] #game-startup-message{color:var(--color-danger,#eed6c9)}#game-startup[data-state=render-failed] .basketball-seam-loader,#game-startup[data-state=render-failed] .startup-meter-heading,#game-startup[data-state=render-failed] progress,#game-startup[data-state=render-failed] .startup-timing{display:none}@keyframes startup-basketball-flow{0%{stroke-dashoffset:160px}to{stroke-dashoffset:0}}@media (prefers-reduced-motion:reduce){#game-startup .basketball-seam-flow{stroke-dasharray:22 138;stroke-dashoffset:0;animation:none}#game-startup progress::-webkit-progress-value{transition:none}}</style>
+    <style data-game-home-layout>
+/* Critical home layout is inlined before startup and retained after React mounts. */
+.launcher-shell.home-screen, .launcher-shell.home-screen * { box-sizing: border-box; }
+.launcher-shell.home-screen {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  width: 100%; max-width: none; height: 100vh; height: 100dvh; min-height: 100vh; min-height: 100dvh; max-height: none;
+  margin: 0; padding: max(clamp(24px,4.5vh,50px),var(--app-safe-top,env(safe-area-inset-top))) max(24px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));
+  overflow-x: hidden; overflow-y: auto; color: var(--theme-text-main, #e2f1ff); border: 0; border-radius: 0;
+  background-color: var(--theme-shell, #060911); background-position: center; background-size: cover; box-shadow: none;
+  font: 16px/normal -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-synthesis: none; text-rendering: optimizeLegibility;
+}
+.launcher-shell.home-screen .launcher-center { position: relative; z-index: 1; display: grid; width: 100%; place-items: center; text-align: center; }
+.launcher-shell.home-screen .launcher-mark { position: relative; display: grid; width: min(56vw,220px); height: auto; aspect-ratio: 1; margin-bottom: 0; place-items: center; overflow: visible; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.launcher-shell.home-screen .launcher-mark img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 18px var(--theme-overlay-780, rgba(0,4,13,.78))); }
+.launcher-shell.home-screen .launcher-center h1 { position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.launcher-shell.home-screen .launcher-guide { position: relative; z-index: 1; width: 100%; margin-top: 12px; padding: 8px 14px; color: var(--theme-text-main, #e2f1ff); border: 1px solid var(--theme-border, rgba(0,242,254,.25)); border-radius: 2px; background: var(--theme-shell, rgba(6,9,17,.84)); box-shadow: none; }
+.launcher-shell.home-screen .launcher-guide b { display: block; color: var(--theme-accent-primary, #00f2fe); font-size: 12px; }
+.launcher-shell.home-screen .launcher-guide p { margin: 4px 0; font-size: 11px; line-height: 1.55; }
+.launcher-shell.home-screen .launcher-guide > p:last-of-type { margin-bottom: 0; }
+.launcher-shell.home-screen .launcher-cloud-save-summary, .launcher-shell.home-screen .launcher-cloud-save-details { display: none; }
+.launcher-shell.home-screen 
+.launcher-shell.home-screen .launcher-actions { position: relative; z-index: 1; display: grid; width: 100%; margin-top: 26px; gap: 12px; }
+.launcher-shell.home-screen .launcher-actions button { display: grid; min-height: 48px; margin: 0; padding: 0 18px; grid-template-columns: 28px 1fr 28px; align-items: center; color: var(--theme-text-main, #e2f1ff); border: 1px solid var(--theme-border, rgba(0,242,254,.25)); border-radius: 2px; background: var(--theme-shell, rgba(6,9,17,.84)); box-shadow: none; backdrop-filter: blur(12px); font: 850 13px/normal -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; text-align: center; appearance: none; -webkit-appearance: none; }
+.launcher-shell.home-screen .launcher-actions button span { grid-column: 2; }
+.launcher-shell.home-screen .launcher-action-icon { display: block; width: 20px; height: 20px; grid-column: 1; grid-row: 1; justify-self: center; color: var(--theme-accent-primary, #00f2fe); }
+.launcher-shell.home-screen .launcher-actions .launcher-primary { color: var(--theme-text-inverse, #000); border-color: var(--theme-border, #00f2fe); background: var(--theme-accent-primary, #00f2fe); }
+.launcher-shell.home-screen .launcher-primary .launcher-action-icon { color: var(--theme-text-inverse, #000); }
+.launcher-shell.home-screen .launcher-actions .launcher-dark { color: var(--theme-text-main, #e2f1ff); border-color: var(--theme-border, rgba(0,242,254,.25)); background: var(--theme-shell, rgba(6,9,17,.9)); }
+.launcher-shell.home-screen .launcher-announcement { position: relative; z-index: 1; width: 100%; margin-top: 12px; color: var(--theme-text-main, #e2f1ff); border: 1px solid var(--theme-border, rgba(0,242,254,.25)); border-radius: 2px; background: var(--theme-shell, rgba(6,9,17,.84)); box-shadow: none; }
+.launcher-shell.home-screen .launcher-announcement-summary { display: flex; min-height: 58px; padding: 10px 13px; align-items: center; justify-content: space-between; gap: 12px; }
+.launcher-shell.home-screen .launcher-announcement-summary > span { display: grid; min-width: 0; gap: 4px; }
+.launcher-shell.home-screen .launcher-announcement-summary b { color: var(--theme-accent-primary, #00f2fe); font-size: 12px; }
+.launcher-shell.home-screen .launcher-announcement-summary small { color: var(--theme-text-secondary, #5c7b99); font-size: 10px; line-height: 1.4; }
+.launcher-shell.home-screen .launcher-announcement-summary button { flex: 0 0 auto; min-height: 32px; margin: 0; padding: 6px 10px; color: var(--theme-accent-primary, #00f2fe); border: 1px solid var(--theme-border, rgba(0,242,254,.45)); border-radius: 999px; background: transparent; font: 10px/normal -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; appearance: none; -webkit-appearance: none; }
+.launcher-shell.home-screen .launcher-version { position: static; z-index: 1; bottom: auto; margin-top: 16px; flex: 0 0 auto; color: var(--theme-text-secondary, #5c7b99); font-size: 8px; letter-spacing: .07em; }
+.launcher-shell.home-screen [hidden] { display: none !important; }
+
+/* Fit the Hupu landing page inside the viewport already reserved by its shell.
+   The logo yields space before any copy, actions or footer can be clipped. */
+@media (min-height: 500px) {
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] {
+    padding-top: max(10px,min(clamp(24px,4.5vh,50px),calc(100vh - 754px)),var(--app-safe-top,env(safe-area-inset-top)));
+    padding-top: max(10px,min(clamp(24px,4.5vh,50px),calc(100dvh - 754px)),var(--app-safe-top,env(safe-area-inset-top)));
+    overflow-y: hidden;
+    overscroll-behavior-y: none;
+  }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] > :not(.launcher-center) { flex-shrink: 0; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-center {
+    flex: 0 1 min(56vw,220px);
+    min-height: 0;
+    grid-template-rows: minmax(0,1fr);
+  }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-mark {
+    width: auto;
+    max-width: min(56vw,220px);
+    height: 100%;
+    min-height: 0;
+    grid-template-rows: minmax(0,1fr);
+  }
+}
+@media (min-height: 500px) and (max-height: 700px) {
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] {
+    padding-top: max(8px,var(--app-safe-top,env(safe-area-inset-top)));
+    padding-bottom: max(12px,env(safe-area-inset-bottom));
+  }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-guide { margin-top: 8px; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-center { min-height: 130px; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-guide > .launcher-cloud-save-copy { display: none; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-cloud-save-summary { display: block; margin-bottom: 0; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-cloud-save-details { display: block; position: absolute; top: 8px; right: 14px; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-cloud-save-details .help-tip-trigger { min-height: 18px; font-size: 10px; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-actions { margin-top: 16px; gap: 8px; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-actions button { min-height: 44px; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-announcement { margin-top: 8px; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-version { margin-top: 8px; }
+}
+@media (min-height: 500px) and (max-height: 550px) {
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] { padding-top: max(4px,var(--app-safe-top,env(safe-area-inset-top))); padding-bottom: max(8px,env(safe-area-inset-bottom)); }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-guide { margin-top: 4px; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-actions { margin-top: 8px; gap: 4px; }
+  html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-announcement, html:not([data-game-platform="taptap"]) .home-screen[data-home-landing] .launcher-version { margin-top: 4px; }
+}
+
+</style>
+    
+    <script defer src="./assets/game.js?v=source-5c54a129d626ddfa&skin=orig1&build=c19519bd93e4" id="game-entry"></script>
+  <style id="colorbox-selection-styles">
+    body { user-select: none; -webkit-user-select: none; }
+    input, textarea { user-select: text; -webkit-user-select: text; }
   </style>
-  <script>document.title = "篮球经理：征服联盟"; window.__colorbox_ai_project__ = {"kind":"preview","projectId":"app_2eeb0a1013","settings":{"theme":{"skeletonColor":"#f5f5f5","webviewBackground":"#ffffff","containerBackground":"#ffffff"},"title":"篮球经理：征服联盟","shareCover":"","shareTitle":"篮球经理：征服联盟","bizCategory":"shaper","dayNightMode":"auto","trackingCode":"PHBS7947","shareSubtitle":"","disablePageSlide":true}}; window.__COLORBOX_GAME_URL__ = window.location.href; window.__COLORBOX_GAME_ICON_URL__ = "./branding/review-cover.jpg"; window.__COLORBOX_BBS_CONFIG__ = {"bbsTagId":"","bbsTagName":"","bbsTopicId":"","bbsTopicName":""};</script>
-  <script>
+
+
+
+<script>
 (function () {
-  window.__COLORBOX_AI_SHELL_CONFIG__ = {
+  window.__COLORBOX_AI_CONFIG__ = {
     projectId: "app_2eeb0a1013",
-    settings: {"theme":{"skeletonColor":"#f5f5f5","webviewBackground":"#ffffff","containerBackground":"#ffffff"},"title":"篮球经理：征服联盟","shareCover":"","shareTitle":"篮球经理：征服联盟","bizCategory":"shaper","dayNightMode":"auto","trackingCode":"PHBS7947","shareSubtitle":"","disablePageSlide":true}
+    cloud: {},
+    settings: {"theme":{"skeletonColor":"#f5f5f5","webviewBackground":"#ffffff","containerBackground":"#ffffff"},"title":"篮球经理：征服联盟","shareCover":"","shareTitle":"篮球经理：征服联盟","bizCategory":"shaper","dayNightMode":"auto","isFullscreen":false,"trackingCode":"PHBS7947","shareSubtitle":"","disablePageSlide":true},
+    pagePi: "activity_shaper_app_2eeb0a1013",
+    ActivityId: "850",
+    PageId: "app_2eeb0a1013"
   };
   "use strict";
 (() => {
-  var __defProp = Object.defineProperty;
-  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __propIsEnum = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    if (__getOwnPropSymbols)
-      for (var prop of __getOwnPropSymbols(b)) {
-        if (__propIsEnum.call(b, prop))
-          __defNormalProp(a, prop, b[prop]);
-      }
-    return a;
-  };
-
-  // src/shell-runtime/utils.ts
-  function loadScript(src) {
-    return new Promise(function(resolve, reject) {
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = src;
-      script.onload = function() {
-        console.log("[ColorboxAI.OSS.Shell] Successfully loaded script: " + src);
-        resolve();
-      };
-      script.onerror = function(err) {
-        console.error("[ColorboxAI.OSS.Shell] Failed to load script: " + src, err);
-        reject(new Error("Failed to load script: " + src));
-      };
-      document.head.appendChild(script);
-    });
-  }
-  function getQuery(name) {
-    const params = new URLSearchParams(window.location.search || "");
-    return params.get(name) || "";
-  }
-  function resolvePagePi() {
-    try {
-      const search = window.location.search || "";
-      if (search) {
-        const params = new URLSearchParams(search);
-        const fromQuery = params.get("pi") || "";
-        if (fromQuery) return fromQuery;
-      }
-    } catch (error) {
-    }
-    const gs = window.globalState || {};
-    return gs.pi || "";
-  }
-  function resolvePagePl() {
-    const gs = window.globalState || {};
-    return document.title || gs.wxShareTitle || gs.name || "";
-  }
-  function buildTrackCustom() {
-    const pageUrl = window.location.href || "";
-    const pageTitle = resolvePagePl();
-    const ua = navigator.userAgent || "";
-    let landingUrl = pageUrl;
-    let sid = "";
-    try {
-      landingUrl = sessionStorage.getItem("hp-tracer-landing-url") || pageUrl;
-      if (!sessionStorage.getItem("hp-tracer-landing-url")) {
-        sessionStorage.setItem("hp-tracer-landing-url", pageUrl);
-      }
-      sid = sessionStorage.getItem("hp-tracer-session-id") || "";
-      if (!sid) {
-        sid = "cb-ai-" + Date.now() + "-" + Math.random().toString(36).slice(2);
-        sessionStorage.setItem("hp-tracer-session-id", sid);
-      }
-    } catch (error) {
-    }
+  // src/iframe-runtime/fallbacks.ts
+  function createLocalFallbackApi() {
     return {
-      pageUrl,
-      pageTitle,
-      ua,
-      url: pageUrl,
-      landing_url: landingUrl,
-      sid
-    };
-  }
-  function normalizeBridgeProjectId(value) {
-    const text = String(value == null ? "" : value).trim();
-    if (text.indexOf("project-ai-") === 0) {
-      return text.slice("project-ai-".length);
-    }
-    return text;
-  }
-  function isSameBridgeProjectId(left, right) {
-    return normalizeBridgeProjectId(left) === normalizeBridgeProjectId(right);
-  }
-  function createCallbackId(type) {
-    return "_colorbox_ai_" + type + "_" + Date.now() + "_" + Math.floor(Math.random() * 1e5) + "_";
-  }
-  function isHupuAppEnv() {
-    const ua = navigator.userAgent || "";
-    return /kanqiu/i.test(ua);
-  }
-  function parseBridgeResult(value) {
-    if (typeof value !== "string") return value;
-    try {
-      return JSON.parse(value);
-    } catch (error) {
-      return value;
-    }
-  }
-  function base64Encode(value) {
-    try {
-      return window.btoa(unescape(encodeURIComponent(value)));
-    } catch (error) {
-      try {
-        return window.btoa(value);
-      } catch (innerError) {
+      getPostDetail: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      },
+      getTopicThreads: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      },
+      buildPostSchema: function() {
+        return "";
+      },
+      openPostEditor: function() {
         return "";
       }
-    }
-  }
-  function detectAppWebView() {
-    const ua = navigator.userAgent || "";
-    return {
-      ua,
-      uaHasKanqiu: /kanqiu/i.test(ua),
-      hasIosBridge: !!(window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.ClientBridge),
-      hasAndroidBridge: !!(window.androidBridge && window.androidBridge.callNativeAsync)
     };
   }
-  function formatTrackError(error) {
-    if (!error) return "unknown";
-    if (typeof error === "string") return error;
-    return error.message || error.stack || JSON.stringify(error);
-  }
-  function setupViewport() {
-    var _a;
-    try {
-      const meta = document.createElement("meta");
-      meta.name = "viewport";
-      meta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover";
-      const existing = document.querySelector("meta[name=viewport]");
-      if (existing) {
-        (_a = existing.parentNode) == null ? void 0 : _a.replaceChild(meta, existing);
-      } else {
-        document.head.appendChild(meta);
+  function createLocalSecurityFallbackApi() {
+    return {
+      checkAudit: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
       }
-      console.log("[ColorboxAI.OSS.Shell] Successfully configured viewport meta tag.");
-    } catch (e) {
-      console.error("[ColorboxAI.OSS.Shell] Failed to configure viewport:", e);
-    }
+    };
   }
-
-  // src/core/desktop-shortcut.ts
-  function withAndroidDesktopEntrance(url) {
-    if (!/Android/i.test(navigator.userAgent || "")) return url;
-    try {
-      const target = new URL(url, window.location.href);
-      target.searchParams.set("entrance", "fromdesktop");
-      return target.toString();
-    } catch (e) {
-      return url;
-    }
-  }
-  function getDesktopShortcutData() {
-    var _a, _b, _c;
-    const host = window;
+  function createLocalScoreFallbackApi() {
     return {
-      name: ((_a = host.__COLORBOX_AI_SHELL_CONFIG__) == null ? void 0 : _a.settings.title) || document.title,
-      originalUrl: withAndroidDesktopEntrance(host.__COLORBOX_GAME_URL__ || window.location.href),
-      iconUrl: host.__COLORBOX_GAME_ICON_URL__ || ((_b = document.head.querySelector('link[rel="apple-touch-icon"]')) == null ? void 0 : _b.href) || ((_c = document.head.querySelector('link[rel="icon"]')) == null ? void 0 : _c.href) || ""
+      getScore: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      },
+      addScore: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      }
+    };
+  }
+  function createLocalOssFallbackApi() {
+    return {
+      uploadFile: function() {
+        return Promise.reject(new Error("ColorboxAI SDK is not loaded"));
+      }
+    };
+  }
+  function createLocalAuthFallbackApi() {
+    return {
+      getUserInfo: function() {
+        const info = window.userInfo || window.HupuBridge && window.HupuBridge.nainfo;
+        return Promise.resolve(info || null);
+      },
+      getAuthToken: function() {
+        const info = window.userInfo || window.HupuBridge && window.HupuBridge.nainfo;
+        const token = info && (info.authToken || info.token) || "";
+        return Promise.resolve(token);
+      }
     };
   }
 
-  // src/shell-runtime/bridge.ts
-  function isBridgeSuccess(res) {
-    return !!res && (res.status === 200 || res.status === "200" || res.status === 0 || res.status === void 0);
-  }
-  function sendViaLegacyHupuBridge(method, data) {
-    return null;
-  }
-  function rawBridgeSend(method, data) {
-    if (method === "hupu.common.shortcut.add") {
-      data = __spreadValues(__spreadValues({}, getDesktopShortcutData()), data || {});
-      console.log("[ColorboxAI.Shell] Sending shortcut bridge.", {
-        method,
-        data
-      });
-    } else if (method === "hupu.common.shortcut.check") {
-      data = { originalUrl: getDesktopShortcutData().originalUrl };
+  // src/iframe-runtime/storage.ts
+  var MAX_STORAGE_BYTES = 5 * 1024 * 1024;
+  function createColorboxStorageApi(params) {
+    const pId = params.projectId;
+    function resolveScopedKey(key) {
+      return "cb_storage:" + pId + ":" + key;
     }
-    console.log("[ColorboxAI.Shell.rawBridgeSend] Starting rawBridgeSend:", {
-      method,
-      data,
-      isHupuAppEnv: isHupuAppEnv(),
-      hasHupuBridgeModule: typeof window.HupuBridgeModule !== "undefined",
-      hasHupuBridge: typeof window.HupuBridge !== "undefined",
-      hasNainfo: window.HupuBridge && typeof window.HupuBridge.nainfo !== "undefined",
-      hasAndroidBridge: typeof window.androidBridge !== "undefined",
-      userAgent: navigator.userAgent
-    });
-    if (isHupuAppEnv() && window.HupuBridgeModule && window.HupuBridgeModule.default && typeof window.HupuBridgeModule.default.send === "function") {
-      console.log("[ColorboxAI.Shell.rawBridgeSend] Routing via window.HupuBridgeModule.default.send");
-      return window.HupuBridgeModule.default.send(method, data || {}).then(function(res) {
-        console.log("[ColorboxAI.Shell.rawBridgeSend] HupuBridgeModule.default.send resolved:", JSON.stringify(res));
-        if (!isBridgeSuccess(res)) {
-          const legacyRequest2 = sendViaLegacyHupuBridge(method, data);
-          if (legacyRequest2) {
-            console.warn("[ColorboxAI.Shell.rawBridgeSend] HupuBridgeModule returned non-success status, native bridge fallback disabled:", JSON.stringify(res));
-            return legacyRequest2;
+    function isStorageAvailable() {
+      try {
+        const testKey = "__colorbox_storage_test__";
+        window.localStorage.setItem(testKey, "test");
+        window.localStorage.removeItem(testKey);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    const isLocalAvailable = isStorageAvailable();
+    function safeB64Encode(str) {
+      try {
+        const base64 = window.btoa(unescape(encodeURIComponent(str)));
+        return base64;
+      } catch (error) {
+        logError("safeB64Encode failed.", error);
+        throw error;
+      }
+    }
+    function safeB64Decode(str) {
+      try {
+        const decoded = decodeURIComponent(escape(window.atob(str)));
+        return decoded;
+      } catch (error) {
+        logError("safeB64Decode failed.", error);
+        throw error;
+      }
+    }
+    function serializeStorageValue(value) {
+      if (value == null) return "";
+      const text = typeof value === "string" ? value : JSON.stringify(value);
+      try {
+        const encoded = safeB64Encode(text);
+        return "__b64__:" + encoded;
+      } catch (error) {
+        return text;
+      }
+    }
+    function parseStorageValue(value, scopedKey) {
+      if (value == null) return null;
+      if (typeof value !== "string") return value;
+      let text = value;
+      if (text.indexOf("__b64__:") === 0) {
+        text = safeB64Decode(text.slice(8));
+      }
+      if (text.charAt(0) !== "{" && text.charAt(0) !== "[") {
+        return text;
+      }
+      try {
+        const parsed = JSON.parse(text);
+        if (parsed && typeof parsed === "object") {
+          if (!Array.isArray(parsed) && scopedKey && parsed[scopedKey] != null) {
+            return parseStorageValue(parsed[scopedKey], scopedKey);
           }
         }
-        return res;
-      }).catch(function(err) {
-        console.warn("[ColorboxAI.Shell.rawBridgeSend] HupuBridgeModule call failed:", err);
-        const legacyRequest2 = sendViaLegacyHupuBridge(method, data);
-        return legacyRequest2 || null;
-      });
-    }
-    const legacyRequest = sendViaLegacyHupuBridge(method, data);
-    if (legacyRequest) {
-      return legacyRequest;
-    }
-    return new Promise(function(resolve) {
-      const ua = navigator.userAgent || "";
-      const isIOS = /\(i[^;]+;( U;)? CPU.+Mac OS X/i.test(ua);
-      const successcb = createCallbackId("suc");
-      const errorcb = createCallbackId("err");
-      let done = false;
-      function finish(value) {
-        if (done) return;
-        done = true;
-        console.log("[ColorboxAI.Shell.rawBridgeSend] Fallback promise finish callback invoked:", {
-          successcb,
-          value: JSON.stringify(value)
-        });
-        try {
-          delete window[successcb];
-          delete window[errorcb];
-        } catch (error) {
+        return text;
+      } catch (parseError) {
+        if (text.charAt(0) === "{" && text.charAt(text.length - 1) === "}") {
+          const escapedKey = (scopedKey || "").replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+          const pattern = new RegExp('^\\{\\s*"' + (escapedKey || '[^"]+') + '"\\s*:\\s*"(.*)"\\s*\\}\\s*$');
+          const match = text.match(pattern);
+          if (match) {
+            let rawValue = match[1];
+            rawValue = rawValue.replace(/\\"/g, '"').replace(/\\\\/g, "\\");
+            return parseStorageValue(rawValue, scopedKey);
+          }
         }
-        resolve(value || null);
+        return text;
       }
-      window[successcb] = finish;
-      window[errorcb] = finish;
-      window.setTimeout(function() {
-        finish(null);
-      }, 3e3);
-      if (!isIOS && !window.HupuBridge) {
-        window.HupuBridge = {
-          _handle_: function(cbName, cbResult) {
-            if (typeof window[cbName] === "function") {
-              try {
-                window[cbName](cbResult);
-              } catch (e) {
-              }
+    }
+    function readLocalStorageValue(scopedKey) {
+      if (!isLocalAvailable) return null;
+      try {
+        return parseStorageValue(window.localStorage.getItem(scopedKey), scopedKey);
+      } catch (e) {
+        return null;
+      }
+    }
+    function writeLocalStorageValue(scopedKey, value) {
+      if (!isLocalAvailable) return false;
+      try {
+        window.localStorage.setItem(scopedKey, serializeStorageValue(value));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    function readLocalStorageAll() {
+      const result = {};
+      if (!isLocalAvailable) return result;
+      try {
+        const prefix = "cb_storage:" + pId + ":";
+        for (let i = 0; i < window.localStorage.length; i++) {
+          const k = window.localStorage.key(i);
+          if (k && k.indexOf(prefix) === 0) {
+            const rawKey = k.substring(prefix.length);
+            const val = readLocalStorageValue(k);
+            if (val !== null) {
+              result[rawKey] = val;
             }
           }
-        };
+        }
+      } catch (e) {
       }
+      return result;
+    }
+    function calculateStorageSize() {
+      let size = 0;
+      if (!isLocalAvailable) return size;
       try {
-        const payload = {
-          method,
-          data: data || {},
-          successcb,
-          errorcb
-        };
-        if (isIOS && window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.ClientBridge) {
-          window.webkit.messageHandlers.ClientBridge.postMessage(payload);
-          return;
-        }
-        if (window.androidBridge && window.androidBridge.callNativeAsync) {
-          console.log("[ColorboxAI.Shell.rawBridgeSend] Routing via window.androidBridge.callNativeAsync:", {
-            method,
-            paramsString: JSON.stringify({ code: 200, data: data || {} }),
-            successcb
-          });
-          window.androidBridge.callNativeAsync(method, JSON.stringify({ code: 200, data: data || {} }), successcb);
-          return;
-        }
-      } catch (error) {
-      }
-      finish(null);
-    });
-  }
-
-  // src/shell-runtime/auth.ts
-  var AuthManager = /* @__PURE__ */ (function() {
-    let tokenPromise = null;
-    let cachedToken = "";
-    const isHupuAppEnv2 = function() {
-      const env = detectAppWebView();
-      return env.uaHasKanqiu || env.hasIosBridge || env.hasAndroidBridge;
-    };
-    const getSyncToken = function() {
-      const info = window.userInfo || window.HupuBridge && window.HupuBridge.nainfo || {};
-      return info.authToken || info.token || "";
-    };
-    const queryNativeToken = function() {
-      if (tokenPromise) {
-        return tokenPromise;
-      }
-      console.log("[ColorboxAI.AuthManager] Querying native bridge via bridgeReady...");
-      const p = rawBridgeSend("bridgeReady", {}).then(function(res) {
-        tokenPromise = null;
-        console.log("[ColorboxAI.AuthManager] rawBridgeSend resolved raw response:", JSON.stringify(res));
-        const token = res && (res.authToken || res.token) || "";
-        if (res) {
-          window.userInfo = res;
-          if (window.HupuBridge) {
-            window.HupuBridge.nainfo = res || {};
-            window.HupuBridge.nainfo.authToken = window.HupuBridge.nainfo.authToken || res.authToken;
-            window.HupuBridge.nainfo.token = window.HupuBridge.nainfo.token || res.token;
+        const prefix = "cb_storage:" + pId + ":";
+        for (let i = 0; i < window.localStorage.length; i++) {
+          const k = window.localStorage.key(i);
+          if (k && k.indexOf(prefix) === 0) {
+            const val = window.localStorage.getItem(k);
+            size += k.length + (val ? val.length : 0);
           }
         }
-        cachedToken = token;
-        return token;
-      }).catch(function(err) {
-        tokenPromise = null;
-        console.warn("[ColorboxAI.AuthManager] Failed to query native bridgeReady:", err);
-        return "";
+      } catch (e) {
+      }
+      return size;
+    }
+    function deleteLocalStorageValue(scopedKey) {
+      if (!isLocalAvailable) return false;
+      try {
+        window.localStorage.removeItem(scopedKey);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    function resolveProjectId() {
+      return pId;
+    }
+    function logInfo(stage, detail) {
+      console.log("[ColorboxAI.Storage] " + stage, detail || {});
+    }
+    function logError(stage, error, extra) {
+      console.error("[ColorboxAI.Storage] Error: " + stage, error);
+      try {
+        const isBridgeError = stage.toLowerCase().indexOf("bridge") >= 0;
+        if (isBridgeError && window.WebGuard && typeof window.WebGuard.hupuLog === "function") {
+          window.WebGuard.hupuLog({
+            type: "jsError",
+            message: "[ColorboxAI.Storage] " + stage + ": " + (error && error.message || String(error)),
+            stack: error && error.stack || new Error().stack || "",
+            detail: Object.assign({
+              projectId: pId,
+              stage
+            }, extra || {})
+          });
+        }
+      } catch (e) {
+        console.error("[ColorboxAI.Storage] Failed to report to WebGuard", e);
+      }
+    }
+    function shouldUseBridge() {
+      const ua = navigator.userAgent || "";
+      return /kanqiu/i.test(ua);
+    }
+    function writeBridgeValue(scopedKey, value) {
+      const payload = {
+        method: "hupu.common.setValue",
+        data: {
+          key: scopedKey,
+          value: serializeStorageValue(value)
+        }
+      };
+      return new Promise(function(resolve, reject) {
+        if (window.HupuBridge && typeof window.HupuBridge.send === "function") {
+          window.HupuBridge.send(payload.method, payload.data).then(resolve).catch(reject);
+        } else {
+          reject(new Error("HupuBridge not available for storage set"));
+        }
       });
-      tokenPromise = p;
-      return p;
-    };
-    return {
-      getToken: function() {
-        if (cachedToken) {
-          return Promise.resolve(cachedToken);
+    }
+    function readBridgeValue(scopedKey) {
+      const payload = {
+        method: "hupu.common.getValue",
+        data: { key: scopedKey }
+      };
+      return new Promise(function(resolve, reject) {
+        if (window.HupuBridge && typeof window.HupuBridge.send === "function") {
+          window.HupuBridge.send(payload.method, payload.data).then(function(res) {
+            const val = res && res.value;
+            resolve(parseStorageValue(val, scopedKey));
+          }).catch(reject);
+        } else {
+          reject(new Error("HupuBridge not available for storage get"));
         }
-        const syncToken = getSyncToken();
-        console.log("[ColorboxAI.AuthManager] getToken sync check", {
-          found: !!syncToken,
-          hasUserInfo: typeof window.userInfo !== "undefined",
-          hasHupuBridge: !!window.HupuBridge,
-          hasBridgeNainfo: !!(window.HupuBridge && window.HupuBridge.nainfo)
+      });
+    }
+    function setValue(key, value) {
+      return Promise.resolve().then(function() {
+        if (key == null || typeof key === "object") {
+          const batch = key || {};
+          const keys = Object.keys(batch);
+          if (!keys.length) return { ok: true, size: calculateStorageSize(), bridgeSynced: false };
+          let currentSize2 = calculateStorageSize();
+          let delta2 = 0;
+          const writeTasks = [];
+          keys.forEach(function(k) {
+            const scopedKey2 = resolveScopedKey(k);
+            const val = batch[k];
+            const rawVal2 = JSON.stringify(val);
+            const oldRaw2 = isLocalAvailable ? window.localStorage.getItem(scopedKey2) : null;
+            const keyDelta = scopedKey2.length + rawVal2.length - (oldRaw2 ? scopedKey2.length + oldRaw2.length : 0);
+            delta2 += keyDelta;
+            writeTasks.push({ scopedKey: scopedKey2, val });
+          });
+          if (currentSize2 + delta2 > MAX_STORAGE_BYTES) {
+            throw new Error("Storage quota exceeded (max 5MB limit). Set value failed.");
+          }
+          let ok2 = true;
+          const bridgeKeys = [];
+          writeTasks.forEach(function(task) {
+            const success = writeLocalStorageValue(task.scopedKey, task.val);
+            if (!success) ok2 = false;
+            bridgeKeys.push(task.scopedKey);
+          });
+          if (shouldUseBridge()) {
+            const bridgePayload = {
+              method: "hupu.common.setValue",
+              data: {
+                keys: bridgeKeys,
+                values: keys.map(function(k) {
+                  return serializeStorageValue(batch[k]);
+                })
+              }
+            };
+            return new Promise(function(resolve) {
+              if (window.HupuBridge && typeof window.HupuBridge.send === "function") {
+                window.HupuBridge.send(bridgePayload.method, bridgePayload.data).then(function(res) {
+                  resolve({ ok: ok2, size: calculateStorageSize(), bridgeSynced: true, rawBridgeResult: res });
+                }).catch(function(err) {
+                  logError("Bridge batch write failed", err, { keys: bridgeKeys });
+                  resolve({ ok: ok2, size: calculateStorageSize(), bridgeSynced: false, error: err });
+                });
+              } else {
+                resolve({ ok: ok2, size: calculateStorageSize(), bridgeSynced: false });
+              }
+            }).then(function(result3) {
+              logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+                projectId: resolveProjectId(),
+                input: batch,
+                payload: bridgePayload,
+                result: result3
+              });
+              return result3;
+            });
+          }
+          const result2 = { ok: ok2, size: calculateStorageSize(), bridgeSynced: false };
+          logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+            projectId: resolveProjectId(),
+            input: batch,
+            payload: null,
+            result: result2
+          });
+          return result2;
+        }
+        const storageKey = String(key);
+        const scopedKey = resolveScopedKey(storageKey);
+        const rawVal = JSON.stringify(value);
+        const oldRaw = isLocalAvailable ? window.localStorage.getItem(scopedKey) : null;
+        const currentSize = calculateStorageSize();
+        const delta = scopedKey.length + rawVal.length - (oldRaw ? scopedKey.length + oldRaw.length : 0);
+        if (currentSize + delta > MAX_STORAGE_BYTES) {
+          throw new Error("Storage quota exceeded (max 5MB limit). Set value failed.");
+        }
+        let ok = true;
+        if (value === void 0) {
+          ok = deleteLocalStorageValue(scopedKey);
+        } else {
+          ok = writeLocalStorageValue(scopedKey, value);
+        }
+        if (shouldUseBridge()) {
+          const bridgePayload = {
+            method: "hupu.common.setValue",
+            data: {
+              key: scopedKey,
+              value: serializeStorageValue(value)
+            }
+          };
+          return writeBridgeValue(scopedKey, value).then(function(bridgeResult) {
+            return { ok, key: storageKey, size: calculateStorageSize(), bridgeSynced: bridgeResult !== null };
+          }).catch(function(err) {
+            logError("Bridge write failed for key " + storageKey, err, { key: storageKey });
+            return { ok, key: storageKey, size: calculateStorageSize(), bridgeSynced: false, error: err };
+          }).then(function(result2) {
+            logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+              projectId: resolveProjectId(),
+              input: value,
+              payload: bridgePayload,
+              result: result2
+            });
+            return result2;
+          });
+        }
+        const result = { ok, key: storageKey, size: calculateStorageSize(), bridgeSynced: false };
+        logInfo("\u5199\u5165\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+          projectId: resolveProjectId(),
+          input: value,
+          payload: null,
+          result
         });
-        if (syncToken) {
-          cachedToken = syncToken;
-          return Promise.resolve(syncToken);
+        return result;
+      }).catch(function(error) {
+        logError("\u5199\u5165\u5B58\u50A8\u6570\u636E\u5931\u8D25", error, { key });
+        return Promise.reject(error);
+      });
+    }
+    function getValue(key) {
+      const hasKey = key != null && key !== "";
+      const storageKey = hasKey ? String(key) : "";
+      return Promise.resolve().then(function() {
+        if (!hasKey) {
+          const allValues = readLocalStorageAll();
+          logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+            projectId: resolveProjectId(),
+            key: "",
+            scopedKey: "",
+            source: "localStorage",
+            result: allValues
+          });
+          return allValues;
         }
-        if (isHupuAppEnv2()) {
-          return queryNativeToken();
+        const scopedKey = resolveScopedKey(storageKey);
+        if (!shouldUseBridge()) {
+          const localOnlyValue = readLocalStorageValue(scopedKey);
+          logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+            projectId: resolveProjectId(),
+            key: storageKey,
+            scopedKey,
+            source: "localStorage",
+            result: localOnlyValue
+          });
+          return localOnlyValue;
         }
-        return Promise.resolve("");
-      },
-      isHupuApp: isHupuAppEnv2
+        return readBridgeValue(scopedKey).catch(function(err) {
+          logError("Bridge read failed for key " + storageKey, err, { key: storageKey });
+          throw err;
+        }).then(function(bridgeValue) {
+          if (bridgeValue != null) {
+            logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+              projectId: resolveProjectId(),
+              key: storageKey,
+              scopedKey,
+              source: "hupu.common.getValue",
+              result: bridgeValue
+            });
+            return bridgeValue;
+          }
+          const localValue = readLocalStorageValue(scopedKey);
+          logInfo("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u6210\u529F", {
+            projectId: resolveProjectId(),
+            key: storageKey,
+            scopedKey,
+            source: "localStorage",
+            result: localValue
+          });
+          return localValue;
+        });
+      }).catch(function(error) {
+        logError("\u8BFB\u53D6\u5B58\u50A8\u6570\u636E\u5931\u8D25", error, { key: storageKey });
+        return hasKey ? null : {};
+      });
+    }
+    return {
+      maxBytes: MAX_STORAGE_BYTES,
+      setValue,
+      getValue,
+      set: setValue,
+      get: getValue
     };
-  })();
-
-  // src/core/constants.ts
-  var DEFAULT_HUPU_APP_VERSION = "8.2.50";
-
-  // src/core/platform.ts
-  function getAppPlatform(nativeInfo, userAgent) {
-    const info = nativeInfo && typeof nativeInfo === "object" ? nativeInfo : {};
-    const nativeText = [
-      info.platform,
-      info.os,
-      info.osType,
-      info.system,
-      info.device,
-      info.model,
-      info.client,
-      info.appName,
-      info.clientName,
-      info.platformName,
-      info.osName,
-      info.deviceOs,
-      info.channel,
-      info.userAgent,
-      info.ua
-    ].filter(Boolean).join(" ");
-    const ua = userAgent !== void 0 ? userAgent : typeof navigator !== "undefined" ? navigator.userAgent || "" : "";
-    console.log("getAppPlatform 111111 nativeText", nativeText);
-    console.log("getAppPlatform 111111 ua", ua);
-    if (/harmony|harmonyos|openharmony|鸿蒙/i.test(nativeText) || /harmony|harmonyos|openharmony/i.test(ua)) {
-      return "4";
-    }
-    if (/ios|iphone|ipad|ipod/i.test(nativeText) || /iPhone|iPad|iPod/i.test(ua)) {
-      return "3";
-    }
-    return "1";
   }
 
-  // src/shell-runtime/track.ts
-  var trackDebugLog = [];
-  var SHELL_TRACK_RUNTIME_REV = "track-debug-v4";
-  function mergeTrackParams(trackParams) {
-    const params = trackParams || {};
-    const timestamp = Date.now();
-    const pi = resolvePagePi();
-    const pl = resolvePagePl();
-    const ext = Object.assign({ pi, pl }, params.ext || {});
-    if (params.label && !ext.label) {
-      ext.label = params.label;
-    }
-    let incomingCustom = params.custom;
-    if (!incomingCustom || typeof incomingCustom !== "object" || Array.isArray(incomingCustom)) {
-      incomingCustom = {};
-    }
-    const custom = Object.assign({}, buildTrackCustom(), incomingCustom);
-    const gs = window.globalState || {};
-    const merged = Object.assign({}, params, {
-      pg: gs.pageTrackCode || "PHBS7947",
-      ext,
-      et: timestamp,
-      custom
-    });
-    delete merged.label;
-    gs.pi = pi;
-    return merged;
-  }
-  function pushTrackDebug(stage, detail) {
-    const entry = { stage, detail: detail || {}, ts: Date.now() };
-    trackDebugLog.push(entry);
-    if (trackDebugLog.length > 200) {
-      trackDebugLog.shift();
-    }
-    try {
-      console.log("[ColorboxAI.Track] " + stage, detail || {});
-    } catch (error) {
-    }
-  }
-  function sendHttpHermesTrack() {}
-  function track() {}
-  function normalizeBridgeTrackPayload(payload) {
-    if (!payload || typeof payload !== "object") return {};
-    if (payload.trackParams && typeof payload.trackParams === "object") {
-      return payload.trackParams;
-    }
-    return payload;
-  }
-  function setNativeShare(shareData) {
-    /* Native share bridge disabled in the Lamps build. */
-  }
-
-  // src/shell-runtime/index.ts
+  // src/iframe-runtime/index.ts
   (function() {
-    var _a, _b;
-    const config = window.__COLORBOX_AI_SHELL_CONFIG__ || {
+    const config = window.__COLORBOX_AI_CONFIG__ || {
       projectId: "",
       settings: {
         title: "",
         trackingCode: "",
         bizCategory: "",
-        disablePageSlide: false,
         shareTitle: "",
         shareSubtitle: "",
         shareCover: ""
-      }
-    };
-    const { settings, projectId } = config;
-    const title = settings.title || "\u6D3B\u52A8";
-    const bizCategory = (settings.bizCategory || "").trim();
-    const pageId = (projectId || "").trim();
-    const pagePi = bizCategory && pageId ? `activity_${bizCategory}_${pageId}` : "";
-    const webviewBackground = ((_a = settings.theme) == null ? void 0 : _a.webviewBackground) || "#ffffff";
-    const containerBackground = ((_b = settings.theme) == null ? void 0 : _b.containerBackground) || "#ffffff";
-    const shareData = {
-      title: settings.shareTitle || title,
-      desc: settings.shareSubtitle || "\u6253\u5F00 App\uFF0C\u770B\u66F4\u591A\u7CBE\u5F69\u5185\u5BB9",
-      text: settings.shareSubtitle || "\u6253\u5F00 App\uFF0C\u770B\u66F4\u591A\u7CBE\u5F69\u5185\u5BB9",
-      linkUrl: "",
-      imageUrl: settings.shareCover || ""
-    };
-    const bridgeEvents = [];
-    const trackQueue = [];
-    const globalState = {
-      name: title,
-      pageTrackCode: settings.trackingCode || "PHBS7947",
-      wxShareTitle: settings.shareTitle || title,
-      wxShareSubTitle: settings.shareSubtitle || "",
-      wxShareImage: settings.shareCover || "",
-      bizCode: settings.bizCategory || "",
-      webViewColor: webviewBackground,
-      containerColor: containerBackground,
-      pi: pagePi
-    };
-    document.title = title;
-    window.globalState = globalState;
-    window.__colorbox_ai_track_queue__ = trackQueue;
-    if (typeof window !== "undefined" && window.HupuBridgeModule) {
-      const bridgeInstance = window.HupuBridgeModule.default || window.HupuBridgeModule;
-      let nainfo = null;
-      try {
-        nainfo = bridgeInstance.nainfo;
-      } catch (e) {
-      }
-      if (!window.HupuBridge) {
-        window.HupuBridge = {};
-      }
-      if (nainfo) {
-        window.HupuBridge.nainfo = window.HupuBridge.nainfo || nainfo;
-      }
-    }
-    if (AuthManager.isHupuApp()) {
-      AuthManager.getToken().then(function(token) {
-        console.log("[ColorboxAI.AuthManager] Startup token warmup completed", {
-          hasToken: !!token
-        });
-      }).catch(function(error) {
-        console.warn("[ColorboxAI.AuthManager] Startup token warmup failed", error);
-      });
-    }
-    function setSlideGesture(open) {
-      rawBridgeSend("hupu.ui.slidegesture", { open }).catch(function(error) {
-        console.warn("[ColorboxAI.Shell.SlideGesture] Failed to set slide gesture:", error);
-      });
-    }
-    function applyPageSlideGesture() {
-      const shouldDisablePageSlide = !!settings.disablePageSlide;
-      setSlideGesture(!shouldDisablePageSlide);
-      if (!shouldDisablePageSlide) {
-        return;
-      }
-      window.addEventListener("pagehide", function() {
-        setSlideGesture(true);
-      }, { once: true });
-      window.addEventListener("beforeunload", function() {
-        setSlideGesture(true);
-      }, { once: true });
-    }
-    function isRegisteredGameFrame(source) {
-      try {
-        const frame = document.getElementById("ai-render-frame");
-        return !!frame && frame.contentWindow === source;
-      } catch (e) {
-        return false;
-      }
-    }
-    function receive(event) {
-      const data = event.data;
-      if (!data || data.protocol !== "colorbox-ai-bridge" || data.direction !== "frame-to-host") {
-        return;
-      }
-      // Only accept messages from the game iframe on this exact origin.
-      // Without both checks any page holding a reference to this window can
-      // forge frame-to-host messages and drive navigation / native bridge calls.
-      if (event.origin !== window.location.origin) {
-        return;
-      }
-      if (!isRegisteredGameFrame(event.source)) {
-        return;
-      }
-      if (data.version !== 1) {
-        return;
-      }
-      bridgeEvents.push(data);
-      if (bridgeEvents.length > 100) {
-        bridgeEvents.shift();
-      }
-      if (data.type === "bridge.call") {
-        const payload = data.payload.payload;
-        const method = payload.method;
-        const bridgeData = payload.data;
-        const successcb = payload.successcb;
-        const errorcb = payload.errorcb;
-        console.log("[ColorboxAI.Shell.BridgeProxy] Received bridge.call from iframe.", {
-          method,
-          successcb,
-          errorcb
-        });
-        rawBridgeSend(method, bridgeData).then(function(res) {
-          try {
-            event.source.postMessage({
-              protocol: "colorbox-ai-bridge",
-              version: 1,
-              direction: "host-to-frame",
-              type: "bridge.callback",
-              payload: { callbackName: successcb, args: [res] }
-            }, window.location.origin);
-          } catch (err) {
-            console.error("[ColorboxAI.Shell.BridgeProxy] Failed to postMessage success callback to iframe:", err);
-          }
-        }).catch(function(err) {
-          try {
-            event.source.postMessage({
-              protocol: "colorbox-ai-bridge",
-              version: 1,
-              direction: "host-to-frame",
-              type: "bridge.callback",
-              payload: { callbackName: errorcb, args: [err || { code: 500, message: "Bridge call failed" }] }
-            }, window.location.origin);
-          } catch (err2) {
-            console.error("[ColorboxAI.Shell.BridgeProxy] Failed to postMessage error callback to iframe:", err2);
-          }
-        });
-      }
-      if (data.type === "navigation.open") {
-        // The game does not use external navigation. Never let an iframe
-        // message drive a top-level redirect or custom-scheme app launch.
-        console.warn("[ColorboxAI.Navigation.Shell] navigation.open blocked by security policy.");
-        return;
-      }
-      if (data.type === "storage.getValue") {
-        const payload = data.payload || {};
-        const key = payload.key;
-        const callbackId = payload.callbackId;
-        console.log("[ColorboxAI.Storage.Shell] Received storage.getValue from iframe for key:", key);
-        let value = null;
-        try {
-          value = localStorage.getItem(key);
-        } catch (error) {
-        }
-        try {
-          event.source.postMessage({
-            protocol: "colorbox-ai-bridge",
-            version: 1,
-            direction: "host-to-frame",
-            type: "storage.getValue.callback",
-            payload: { callbackId, value: parseBridgeResult(value) }
-          }, window.location.origin);
-        } catch (postErr) {
-          console.error("[ColorboxAI.Storage.Shell] Failed to postMessage getValue callback to iframe:", postErr);
-        }
-      }
-      if (data.type === "storage.setValue") {
-        const payload = data.payload || {};
-        const key = payload.key;
-        const value = payload.value;
-        const callbackId = payload.callbackId;
-        console.log("[ColorboxAI.Storage.Shell] Received storage.setValue from iframe for key:", key);
-        let ok = false;
-        try {
-          localStorage.setItem(key, typeof value === "string" ? value : JSON.stringify(value));
-          ok = true;
-        } catch (error) {
-        }
-        try {
-          event.source.postMessage({
-            protocol: "colorbox-ai-bridge",
-            version: 1,
-            direction: "host-to-frame",
-            type: "storage.setValue.callback",
-            payload: { callbackId, ok }
-          }, window.location.origin);
-        } catch (postErr) {
-          console.error("[ColorboxAI.Storage.Shell] Failed to postMessage setValue callback to iframe:", postErr);
-        }
-      }
-      if (data.type === "events.track" || data.type === "track.report") {
-        const trackTraceId = data.payload && data.payload.trackTraceId || "";
-        const trackParams = normalizeBridgeTrackPayload(data.payload);
-        pushTrackDebug("shell.receive.track", {
-          trackTraceId,
-          type: data.type,
-          act: trackParams.act,
-          blk: trackParams.blk,
-          pos: trackParams.pos
-        });
-        track(trackParams, trackTraceId);
-      }
-      if (data.type === "social.share") {
-        setNativeShare(shareData);
-      }
-    }
-    function forwardNativeEventToFrames(method, result) {
-      if (!method || typeof window === "undefined" || !window.frames) {
-        return;
-      }
-      const frameCount = window.frames.length;
-      console.log("[ColorboxAI.Shell.BridgeProxy] Forwarding native event to iframes", {
-        method,
-        frameCount
-      });
-      for (let index = 0; index < frameCount; index += 1) {
-        try {
-          window.frames[index].postMessage({
-            protocol: "colorbox-ai-bridge",
-            version: 1,
-            direction: "host-to-frame",
-            type: "bridge.event",
-            payload: { method, result }
-          }, window.location.origin);
-        } catch (error) {
-          console.warn("[ColorboxAI.Shell.BridgeProxy] Failed to forward native event to iframe:", error);
-        }
-      }
-    }
-    let nativeHandleWrapped = false;
-    function wrapNativeHandle() {
-      if (nativeHandleWrapped) {
-        return;
-      }
-      const bridge = window.HupuBridge;
-      if (!bridge || typeof bridge._handle_ !== "function") {
-        return;
-      }
-      nativeHandleWrapped = true;
-      const originalHandle = bridge._handle_.bind(bridge);
-      bridge._handle_ = function(method, result) {
-        forwardNativeEventToFrames(method, result);
-        return originalHandle(method, result);
-      };
-      console.log("[ColorboxAI.Shell.BridgeProxy] Native bridge _handle_ hooked for event forwarding");
-    }
-    wrapNativeHandle();
-    if (!nativeHandleWrapped) {
-      window.addEventListener("DOMContentLoaded", function() {
-        wrapNativeHandle();
-      });
-      window.setTimeout(wrapNativeHandle, 1e3);
-    }
-    window.addEventListener("onHupuJSBridgeHandle", function(event) {
-      const detail = event && event.detail;
-      const method = detail && detail.method;
-      forwardNativeEventToFrames(method, detail && detail.result);
-    });
-    window.__colorbox_runtime__ = true;
-    window.__colorbox_ai_shell__ = true;
-    window.__colorbox_ai_project__ = { projectId, settings };
-    window.__colorbox_ai_bridge_events__ = bridgeEvents;
-    window.__colorbox_ai_track_queue__ = trackQueue;
-    window.__colorbox_ai_track_debug__ = trackDebugLog;
-    window.__colorbox_ai_shell_track_rev__ = SHELL_TRACK_RUNTIME_REV;
-    window.__colorbox_ai_shell_bridge_version__ = 2;
-    pushTrackDebug("shell.boot", Object.assign({ shellRev: SHELL_TRACK_RUNTIME_REV, projectId }, detectAppWebView()));
-    window.globalState = globalState;
-    window.__colorbox_get_globalState__ = function() {
-      return window.globalState || {};
-    };
-    window.ColorboxAIHost = {
-      bridgeSend: rawBridgeSend,
-      setNativeShare: function() {
-        setNativeShare(shareData);
       },
-      track,
-      isSameBridgeProjectId,
-      normalizeBridgeProjectId
+      pagePi: ""
     };
-    window.addEventListener("message", receive);
+    const { settings, projectId, pagePi } = config;
+    const sessionId = "ai-runtime-" + Date.now() + "-" + Math.random().toString(36).slice(2);
+    window.__colorbox_runtime__ = true;
+    window.__colorbox_ai_runtime__ = true;
+    window.globalState = Object.assign({}, window.globalState || {}, {
+      name: settings.title,
+      pageTrackCode: settings.trackingCode,
+      wxShareTitle: settings.shareTitle,
+      wxShareSubTitle: settings.shareSubtitle,
+      wxShareImage: settings.shareCover,
+      bizCode: settings.bizCategory,
+      webViewColor: settings.theme && settings.theme.webviewBackground,
+      containerColor: settings.theme && settings.theme.containerBackground,
+      pi: pagePi
+    });
+    if (settings.title) {
+      document.title = settings.title;
+    }
+    function setupRuntimeIssueGuard() {
+      if (window.__colorbox_ai_runtime_issue_guard__) return;
+      window.__colorbox_ai_runtime_issue_guard__ = true;
+      let lastTick = Date.now();
+      window.setInterval(function() {
+        const now = Date.now();
+        const drift = now - lastTick - 1e3;
+        if (drift > 3e3) {
+          console.error("[ColorboxAI.Runtime] Main thread blocked for " + drift + "ms; possible long task or infinite loop.");
+        }
+        lastTick = now;
+      }, 1e3);
+    }
+    const frameTrackDebugLog = [];
+    function pushFrameTrackDebug(stage, detail) {
+      const entry = { stage, detail: detail || {}, ts: Date.now() };
+      frameTrackDebugLog.push(entry);
+      if (frameTrackDebugLog.length > 200) {
+        frameTrackDebugLog.shift();
+      }
+      try {
+        console.log("[ColorboxAI.Track] " + stage, detail || {});
+      } catch (error) {
+      }
+    }
+    function createTrackTraceId() {
+      return "trk_" + Date.now() + "_" + Math.random().toString(36).slice(2, 9);
+    }
+    function post(type, payload) {
+      const trackTraceId = payload && payload.trackTraceId;
+      try {
+        if (!window.parent || window.parent === window) {
+          if (type === "events.track") {
+            pushFrameTrackDebug("frame.post.skip", {
+              trackTraceId,
+              reason: "no_parent_or_same_window"
+            });
+          }
+          return;
+        }
+        window.parent.postMessage({
+          protocol: "colorbox-ai-bridge",
+          version: 1,
+          direction: "frame-to-host",
+          sessionId,
+          projectId,
+          type,
+          payload: payload || {},
+          timestamp: Date.now()
+        }, "*");
+        if (type === "events.track") {
+          pushFrameTrackDebug("frame.post.ok", { trackTraceId, projectId });
+        }
+      } catch (error) {
+        if (type === "events.track") {
+          pushFrameTrackDebug("frame.post.error", {
+            trackTraceId,
+            message: error && error.message || String(error)
+          });
+        }
+      }
+    }
+    window.ColorboxAI = window.ColorboxAI || window.ShaperAI || {};
+    window.ShaperAI = window.ColorboxAI;
+    window.ColorboxAI.context = window.ColorboxAI.context || { appId: projectId };
+    window.ColorboxAI.project = window.ColorboxAI.project || {
+      id: projectId,
+      settings,
+      getSettings: function() {
+        return Promise.resolve(settings);
+      }
+    };
+    if (typeof window.ColorboxAI.configure === "function") {
+      window.ColorboxAI.configure({
+        trackingCode: settings.trackingCode,
+        pi: pagePi
+      });
+    }
+    window.__colorbox_ai_track_debug_frame__ = frameTrackDebugLog;
+    window.ColorboxAI.track = function (trackParams) {
+      const trackTraceId = createTrackTraceId();
+      pushFrameTrackDebug("frame.call", {
+        trackTraceId,
+        params: trackParams || {},
+        hasParent: !!(window.parent && window.parent !== window)
+      });
+      try {
+        const customDebugger = window.ColorboxCustomDebugger;
+        if (customDebugger && typeof customDebugger.addLog === "function") {
+          customDebugger.addLog(trackParams || {});
+        }
+      } catch (error) {
+        pushFrameTrackDebug("frame.debug.error", {
+          trackTraceId,
+          message: error && error.message || String(error)
+        });
+      }
+      post("events.track", { trackParams: trackParams || {}, trackTraceId });
+    };
+    window.ColorboxAI.navigateTo = function(url, target) {
+      post("navigation.open", { url, target });
+    };
+    window.ColorboxAI.openUrl = window.ColorboxAI.navigateTo;
+    window.ColorboxAI.bbs = window.ColorboxAI.bbs || createLocalFallbackApi();
+    window.ColorboxAI.security = window.ColorboxAI.security || createLocalSecurityFallbackApi();
+    window.ColorboxAI.score = window.ColorboxAI.score || createLocalScoreFallbackApi();
+    window.ColorboxAI.oss = window.ColorboxAI.oss || createLocalOssFallbackApi();
+    window.ColorboxAI.auth = window.ColorboxAI.auth || createLocalAuthFallbackApi();
+    window.ColorboxAI.storage = window.ColorboxAI.storage || createColorboxStorageApi({ projectId });
+    window.ColorboxAI.runtime = window.ColorboxAI.runtime || {};
+    window.ColorboxAI.runtime.log = function() {
+      post("runtime.log", { args: Array.prototype.slice.call(arguments) });
+    };
+    window.ColorboxAI.hupuLog = function(params) {
+      if (window.WebGuard && typeof window.WebGuard.hupuLog === "function") {
+        window.WebGuard.hupuLog(params);
+      }
+    };
     window.addEventListener("error", function(event) {
-      bridgeEvents.push({
-        protocol: "colorbox-ai-bridge",
-        version: 1,
-        direction: "shell",
-        projectId,
-        type: "shell.error",
-        payload: { message: event.message, sourceFile: event.filename, line: event.lineno, column: event.colno },
-        timestamp: Date.now()
+      if (event.target && event.target !== window && event.target !== document) {
+        return;
+      }
+      const errorMsg = event.message || event.error && event.error.message || "Unknown error";
+      console.error("[ColorboxAI.Runtime] Uncaught error:", errorMsg);
+      post("runtime.error", {
+        message: errorMsg,
+        sourceFile: event.filename || "",
+        line: event.lineno || 0,
+        column: event.colno || 0,
+        stack: event.error && event.error.stack || ""
       });
     }, true);
     window.addEventListener("unhandledrejection", function(event) {
-      bridgeEvents.push({
-        protocol: "colorbox-ai-bridge",
-        version: 1,
-        direction: "shell",
-        projectId,
-        type: "shell.error",
-        payload: { message: event.reason && event.reason.message || String(event.reason || ""), stack: event.reason && event.reason.stack || "" },
-        timestamp: Date.now()
+      const reason = event.reason || {};
+      console.error("[ColorboxAI.Runtime] Unhandled promise rejection:", reason);
+      post("runtime.error", {
+        message: reason.message || String(reason),
+        stack: reason.stack || ""
       });
     });
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", function() {
-        setupViewport();
-        applyPageSlideGesture();
-        setNativeShare(shareData);
-        track({ act: "onload" });
-      });
-    } else {
-      setupViewport();
-      applyPageSlideGesture();
-      setNativeShare(shareData);
-      track({ act: "onload" });
-    }
+    setupRuntimeIssueGuard();
+    post("runtime.ready", { href: location.href });
   })();
 })();
 
-})();</script>
-  <script>
-    (function () {
-      var idleTimerDisabled;
-
-      function setIdleTimerDisabled(isDisabled) {
-        if (idleTimerDisabled === isDisabled) return;
-        try {
-          var host = window.ColorboxAIHost;
-          if (!host || typeof host.bridgeSend !== "function") {
-            console.warn("[ColorboxAI.Shell.IdleTimer] hupu.common.idleTimerDisabled failed:", {
-              isDisabled: isDisabled,
-              error: "ColorboxAIHost.bridgeSend is unavailable"
-            });
-            return;
-          }
-          var request = host.bridgeSend("hupu.common.idleTimerDisabled", { isDisabled: isDisabled });
-          idleTimerDisabled = isDisabled;
-          Promise.resolve(request).then(function (response) {
-            if (response == null) {
-              console.warn("[ColorboxAI.Shell.IdleTimer] hupu.common.idleTimerDisabled failed:", {
-                isDisabled: isDisabled,
-                error: "Bridge returned an empty response"
-              });
-              return;
-            }
-            console.log("[ColorboxAI.Shell.IdleTimer] hupu.common.idleTimerDisabled succeeded:", {
-              isDisabled: isDisabled,
-              response: response
-            });
-          }).catch(function (error) {
-            console.warn("[ColorboxAI.Shell.IdleTimer] hupu.common.idleTimerDisabled failed:", {
-              isDisabled: isDisabled,
-              error: error
-            });
-          });
-        } catch (error) {
-          console.warn("[ColorboxAI.Shell.IdleTimer] hupu.common.idleTimerDisabled failed:", {
-            isDisabled: isDisabled,
-            error: error
-          });
-        }
-      }
-
-      setIdleTimerDisabled(true);
-      window.addEventListener("pageshow", function () { setIdleTimerDisabled(true); });
-      window.addEventListener("pagehide", function () { setIdleTimerDisabled(false); });
-      window.addEventListener("beforeunload", function () { setIdleTimerDisabled(false); });
-      document.addEventListener("visibilitychange", function () {
-        setIdleTimerDisabled(document.visibilityState === "visible");
-      });
-    })();
-  </script>
-  <script>(function () {
+})();
+</script><script>(function () {
       var emptyBbsConfig = { bbsTagId: "", bbsTagName: "", bbsTopicId: "", bbsTopicName: "" };
-      var bbsConfigReady = Promise.resolve();
-      function pickBbsConfig() {
-        var source = window.__COLORBOX_BBS_CONFIG__;
-        if (!source || typeof source !== "object") return emptyBbsConfig;
-        return {
-          bbsTagId: typeof source.bbsTagId === "string" ? source.bbsTagId : "",
-          bbsTagName: typeof source.bbsTagName === "string" ? source.bbsTagName : "",
-          bbsTopicId: typeof source.bbsTopicId === "string" ? source.bbsTopicId : "",
-          bbsTopicName: typeof source.bbsTopicName === "string" ? source.bbsTopicName : ""
-        };
-      }
+      var pending = {};
       window.addEventListener("message", function (event) {
         var data = event && event.data;
-        if (!data || data.protocol !== "colorbox-ai-bridge" || data.direction !== "frame-to-host" || data.type !== "bbsConfig.get") return;
-        if (event.origin !== window.location.origin) return;
-        try {
-          var frame = document.getElementById("ai-render-frame");
-          if (!frame || frame.contentWindow !== event.source) return;
-        } catch (error) {
-          return;
-        }
-        var requestId = data.payload && data.payload.requestId;
-        if (!event.source || typeof event.source.postMessage !== "function") return;
-        Promise.resolve(bbsConfigReady).then(function () {
-          try {
-            event.source.postMessage({
-              protocol: "colorbox-ai-bridge",
-              version: 1,
-              direction: "host-to-frame",
-              type: "bbsConfig.get.callback",
-              payload: { requestId: requestId, bbsConfig: pickBbsConfig() }
-            }, window.location.origin);
-          } catch (error) {
-            console.warn("[ColorboxAI.Shell.BbsConfig] Failed to reply bbsConfig.get:", error);
-          }
+        if (!data || data.protocol !== "colorbox-ai-bridge" || data.direction !== "host-to-frame" || data.type !== "bbsConfig.get.callback") return;
+        var payload = data.payload || {};
+        var waiter = pending[payload.requestId];
+        if (!waiter) return;
+        delete pending[payload.requestId];
+        window.clearTimeout(waiter.timer);
+        var bbsConfig = payload.bbsConfig && typeof payload.bbsConfig === "object" ? payload.bbsConfig : emptyBbsConfig;
+        waiter.resolve({
+          bbsTagId: typeof bbsConfig.bbsTagId === "string" ? bbsConfig.bbsTagId : "",
+          bbsTagName: typeof bbsConfig.bbsTagName === "string" ? bbsConfig.bbsTagName : "",
+          bbsTopicId: typeof bbsConfig.bbsTopicId === "string" ? bbsConfig.bbsTopicId : "",
+          bbsTopicName: typeof bbsConfig.bbsTopicName === "string" ? bbsConfig.bbsTopicName : ""
         });
       });
+      function getBbsConfig(key) {
+        return new Promise(function (resolve) {
+          function finish(bbsConfig) {
+            resolve(key == null || key === "" ? bbsConfig : bbsConfig[key]);
+          }
+          if (!window.parent || window.parent === window) {
+            finish(emptyBbsConfig);
+            return;
+          }
+          var requestId = "bbs_" + Date.now() + "_" + Math.random().toString(36).slice(2, 9);
+          pending[requestId] = {
+            resolve: finish,
+            timer: window.setTimeout(function () {
+              delete pending[requestId];
+              finish(emptyBbsConfig);
+            }, 1000)
+          };
+          window.parent.postMessage({
+            protocol: "colorbox-ai-bridge",
+            version: 1,
+            direction: "frame-to-host",
+            type: "bbsConfig.get",
+            payload: { requestId: requestId },
+            timestamp: Date.now()
+          }, "*");
+        });
+      }
+      window.ColorboxAI = window.ColorboxAI || {};
+      window.ColorboxAI.bbsConfig = window.ColorboxAI.bbsConfig || {};
+      window.ColorboxAI.bbsConfig.get = getBbsConfig;
     })();</script>
-<script src="./vendor/lamps/game-progress-bridge.js"></script>
-<script src="./vendor/lamps/relay.js"></script>
-<link rel="stylesheet" href="./comic.css">
+
+<link rel="stylesheet" href="./comic.css?build=c19519bd93e4">
+<link rel="stylesheet" href="./vendor/lamps/integration.css">
+<link rel="stylesheet" href="./tutorial.css?build=c19519bd93e4">
 </head>
-<body>
-  <div id="ai-render-root">
-    <iframe
-      id="ai-render-frame"
-      class="ai-render-frame"
-      data-src="./__ai_app.html"
-      title="篮球经理：征服联盟"
-      referrerpolicy="no-referrer"
-      allow="clipboard-write"
-      loading="eager"
-    ></iframe>
-    <script>
-      (function () {
-        var frame = document.getElementById("ai-render-frame");
-        var outerParams = new URLSearchParams(window.location.search || "");
-        var appEntry = frame.getAttribute("data-src");
-        var appParams = [];
-        var env = outerParams.get("env") || "";
-        if (env) appParams.push("env=" + encodeURIComponent(env));
-        frame.src = appEntry + (appParams.length ? "?" + appParams.join("&") : "");
-      })();
-    </script>
-  </div>
-<script src="./comic.js"></script>
-<script src="./poster-fallback.js"></script>
+  <body>
+    <!-- Previous standalone startup screen retained for reference; intentionally not rendered.
+    <div id="root">
+      <main id="game-startup" aria-labelledby="game-startup-title">
+        <div class="startup-layout">
+          <header class="startup-header">
+            <div class="startup-brand">
+              <span>BASKETBALL<br>MANAGER</span>
+            </div>
+            <span class="startup-live" id="game-startup-status">开场准备中</span>
+          </header>
+          <section class="startup-hero">
+            <h1 id="game-startup-title" class="startup-wordmark" aria-label="篮球经理：征服联盟">
+              <span id="game-startup-wordmark-text" aria-hidden="true"><span class="startup-wordmark-main">篮球<span>经理</span></span><span class="startup-edition">征服联盟</span></span>
+              <img id="game-startup-logo" src="/branding/startup-title-logo.webp" alt="" aria-hidden="true" decoding="async" hidden>
+            </h1>
+            <p class="startup-tagline">新军入场，<br><span>联盟由你改写。</span></p>
+          </section>
+          <section class="startup-console" aria-label="启动进度">
+            <div class="startup-meter-heading"><span id="game-startup-stage">正在准备开场</span><span id="game-startup-count">0%</span></div>
+            <progress id="game-startup-progress" max="100" value="0" aria-label="启动进度">0%</progress>
+            <p id="game-startup-message" role="status" aria-live="polite">正在点亮球馆，准备开场…</p>
+            <div class="startup-timing" aria-live="off"><span>已用时间 <span id="game-startup-elapsed">0.0 秒</span></span><span id="game-startup-hint">完成后自动进入</span></div>
+            <button id="game-startup-retry" type="button" hidden>重新载入</button>
+            <noscript>
+              <style>#game-startup .startup-meter-heading,#game-startup progress,#game-startup-message,#game-startup .startup-timing,#game-startup .startup-live { display:none; }</style>
+              <p role="alert">请启用 JavaScript 后重新载入。已有存档不会被删除。</p>
+            </noscript>
+          </section>
+        </div>
+      </main>
+    </div>
+    -->
+    <div id="root">
+      <main class="launcher-shell home-screen startup-home-shell" data-home-landing="" style="background-image:linear-gradient(180deg, var(--theme-image-top, rgba(2, 6, 16, .28)) 0%, var(--theme-image-mid, rgba(2, 6, 16, .7)) 47%, var(--theme-image-bottom, rgba(2, 6, 16, .96)) 100%), url(&quot;./story/opening-arena.jpg&quot;)" aria-label="篮球经理：征服联盟" aria-busy="true"><section class="launcher-center"><div class="launcher-mark"><span id="game-startup-wordmark-text" role="img" aria-label="篮球经理：征服联盟" style="display:grid;place-content:center;width:100%;height:100%;color:var(--theme-text-main, #f5ce84);font-size:clamp(24px, 8vw, 48px);font-weight:900;text-align:center;position:absolute;inset:0">篮球经理<br/>征服联盟</span><img id="game-startup-logo" src="./branding/home-logo-display.webp" alt="" width="660" height="660" fetchPriority="high" decoding="async" hidden="" style="position:absolute;inset:0"/></div><h1>篮球经理：征服联盟</h1></section><section class="launcher-guide" aria-label="云存档提醒"><b>请及时上传云存档</b><p class="launcher-cloud-save-summary">建议每赛季备份一次，避免本地进度丢失。</p><p class="launcher-cloud-save-copy">官方App清理数据、卸载重装、内核升级或同域存储空间被回收，都可能影响本地存档。请及时上传云存档，丢失后可从云端下载到本地。建议每赛季至少备份一次。</p><p class="launcher-cloud-save-copy">若 10 个云槽已满，删除不再需要的云档后再上传。其他失败原因请查看上传提示。</p><span class="launcher-cloud-save-details"><button type="button" class="help-tip-trigger" disabled="" title="说明：云存档说明" aria-label="查看云存档说明" aria-haspopup="dialog" aria-expanded="false"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.35"></circle><path d="M7.9 7.5a2.15 2.15 0 0 1 4.2.6c0 1.45-2.1 1.55-2.1 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path><circle cx="10" cy="13.8" r=".9" fill="currentColor"></circle></svg><span class="help-tip-label">查看说明</span></button></span></section><section class="launcher-actions"><button class="launcher-primary" data-testid="start-new-game" disabled=""><svg class="launcher-action-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="18" rx="4" stroke="currentColor" stroke-width="2"></rect><polygon points="10,8 16,12 10,16" fill="currentColor"></polygon></svg><span class="launcher-new-game-copy"><b>开始新游戏</b><small>新世代存档 · 24项能力</small></span></button><button disabled=""><svg class="launcher-action-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M3 7C3 5.89543 3.89543 5 5 5H9.58579C10.1162 5 10.625 5.21071 11 5.58579L12.4142 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7Z" stroke="currentColor" stroke-width="2"></path><path d="M12 10V15M12 15L9.5 12.5M12 15L14.5 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>读取存档</span></button><button class="launcher-dark" disabled=""><svg class="launcher-action-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M 12 4 A 8 8 0 1 1 5.5 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M 4 4 L 5.5 8 L 9.5 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><polygon points="10.5,10 14.5,12 10.5,14" fill="currentColor"></polygon></svg><span>继续上次进度</span></button><button type="button" class="launcher-exit" disabled=""><svg class="launcher-action-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M10 4H5v16h5M10 12h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>退出游戏</span></button></section><section class="launcher-announcement" aria-label="更新公告"><div class="launcher-announcement-summary"><span><b>更新公告 · 2026年11月23日</b><small>本次游戏优化和修复内容</small></span><button type="button" aria-haspopup="dialog" disabled="">查看详情</button></div></section><small class="launcher-version">从扩军开始，打造你的王朝</small></main>
+    </div>
+    <div id="game-startup" class="launcher-loading-backdrop league-rollover-backdrop" role="status" aria-live="polite" aria-labelledby="game-startup-stage">
+      <section class="launcher-loading-card league-rollover-card home-loading-card" aria-label="首页加载进度">
+        <svg class="basketball-seam-loader" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="startup-basketball-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" style="stop-color:var(--color-accent-primary, #00F2FE)"/><stop offset="58%" style="stop-color:var(--color-accent-primary, #00F2FE)"/><stop offset="100%" style="stop-color:var(--color-warning, #ff9100)"/></linearGradient></defs>
+          <g class="basketball-seam-bg"><circle cx="50" cy="50" r="44"/><path d="M50 6V94"/><path d="M6 50H94"/><path d="M21 16A44 44 0 0 1 21 84"/><path d="M79 16A44 44 0 0 0 79 84"/></g>
+          <path class="basketball-seam-flow" stroke="url(#startup-basketball-gradient)" d="M50 6A44 44 0 1 1 49.999 6 M50 6V94 M6 50H94 M21 16A44 44 0 0 1 21 84 M79 16A44 44 0 0 0 79 84"/>
+        </svg>
+        <b id="game-startup-stage">正在准备主界面</b>
+        <p id="game-startup-message">正在载入篮球经理，请稍候…</p>
+        <div class="startup-meter-heading"><span id="game-startup-status">开场准备中</span><span id="game-startup-count">0%</span></div>
+        <progress id="game-startup-progress" max="100" value="0" aria-label="首页加载进度">0%</progress>
+        <div class="startup-timing" aria-live="off"><span>已用时间 <span id="game-startup-elapsed">0.0 秒</span></span><span id="game-startup-hint">完成后自动进入</span></div>
+        <button id="game-startup-retry" type="button" hidden>重新载入</button>
+        <noscript>
+          <style>#game-startup .startup-meter-heading,#game-startup progress,#game-startup-message,#game-startup .startup-timing,#game-startup-stage{display:none}</style>
+          <p role="alert">请启用 JavaScript 后重新载入。已有存档不会被删除。</p>
+        </noscript>
+      </section>
+    </div>
+    <script data-game-startup>(function() {
+	/** Also serialized into generated classic scripts, before their first global access.
+	* Keep this function self-contained and compatible with Chrome WebView 62. */
+	function installEarlyRuntimeCompatibility() {
+		const scope = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : undefined;
+		if (scope && typeof scope.globalThis === "undefined") {
+			Object.defineProperty(scope, "globalThis", {
+				value: scope,
+				configurable: true,
+				writable: true
+			});
+		}
+		if (typeof Object.fromEntries !== "function") {
+			Object.defineProperty(Object, "fromEntries", {
+				configurable: true,
+				writable: true,
+				value: function fromEntries(entries) {
+					const result = {};
+					for (const entry of entries) {
+						if (entry === null || typeof entry !== "object" && typeof entry !== "function") {
+							throw new TypeError("Object.fromEntries requires entry objects");
+						}
+						Object.defineProperty(result, entry[0], {
+							value: entry[1],
+							configurable: true,
+							enumerable: true,
+							writable: true
+						});
+					}
+					return result;
+				}
+			});
+		}
+		function speciesConstructor(source, fallback) {
+			const constructor = source.constructor;
+			if (constructor === undefined) return fallback;
+			if (constructor === null || typeof constructor !== "object" && typeof constructor !== "function") {
+				throw new TypeError("Invalid constructor");
+			}
+			const species = typeof Symbol === "function" && Symbol.species ? constructor[Symbol.species] : undefined;
+			if (species == null) return fallback;
+			if (typeof species !== "function") throw new TypeError("Invalid species constructor");
+			return species;
+		}
+		if (typeof Array.prototype.flat !== "function" || typeof Array.prototype.flatMap !== "function") {
+			const lengthOf = (value) => Math.min(Math.max(Math.trunc(+value) || 0, 0), Number.MAX_SAFE_INTEGER);
+			const flatten = (source, requestedDepth, mapper, receiver, mapping = false) => {
+				const length = lengthOf(source.length);
+				const depth = mapping ? 1 : requestedDepth === undefined ? 1 : Math.trunc(+requestedDepth) || 0;
+				if (mapping && typeof mapper !== "function") throw new TypeError("flatMap requires a callback");
+				const Constructor = Array.isArray(source) ? speciesConstructor(source, Array) : Array;
+				const result = new Constructor(0);
+				let targetIndex = 0;
+				const visit = (values, count, remaining, applyMapper) => {
+					for (let index = 0; index < count; index += 1) {
+						// HasProperty includes inherited indices and skips sparse holes.
+						if (!(index in values)) continue;
+						const value = applyMapper ? mapper.call(receiver, values[index], index, source) : values[index];
+						if (remaining > 0 && Array.isArray(value)) visit(value, lengthOf(value.length), remaining - 1, false);
+						else {
+							if (targetIndex >= Number.MAX_SAFE_INTEGER) throw new TypeError("Flattened array is too large");
+							Object.defineProperty(result, targetIndex++, {
+								value,
+								configurable: true,
+								enumerable: true,
+								writable: true
+							});
+						}
+					}
+				};
+				visit(source, length, depth, mapping);
+				return result;
+			};
+			if (typeof Array.prototype.flat !== "function") {
+				Object.defineProperty(Array.prototype, "flat", {
+					configurable: true,
+					writable: true,
+					value: function flat(depth) {
+						"use strict";
+						if (this == null) throw new TypeError("Array.prototype.flat requires a receiver");
+						return flatten(Object(this), depth);
+					}
+				});
+			}
+			if (typeof Array.prototype.flatMap !== "function") {
+				Object.defineProperty(Array.prototype, "flatMap", {
+					configurable: true,
+					writable: true,
+					value: function flatMap(mapper, receiver) {
+						"use strict";
+						if (this == null) throw new TypeError("Array.prototype.flatMap requires a receiver");
+						return flatten(Object(this), 1, mapper, receiver, true);
+					}
+				});
+			}
+			if (typeof Symbol === "function" && Symbol.unscopables) {
+				const unscopables = Array.prototype[Symbol.unscopables];
+				if (unscopables) {
+					unscopables.flat = true;
+					unscopables.flatMap = true;
+				}
+			}
+		}
+		if (typeof Promise.prototype.finally !== "function") {
+			Object.defineProperty(Promise.prototype, "finally", {
+				configurable: true,
+				writable: true,
+				value: function finallyCompat(onFinally) {
+					"use strict";
+					if (this === null || typeof this !== "object" && typeof this !== "function") throw new TypeError("Promise.prototype.finally requires an object");
+					const Constructor = speciesConstructor(this, Promise);
+					if (typeof onFinally !== "function") return this.then(onFinally, onFinally);
+					// PromiseResolve uses the species constructor, not an overridable .resolve.
+					const cleanup = () => new Constructor((resolve) => resolve(onFinally()));
+					return this.then((value) => cleanup().then(() => value), (reason) => cleanup().then(() => {
+						throw reason;
+					}));
+				}
+			});
+		}
+	}
+	installEarlyRuntimeCompatibility();
+})();
+(function() {
+	var key = "nba-manager:runtime-diagnostics:v1";
+	var durableKey = key + ":last-failure";
+	var startup = window.__NBA_STARTUP__ = {
+		phase: "loading",
+		progress: 0,
+		startedAt: Date.now(),
+		failures: [],
+		previousFailures: [],
+		buildId: document.documentElement.getAttribute("data-startup-build") || "unknown"
+	};
+	var scriptIntegrity = {
+		"./assets/opening-rights-data.js": "sha256-Ep0L6O1bE7/6PJaMzH8djYV8m+RKuqTQkBgbUhlf8rA=",
+		"./assets/capability-data.js": "sha256-fmTk+6Wkp56RsQ+VV/LInKXAZbTemqKwzRgn+HSDDEY=",
+		"./assets/announcement-data.js": "sha256-wfvrTRtP4HiQP9rV2uGHq1M6VPQ+OkyHZu5RsirOV+4=",
+		"./leaderboard/config.js": "sha256-HZwkfPFKOpatJCf9WGXHbnNxLsRBwTReOwHMkOsYs1A=",
+		"./assets/game.js": "sha256-BhcE3dm068L31bEy38283LHwMFHrZvHnQRVzqrEEwGA="
+	};
+	var lastPersisted = 0;
+	var renderFailed = false;
+	var entryRetried = false;
+	var entryRetryScript;
+	var entryAccepted = false;
+	var acceptedEntry;
+	var entryBlocked = false;
+	var deferredScriptsDone = false;
+	var settledScripts = new WeakSet();
+	var originalWaiters = new Map();
+	var assetRetries = new Map();
+	var slowLoadReached = false;
+	var configurationRetried = false;
+	var deferredEntryPreparation;
+	var pendingEntryPreparation;
+	function configurationReady() {
+		return typeof window.ACTIVITY_API_BASE === "string" && window.ACTIVITY_API_BASE.trim() && typeof window.ACTIVITY_ENV_ID === "string" && window.ACTIVITY_ENV_ID.trim();
+	}
+	window.addEventListener("DOMContentLoaded", function() {
+		deferredScriptsDone = true;
+		originalWaiters.forEach(function(finish, script) {
+			settleScript(script);
+		});
+		if (pendingEntryPreparation) pendingEntryPreparation();
+		if (entryAccepted || entryRetried || entryBlocked || renderFailed || startup.phase !== "loading") return;
+		var entry = document.getElementById("game-entry");
+		// The production deferred entry has had its opportunity to register.
+		if (entry && entry.tagName === "SCRIPT" && entry.defer && !entry.async) {
+			recoverUnregisteredEntry(entry, "页面就绪后游戏入口仍未注册");
+		}
+	}, { once: true });
+	function elapsed() {
+		var text = document.getElementById("game-startup-elapsed");
+		if (text) text.textContent = (Math.max(0, Date.now() - startup.startedAt) / 1e3).toFixed(1) + " 秒";
+	}
+	var clock = setInterval(elapsed, 500);
+	function stopClock() {
+		if (clock) {
+			elapsed();
+			clearInterval(clock);
+			clock = 0;
+		}
+	}
+	// Weighted startup milestones; this is not a byte-download percentage.
+	function progress(value, stage, message) {
+		startup.progress = value;
+		var count = document.getElementById("game-startup-count");
+		var meter = document.getElementById("game-startup-progress");
+		var label = document.getElementById("game-startup-stage");
+		var text = document.getElementById("game-startup-message");
+		if (count) count.textContent = value + "%";
+		if (meter) {
+			meter.setAttribute("value", String(value));
+			meter.textContent = value + "%";
+		}
+		if (label) label.textContent = stage;
+		if (text) text.textContent = message;
+	}
+	startup.initializing = function() {
+		if (startup.phase !== "loading") return;
+		progress(85, "正在准备主界面", "核心已载入，正在初始化界面…");
+	};
+	startup.preparingSaves = function(value, stage, message) {
+		if (startup.phase !== "loading") return;
+		startup.preparingLocalSaves = true;
+		progress(Math.max(startup.progress, value), stage, message);
+	};
+	function clean(value, limit) {
+		return String(value || "").replace(/(https?:\/\/[^\s?#)]+)[?#]([^\s)]*)/g, function(_, path, query) {
+			var position = query.match(/:\d+:\d+$/);
+			return path + (position ? position[0] : "");
+		}).slice(0, limit);
+	}
+	function failureField(value, key) {
+		try {
+			return value == null ? undefined : value[key];
+		} catch (_) {
+			return undefined;
+		}
+	}
+	function failureText(value, key) {
+		var field = failureField(value, key);
+		return typeof field === "string" ? field : "";
+	}
+	function failurePosition(value, key) {
+		var field = failureField(value, key);
+		return typeof field === "number" && field > 0 && field <= 9007199254740991 && Math.floor(field) === field ? field : undefined;
+	}
+	function failureSource(error) {
+		return failureText(error, "sourceURL") || failureText(error, "fileName");
+	}
+	function failureDetails(error, event, eventType, messageSource) {
+		return {
+			eventType,
+			messageSource,
+			errorName: failureText(error, "name"),
+			line: failurePosition(event, "lineno") || failurePosition(error, "line") || failurePosition(error, "lineNumber"),
+			column: failurePosition(event, "colno") || failurePosition(error, "column") || failurePosition(error, "columnNumber")
+		};
+	}
+	function copyFailureDetails(details) {
+		var copy = {}, eventType = failureField(details, "eventType"), messageSource = failureField(details, "messageSource");
+		if (eventType === "error" || eventType === "unhandledrejection") copy.eventType = eventType;
+		if (messageSource === "event" || messageSource === "error" || messageSource === "reason" || messageSource === "fallback") copy.messageSource = messageSource;
+		var name = failureText(details, "errorName"), reasonType = failureText(details, "reasonType");
+		if (name) copy.errorName = clean(name, 64);
+		if (/^(?:string|number|boolean|bigint|symbol|undefined|object|function)$/.test(reasonType)) copy.reasonType = reasonType;
+		var line = failurePosition(details, "line"), column = failurePosition(details, "column");
+		if (line) copy.line = line;
+		if (column) copy.column = column;
+		return Object.keys(copy).length ? copy : undefined;
+	}
+	try {
+		var previous = window.sessionStorage.getItem(key);
+		if (previous && previous.length < 32e3) {
+			var saved = JSON.parse(previous);
+			if (saved.version === 1 && Array.isArray(saved.failures)) startup.previousFailures = saved.failures.slice(-8);
+		}
+	} catch (_) {}
+	try {
+		var durable = window.localStorage.getItem(durableKey);
+		if (durable && durable.length < 32e3) {
+			var savedDurable = JSON.parse(durable);
+			var age = Date.now() - savedDurable.savedAt;
+			if (savedDurable.version === 1 && age >= 0 && age <= 7 * 864e5 && Array.isArray(savedDurable.failures)) {
+				var merged = savedDurable.failures.slice(-8).concat(startup.previousFailures);
+				var seen = Object.create(null);
+				startup.previousFailures = merged.filter(function(entry) {
+					if (!entry || typeof entry !== "object") return false;
+					var identity = JSON.stringify([
+						entry.at,
+						entry.kind,
+						entry.message,
+						entry.stack
+					]);
+					if (seen[identity]) return false;
+					seen[identity] = true;
+					return true;
+				}).slice(-8);
+			}
+		}
+	} catch (_) {}
+	function showFailure(message, renderFailure) {
+		if (renderFailed && !renderFailure) return;
+		if (startup.phase === "mounted" && !renderFailure) return;
+		if (renderFailure) renderFailed = true;
+		startup.phase = "failed";
+		stopClock();
+		var screen = document.getElementById("game-startup");
+		var status = document.getElementById("game-startup-status");
+		var stage = document.getElementById("game-startup-stage");
+		var hint = document.getElementById("game-startup-hint");
+		if (screen) {
+			screen.setAttribute("data-state", renderFailure ? "render-failed" : "failed");
+			if (renderFailure) screen.hidden = false;
+		}
+		if (status) status.textContent = "等待重新开场";
+		if (stage) stage.textContent = renderFailure ? "页面显示出现异常" : "启动暂时中断";
+		if (hint) hint.textContent = "请重新载入";
+		var text = document.getElementById("game-startup-message");
+		var retry = document.getElementById("game-startup-retry");
+		if (text) text.textContent = message;
+		if (retry) retry.hidden = false;
+	}
+	startup.record = function(kind, message, source, stack, details) {
+		try {
+			var at = Date.now();
+			var build = String(source || "").match(/source-[0-9a-f]{16}/);
+			var failure = {
+				kind: clean(kind, 24),
+				at,
+				message: clean(message, 240),
+				buildId: build ? build[0] : startup.buildId || "unknown",
+				source: String(source || "").split(/[?#]/)[0].slice(0, 240),
+				stack: clean(stack, 2e3)
+			};
+			var copiedDetails = copyFailureDetails(details);
+			if (copiedDetails) failure.details = copiedDetails;
+			startup.failures.push(failure);
+			if (startup.failures.length > 8) {
+				var remove = 0;
+				for (var i = 0; i < startup.failures.length; i++) {
+					if (startup.failures[i].kind === "resource") {
+						remove = i;
+						break;
+					}
+				}
+				startup.failures.splice(remove, 1);
+			}
+			// Image bursts are retained in memory without synchronous writes per image.
+			if (kind !== "resource" || at - lastPersisted > 1e3) {
+				lastPersisted = at;
+				try {
+					window.sessionStorage.setItem(key, JSON.stringify({
+						version: 1,
+						failures: startup.failures
+					}));
+				} catch (_) {}
+			}
+			// Persist only actual JS/render failures across new WebView sessions.
+			// Image/script resource bursts keep their existing session records;
+			// they must not add synchronous persistent writes for each failure.
+			if (kind !== "resource") {
+				try {
+					window.localStorage.setItem(durableKey, JSON.stringify({
+						version: 1,
+						savedAt: at,
+						failures: startup.failures.filter(function(entry) {
+							return entry.kind !== "resource";
+						}).slice(-8)
+					}));
+				} catch (_) {}
+			}
+		} catch (_) {}
+	};
+	function retryScript(source, nonce) {
+		var url = new URL(source, document.baseURI);
+		if (url.origin !== window.location.origin || url.protocol === "file:" && window.location.protocol !== "file:") return null;
+		url.searchParams.set("startupRetry", "1");
+		var script = document.createElement("script");
+		if (url.protocol === "https:" || url.protocol === "http:") {
+			for (var path in scriptIntegrity) {
+				if (new URL(path, document.baseURI).pathname === url.pathname) {
+					script.integrity = scriptIntegrity[path];
+					script.crossOrigin = "anonymous";
+					break;
+				}
+			}
+		}
+		if (nonce) script.nonce = nonce;
+		script.src = url.href;
+		return script;
+	}
+	function retryEntry(target, source) {
+		if (entryRetried || entryBlocked || renderFailed || startup.phase === "mounted" || startup.progress >= 85 || !/\/assets\/game\.js(?:[?#]|$)/.test(source)) return false;
+		try {
+			var retry = retryScript(source, target.nonce);
+			if (!retry) return false;
+			entryRetried = true;
+			entryRetryScript = retry;
+			var message = document.getElementById("game-startup-message");
+			if (message) message.textContent = "游戏文件加载失败，正在重试…";
+			document.head.appendChild(retry);
+			return true;
+		} catch (_) {
+			return false;
+		}
+	}
+	var dependencyFailure = "游戏文件未完整载入或版本不一致，请重新载入。已有存档仍保留。";
+	function showEntryFailure(message) {
+		entryBlocked = true;
+		pendingEntryPreparation = null;
+		originalWaiters.clear();
+		assetRetries.clear();
+		showFailure(message);
+	}
+	function settleScript(script) {
+		settledScripts.add(script);
+		var finish = originalWaiters.get(script);
+		originalWaiters.delete(script);
+		if (finish) finish();
+	}
+	function waitForOriginal(source, finish) {
+		if (deferredScriptsDone) return false;
+		var url = new URL(source, document.baseURI).href;
+		var scripts = document.querySelectorAll("script[defer][src]");
+		for (var i = 0; i < scripts.length; i++) {
+			var script = scripts[i];
+			if (script.async || script.src !== url || settledScripts.has(script)) continue;
+			originalWaiters.set(script, finish);
+			var text = document.getElementById("game-startup-message");
+			if (text) text.textContent = "自动重试失败，可以继续等待原文件，或重新载入。已有存档仍保留。";
+			return true;
+		}
+		return false;
+	}
+	function failEntryAttempt(target, message) {
+		if (entryAccepted || entryBlocked || renderFailed || startup.phase !== "loading") return;
+		var original = document.getElementById("game-entry");
+		if (target === original) {
+			settleScript(target);
+			if (entryRetried) return;
+		} else if (target === entryRetryScript && original) {
+			settleScript(target);
+			// The speculative retry can fail while the original is still pending.
+			if (waitForOriginal(original.src, function() {
+				if (!entryAccepted && startup.phase === "loading") showEntryFailure(message);
+			})) return;
+		}
+		if (!retryEntry(target, target.src)) showEntryFailure(message);
+	}
+	function recoverUnregisteredEntry(entry, message) {
+		startup.record("dependency", message, entry.src);
+		failEntryAttempt(entry, dependencyFailure);
+	}
+	function retryAsset(source, nonce, finish) {
+		var url = new URL(source, document.baseURI).href;
+		var existing = assetRetries.get(url);
+		if (existing) {
+			if (finish) {
+				if (existing.settled) finish();
+				else existing.finish = finish;
+			}
+			return true;
+		}
+		var attempt = {
+			settled: false,
+			finish
+		};
+		assetRetries.set(url, attempt);
+		startup.record("dependency", "启动资源未就绪，正在重试", source);
+		try {
+			var retry = retryScript(source, nonce);
+			if (!retry) {
+				attempt.settled = true;
+				return false;
+			}
+			retry.onload = retry.onerror = function() {
+				if (attempt.settled) return;
+				attempt.settled = true;
+				retry.onload = retry.onerror = null;
+				var done = attempt.finish;
+				attempt.finish = null;
+				if (done) done();
+			};
+			document.head.appendChild(retry);
+			return true;
+		} catch (error) {
+			attempt.settled = true;
+			attempt.finish = null;
+			startup.record("dependency", error && error.message || dependencyFailure, source, error && error.stack);
+			return false;
+		}
+	}
+	function retryFailedWorker(target) {
+		if (entryAccepted || entryBlocked || renderFailed || startup.phase !== "loading" || !target.defer || target.async) return;
+		var match = /\/assets\/(worker-(?:codec|simulation)-[a-f0-9]{16}\.js)$/.exec(target.src || "");
+		if (!match) return;
+		var source = "./assets/" + match[1];
+		if (!scriptIntegrity[source] || new URL(source, document.baseURI).href !== target.src) return;
+		var entry = document.getElementById("game-entry");
+		// This original request already failed. Recover while game.js is still
+		// loading; prepareEntry will reuse the attempt and check registration.
+		retryAsset(source, target.nonce || entry && entry.nonce);
+	}
+	function prepareEntry(assets, run, nonce) {
+		if (entryBlocked || renderFailed || startup.phase === "mounted") return;
+		function launch() {
+			assetRetries.clear();
+			run();
+		}
+		var missing = assets.filter(function(asset) {
+			return !asset.ready();
+		});
+		if (!missing.length) {
+			launch();
+			return;
+		}
+		var message = document.getElementById("game-startup-message");
+		if (message) message.textContent = "游戏文件加载失败，正在重试…";
+		var remaining = missing.length;
+		var waiting = true;
+		function startWhenReady() {
+			if (!waiting || entryBlocked || renderFailed || startup.phase === "mounted") return false;
+			if (assets.some(function(asset) {
+				return !asset.ready();
+			})) return false;
+			waiting = false;
+			pendingEntryPreparation = null;
+			launch();
+			return true;
+		}
+		// Original deferred responses may beat a stalled dynamic retry. Use
+		// their actual registration, with the same complete version checks.
+		pendingEntryPreparation = startWhenReady;
+		function settleAsset(asset) {
+			if (!waiting || entryBlocked || renderFailed || startup.phase === "failed" || startWhenReady()) return;
+			var invalid;
+			if (!asset.ready()) {
+				if (waitForOriginal(asset.src, function() {
+					settleAsset(asset);
+				})) return;
+				invalid = asset;
+			} else if (--remaining === 0) invalid = assets.find(function(dependency) {
+				return !dependency.ready();
+			});
+			if (invalid) {
+				startup.record("dependency", dependencyFailure, invalid.src);
+				showEntryFailure(dependencyFailure);
+			}
+		}
+		missing.forEach(function(asset) {
+			if (entryBlocked || renderFailed) return;
+			if (!retryAsset(asset.src, nonce, function() {
+				settleAsset(asset);
+			})) {
+				showEntryFailure(dependencyFailure);
+			}
+		});
+	}
+	startup.runEntry = function(buildId, assets, run) {
+		if (entryAccepted || entryBlocked || renderFailed || startup.phase === "mounted") return;
+		var entry = document.currentScript;
+		var expectedBuild = document.documentElement.getAttribute("data-startup-build");
+		startup.buildId = expectedBuild || buildId;
+		if (expectedBuild !== buildId) {
+			startup.record("dependency", "游戏入口版本与页面不一致", entry && entry.src);
+			if (entry) failEntryAttempt(entry, dependencyFailure);
+			else showEntryFailure(dependencyFailure);
+			return;
+		}
+		entryAccepted = true;
+		acceptedEntry = entry;
+		var nonce = entry && entry.nonce;
+		// A dynamic retry may outrun deferred data/configuration. Keep their
+		// ordering unless everything needed for early recovery is already ready.
+		var readyForEarlyRecovery = entryRetried && !deferredScriptsDone && configurationReady() && (slowLoadReached || assets.every(function(asset) {
+			return asset.ready();
+		}));
+		if (entryRetried && !deferredScriptsDone && !readyForEarlyRecovery) {
+			var waiting = true;
+			deferredEntryPreparation = function() {
+				if (!waiting) return;
+				waiting = false;
+				deferredEntryPreparation = null;
+				prepareEntry(assets, run, nonce);
+			};
+			window.addEventListener("DOMContentLoaded", deferredEntryPreparation, { once: true });
+		} else prepareEntry(assets, run, nonce);
+	};
+	function isEntrySyntaxError(source, entry) {
+		try {
+			var failed = new URL(source, document.baseURI);
+			var expected = new URL(entry.src, document.baseURI);
+			return failed.origin === window.location.origin && expected.origin === failed.origin && failed.pathname === expected.pathname;
+		} catch (_) {
+			return false;
+		}
+	}
+	function recoverSlowEntry() {
+		if (!slowLoadReached || startup.phase !== "loading" || startup.progress >= 85 || entryBlocked || renderFailed) return;
+		if (!configurationReady()) {
+			// A pending configuration (or an earlier deferred script) can hold
+			// the whole queue. Recover the sealed local config before the entry.
+			var source = "./leaderboard/config.js";
+			if (configurationRetried || !scriptIntegrity[source]) return;
+			configurationRetried = true;
+			startup.record("dependency", "启动配置未就绪，正在重试", source);
+			try {
+				var entry = document.getElementById("game-entry");
+				var retry = retryScript(source, entry && entry.nonce);
+				if (!retry) {
+					showEntryFailure(dependencyFailure);
+					return;
+				}
+				function finishConfiguration() {
+					if (startup.phase !== "loading" || entryBlocked || renderFailed) return;
+					if (configurationReady()) recoverSlowEntry();
+					else if (!waitForOriginal(source, finishConfiguration)) {
+						startup.record("dependency", dependencyFailure, source);
+						showEntryFailure(dependencyFailure);
+					}
+				}
+				var settled = false;
+				retry.onload = retry.onerror = function() {
+					if (settled) return;
+					settled = true;
+					retry.onload = retry.onerror = null;
+					finishConfiguration();
+				};
+				document.head.appendChild(retry);
+			} catch (error) {
+				startup.record("dependency", error && error.message || dependencyFailure, source, error && error.stack);
+				showEntryFailure(dependencyFailure);
+			}
+			return;
+		}
+		if (deferredEntryPreparation) deferredEntryPreparation();
+		else if (!entryAccepted) {
+			var entry = document.getElementById("game-entry");
+			if (entry) retryEntry(entry, entry.src);
+		}
+	}
+	document.addEventListener("load", function(event) {
+		var target = event.target;
+		if (!target || target.tagName !== "SCRIPT") return;
+		if (pendingEntryPreparation) pendingEntryPreparation();
+		// Configuration may arrive after the one-shot deadline while a later
+		// deferred worker still holds DOM ready. Resume the same bounded retry.
+		if (/\/leaderboard\/config\.js(?:[?#]|$)/.test(target.src || "")) recoverSlowEntry();
+		var entry = document.getElementById("game-entry");
+		// A script tag can finish loading even if parsing failed or the
+		// response never registered the entry. Do not treat load as ready.
+		if (!entryAccepted && !entryBlocked && !renderFailed && startup.phase === "loading" && (target === entryRetryScript || target === entry) && !settledScripts.has(target)) {
+			recoverUnregisteredEntry(target, "游戏入口加载后未完成注册");
+		}
+		settleScript(target);
+	}, true);
+	window.addEventListener("error", function(event) {
+		var target = event.target;
+		if (target && target !== window) {
+			var source = target.currentSrc || target.src || target.href || "";
+			startup.record("resource", "资源加载失败", source);
+			if (target.tagName === "SCRIPT" && /(?:\/assets\/game\.js|\/src\/main\.tsx)(?:[?#]|$)/.test(source)) {
+				failEntryAttempt(target, "游戏文件加载失败，请检查网络后重新载入。已有存档仍保留。");
+			}
+			if (target.tagName === "SCRIPT") {
+				settleScript(target);
+				retryFailedWorker(target);
+			}
+			return;
+		}
+		var error = failureField(event, "error"), eventMessage = failureText(event, "message"), errorMessage = failureText(error, "message");
+		var details = failureDetails(error, event, "error", eventMessage ? "event" : errorMessage ? "error" : "fallback");
+		var errorSource = event.filename || failureSource(error);
+		startup.record("runtime", eventMessage || errorMessage || "页面运行异常", errorSource, failureText(error, "stack"), details);
+		var entry = document.getElementById("game-entry");
+		if (entry && !entryBlocked && startup.phase === "loading" && (failureText(error, "name") === "SyntaxError" || /^(?:(?:Uncaught\s+)?SyntaxError:|Unexpected (?:EOF|end of (?:input|script))\b)/i.test(eventMessage || errorMessage))) {
+			// An unattributed parse error cannot identify the failed script.
+			// Let registration and the existing bounded recovery decide, even
+			// after the entry registered but is still waiting for dependencies.
+			if (!errorSource && (!entryAccepted || deferredEntryPreparation || pendingEntryPreparation)) return;
+			if (isEntrySyntaxError(errorSource, entry)) {
+				var failed = new URL(errorSource, document.baseURI), failedUrl = failed.href;
+				if (!entryAccepted) {
+					if (!entryRetried) failEntryAttempt(entry, dependencyFailure);
+					else if (entryRetryScript && failedUrl === entryRetryScript.src) failEntryAttempt(entryRetryScript, dependencyFailure);
+					// A repeated original error or a stripped retry URL can look
+					// identical. Use the retry tag's own events in that case.
+					return;
+				}
+				// The other tag's parse error cannot invalidate an accepted entry.
+				var otherEntry = acceptedEntry === entryRetryScript ? entry : entryRetryScript;
+				if (entryRetryScript && otherEntry && (failedUrl === otherEntry.src || !failed.search && !settledScripts.has(otherEntry))) return;
+			}
+		}
+		// A failed data script still reports its error. The entry checks its
+		// registration and owns the retry, even if the tag fired "load".
+		if (!/(?:\/leaderboard\/config\.js|\/theme-preference\.js|\/assets\/(?:capability-data|opening-rights-data|announcement-data|worker-(?:codec|simulation)-[a-f0-9]{16})\.js|\/(?:retired-portraits|historical-intros)\/chunk-\d+\.js)(?:[?#]|$)/.test(errorSource)) {
+			showFailure("游戏启动出现异常，可以重新载入。已有存档仍保留。");
+		}
+	}, true);
+	window.addEventListener("unhandledrejection", function(event) {
+		var reason = failureField(event, "reason"), message = failureText(reason, "message");
+		var details = failureDetails(reason, null, "unhandledrejection", typeof reason === "string" ? "reason" : message ? "error" : "fallback");
+		details.reasonType = typeof reason;
+		startup.record("promise", typeof reason === "string" ? reason : message || "异步任务异常", failureSource(reason), failureText(reason, "stack"), details);
+	});
+	var timer = setTimeout(function() {
+		if (startup.phase !== "loading") return;
+		var text = document.getElementById("game-startup-message");
+		var retry = document.getElementById("game-startup-retry");
+		if (text) text.textContent = startup.preparingLocalSaves ? "首次整理存档列表用时较长，可以继续等待，或重新载入；已有存档仍保留。" : "载入用时较长，请检查网络。可以继续等待，或重新载入；已有存档仍保留。";
+		if (retry) retry.hidden = false;
+		// A pending deferred request can hold both its own error and DOM ready.
+		// Reuse the bounded, integrity-checked recovery after the normal wait.
+		slowLoadReached = true;
+		recoverSlowEntry();
+	}, 2e4);
+	startup.showRenderFailure = function() {
+		showFailure("已保存的进度仍保留，重新载入后可继续。未保存的进度可能丢失。", true);
+	};
+	startup.complete = function() {
+		if (renderFailed) return;
+		startup.phase = "mounted";
+		startup.mountedAt = Date.now();
+		progress(100, "准备就绪", "球馆已就绪，即将进入主界面。");
+		stopClock();
+		clearTimeout(timer);
+		setTimeout(function() {
+			if (startup.phase !== "mounted") return;
+			var screen = document.getElementById("game-startup");
+			if (screen) screen.hidden = true;
+			if (document.documentElement) document.documentElement.removeAttribute("data-startup-loading");
+			if (typeof window.dispatchEvent === "function") window.dispatchEvent(new Event("nba-manager:startup-visible"));
+		}, 120);
+	};
+	progress(15, "正在载入游戏核心", "正在载入篮球经理，请稍候…");
+	document.getElementById("game-startup-retry").onclick = function() {
+		window.location.reload();
+	};
+	(function() {
+		var logo = document.getElementById("game-startup-logo");
+		var logoText = document.getElementById("game-startup-wordmark-text");
+		if (!logo || !logoText) return;
+		var updateLogo = function() {
+			var ready = logo.complete && logo.naturalWidth > 0;
+			logo.hidden = !ready;
+			logoText.hidden = ready;
+		};
+		logo.addEventListener("load", updateLogo);
+		logo.addEventListener("error", updateLogo);
+		updateLogo();
+	})();
+})();
+</script>
+  <script src="./comic.js?build=c19519bd93e4"></script>
+<script src="./poster-fallback.js?build=c19519bd93e4"></script>
+<script src="./vendor/lamps/game-progress-bridge.js"></script>
+<script src="./vendor/lamps/game-progress-platform.js"></script>
+<script src="./vendor/lamps/game-leaderboard-bridge.js"></script>
+<script src="./vendor/lamps/game-leaderboard-platform.js"></script>
+<script src="./vendor/lamps/game-rewarded-video-bridge.js"></script>
+<script src="./vendor/lamps/game-rewarded-video-platform.js"></script>
+<script src="./vendor/lamps/integration.js"></script>
+<script src="./tutorial-steps.js?build=c19519bd93e4"></script>
+<script src="./tutorial.js?build=c19519bd93e4"></script>
 </body>
 </html>

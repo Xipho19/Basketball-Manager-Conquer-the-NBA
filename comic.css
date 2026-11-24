@@ -252,6 +252,149 @@ html.comic-skin .launcher-version {
   letter-spacing: 0.12em !important;
 }
 
+/* compact launcher: logo beside the title, actions in two rows */
+html.comic-skin .launcher-shell {
+  justify-content: space-between !important;
+  padding: 40px 20px calc(14px + env(safe-area-inset-bottom)) !important;
+}
+html.comic-skin .launcher-center {
+  display: grid !important;
+  grid-template-columns: 128px minmax(0, 1fr) !important;
+  grid-template-rows: auto auto !important;
+  align-items: center !important;
+  column-gap: 16px !important;
+  row-gap: 3px !important;
+  place-items: initial !important;
+  text-align: left !important;
+}
+html.comic-skin .launcher-mark {
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
+  width: 128px !important;
+  height: 128px !important;
+  margin: 0 !important;
+}
+html.comic-skin .launcher-mark img {
+  width: 128px !important;
+  height: 128px !important;
+  object-fit: contain !important;
+}
+html.comic-skin .launcher-shell h1 {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  font-size: 24px !important;
+  line-height: 1.08 !important;
+  text-align: left !important;
+}
+html.comic-skin .launcher-shell .launcher-center p {
+  grid-column: 2 !important;
+  grid-row: 1 / span 2 !important;
+  align-self: center !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+html.comic-skin .launcher-guide {
+  margin-top: 16px !important;
+  padding: 11px 14px !important;
+  box-shadow: 4px 4px 0 #e01b24 !important;
+}
+html.comic-skin .launcher-guide b {
+  font-size: 11px !important;
+}
+html.comic-skin .launcher-guide p {
+  margin: 4px 0 !important;
+  font-size: 10.5px !important;
+  line-height: 1.45 !important;
+}
+html.comic-skin .launcher-guide small {
+  font-size: 9px !important;
+  line-height: 1.4 !important;
+}
+html.comic-skin .launcher-actions {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 12px !important;
+  margin-top: 0 !important;
+}
+html.comic-skin .launcher-actions .launcher-primary {
+  grid-column: 1 / -1 !important;
+}
+html.comic-skin .launcher-actions button {
+  grid-template-columns: 24px 1fr 24px !important;
+  min-height: 58px !important;
+  padding: 0 12px !important;
+  font-size: 13px !important;
+  border-width: 2px !important;
+  box-shadow: 4px 4px 0 #e01b24 !important;
+}
+html.comic-skin .launcher-actions .launcher-primary {
+  min-height: 62px !important;
+  font-size: 14px !important;
+  box-shadow: 4px 4px 0 #111 !important;
+}
+html.comic-skin .launcher-actions .launcher-action-icon {
+  width: 22px !important;
+  height: 22px !important;
+}
+html.comic-skin .launcher-announcement {
+  margin-top: 10px !important;
+  box-shadow: 4px 4px 0 #e01b24 !important;
+}
+html.comic-skin .launcher-announcement-summary {
+  min-height: 54px !important;
+  padding: 8px 12px !important;
+}
+html.comic-skin .launcher-announcement-summary > span {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 7px !important;
+  min-width: 0 !important;
+}
+html.comic-skin .launcher-announcement-summary b {
+  font-size: 11px !important;
+  white-space: nowrap !important;
+}
+html.comic-skin .launcher-announcement-summary small {
+  overflow: hidden !important;
+  font-size: 9px !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+html.comic-skin .launcher-announcement-summary button {
+  min-height: 28px !important;
+  padding: 4px 8px !important;
+  font-size: 9px !important;
+}
+html.comic-skin .launcher-version {
+  position: static !important;
+  margin-top: 12px !important;
+  text-align: center !important;
+}
+@media (max-width: 360px) {
+  html.comic-skin .launcher-center {
+    grid-template-columns: 108px minmax(0, 1fr) !important;
+    column-gap: 12px !important;
+  }
+  html.comic-skin .launcher-mark,
+  html.comic-skin .launcher-mark img {
+    width: 108px !important;
+    height: 108px !important;
+  }
+  html.comic-skin .launcher-shell h1 {
+    font-size: 21px !important;
+  }
+  html.comic-skin .launcher-actions button {
+    grid-template-columns: 20px 1fr 20px !important;
+    min-height: 52px !important;
+    padding: 0 8px !important;
+    font-size: 12px !important;
+  }
+  html.comic-skin .launcher-actions .launcher-primary {
+    min-height: 56px !important;
+  }
+}
+
 /* ---------- warm (paper) screens ---------- */
 html.comic-skin {
   --warm-card: #fffaf0 !important;
@@ -350,4 +493,1566 @@ html.comic-skin .save-problem-entry {
 html.comic-skin .cloud-save-link,
 html.comic-skin .cloud-save-help {
   display: none !important;
+}
+
+/* ---------- draft pick confirmation ---------- */
+html.comic-skin.bm-draft-confirm-open,
+html.comic-skin.bm-draft-confirm-open body {
+  overflow: hidden !important;
+}
+html.comic-skin .bm-draft-confirm-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 20000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  background: rgba(4, 4, 6, 0.78) !important;
+  backdrop-filter: blur(3px);
+}
+html.comic-skin .bm-draft-confirm {
+  position: relative;
+  box-sizing: border-box;
+  width: min(420px, calc(100vw - 32px));
+  padding: 18px 18px 16px;
+  color: #141414;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(20, 20, 20, 0.08) 1px, transparent 1.5px) 0 0 / 9px 9px,
+    #f7f1e3;
+  border: 3px solid #141414;
+  box-shadow: 10px 10px 0 #e01b24, 10px 10px 0 3px #141414;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC",
+    "Source Han Sans SC", system-ui, sans-serif !important;
+  animation: bm-draft-confirm-in 0.16s ease-out both;
+}
+html.comic-skin .bm-draft-confirm-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+html.comic-skin .bm-draft-confirm-stamp {
+  display: inline-block;
+  padding: 4px 8px;
+  color: #fff;
+  background: #e01b24;
+  border: 2px solid #141414;
+  box-shadow: 3px 3px 0 #141414;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  transform: rotate(-2deg);
+}
+html.comic-skin .bm-draft-confirm-close {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  color: #141414;
+  background: #fffaf0;
+  border: 2px solid #141414;
+  box-shadow: 3px 3px 0 #141414;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  flex: 0 0 30px;
+}
+html.comic-skin .bm-draft-confirm-title {
+  margin: 16px 0 8px;
+  color: #141414;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC",
+    "Source Han Sans SC", system-ui, sans-serif !important;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
+}
+html.comic-skin .bm-draft-confirm-body {
+  margin: 0 0 18px;
+  color: #4a4742;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+html.comic-skin .bm-draft-confirm-actions {
+  display: flex;
+  gap: 10px;
+}
+html.comic-skin .bm-draft-confirm-actions button {
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  padding: 0 10px;
+  border: 3px solid #141414;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+html.comic-skin .bm-draft-confirm-cancel {
+  color: #141414;
+  background: #fffaf0;
+  box-shadow: 4px 4px 0 #141414;
+}
+html.comic-skin .bm-draft-confirm-ok {
+  color: #fff;
+  background: #e01b24;
+  box-shadow: 4px 4px 0 #141414;
+}
+html.comic-skin .bm-draft-confirm-actions button:not(:disabled):active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #141414;
+}
+html.comic-skin .bm-draft-confirm-actions button:focus-visible,
+html.comic-skin .bm-draft-confirm-close:focus-visible {
+  outline: 3px solid #141414;
+  outline-offset: 3px;
+}
+@keyframes bm-draft-confirm-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 380px) {
+  html.comic-skin .bm-draft-confirm {
+    padding: 15px 14px 14px;
+    box-shadow: 7px 7px 0 #e01b24, 7px 7px 0 3px #141414;
+  }
+  html.comic-skin .bm-draft-confirm-title {
+    font-size: 19px;
+  }
+}
+
+/* ---------- expansion draft: make available cap space prominent ---------- */
+html.comic-skin .reference-expansion-draft .draft-cap-meter-heading {
+  align-items: center !important;
+  gap: 10px !important;
+}
+html.comic-skin .reference-expansion-draft .draft-cap-meter-heading > span:last-child {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: baseline !important;
+  gap: 8px !important;
+  max-width: 100% !important;
+  padding: 6px 10px !important;
+  color: #fff !important;
+  background: #e01b24 !important;
+  border: 2px solid #f7f1e3 !important;
+  box-shadow: 4px 4px 0 #000 !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.02em !important;
+  white-space: nowrap !important;
+}
+html.comic-skin .reference-expansion-draft .draft-cap-meter-heading > span:last-child b {
+  color: #fff !important;
+  font-size: 19px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+}
+html.comic-skin .reference-expansion-draft .draft-cap-meter-heading > span:last-child b.negative {
+  color: #ffe0e0 !important;
+}
+
+/* ---------- expansion draft progress toast ---------- */
+html.comic-skin .bm-draft-progress-toast {
+  position: fixed !important;
+  top: max(10px, env(safe-area-inset-top)) !important;
+  left: 50% !important;
+  z-index: 20010 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  box-sizing: border-box !important;
+  width: calc(100% - 24px) !important;
+  max-width: 460px !important;
+  padding: 10px 12px !important;
+  color: #141414 !important;
+  background: #f7f1e3 !important;
+  border: 3px solid #141414 !important;
+  box-shadow: 5px 5px 0 #e01b24, 5px 5px 0 2px #141414 !important;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC",
+    "Source Han Sans SC", system-ui, sans-serif !important;
+  pointer-events: none !important;
+  opacity: 0;
+  transform: translate(-50%, -14px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+html.comic-skin .bm-draft-progress-toast.is-on {
+  opacity: 1 !important;
+  transform: translate(-50%, 0) !important;
+}
+html.comic-skin .bm-draft-toast-stamp {
+  flex: 0 0 auto;
+  padding: 4px 7px;
+  color: #fff;
+  background: #e01b24;
+  border: 2px solid #141414;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+html.comic-skin .bm-draft-toast-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+html.comic-skin .bm-draft-toast-copy b {
+  color: #141414;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+html.comic-skin .bm-draft-toast-copy span {
+  color: #4a4742;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+html.comic-skin .bm-draft-toast-copy strong {
+  color: #e01b24;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* ---------- native cloud-sync residue ---------- */
+/* The release uses the Lamps cloud-save panel; the original per-slot
+   cloud-sync badges can never leave "待同步" and are hidden. */
+html.comic-skin .cloud-save-badge {
+  display: none !important;
+}
+html.comic-skin .cloud-slot-button-row:has(> .cloud-save-badge) {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+/* ---------- save slot unlock (slots 4-6) ---------- */
+html.comic-skin.bm-slot-unlock-open,
+html.comic-skin.bm-slot-unlock-open body {
+  overflow: hidden !important;
+}
+html.comic-skin .bm-slot-lock-badge {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin-left: auto !important;
+  padding: 3px 7px !important;
+  color: #fff !important;
+  background: #141414 !important;
+  border: 2px solid #e01b24 !important;
+  box-shadow: 2px 2px 0 #e01b24 !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+html.comic-skin .save-slot-card.bm-slot-locked,
+html.comic-skin .home-load-slots > article.bm-slot-locked {
+  border-color: #e01b24 !important;
+}
+html.comic-skin .bm-slot-locked .save-slot-summary,
+html.comic-skin .bm-slot-locked > small,
+html.comic-skin .bm-slot-locked > time {
+  opacity: 0.72 !important;
+}
+html.comic-skin .bm-slot-unlock-status {
+  min-height: 18px;
+  margin: -6px 0 14px;
+  color: #4a4742;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+html.comic-skin .bm-slot-unlock-status.is-error {
+  color: #b00018;
+}
+html.comic-skin .bm-slot-unlock-status.is-busy {
+  color: #9e1018;
+}
+
+/* ---------- expansion draft staged 14-man board ---------- */
+html.comic-skin.bm-expansion-staging .reference-expansion-draft,
+html.comic-skin.bm-expansion-staging .prototype-expansion-draft {
+  padding-bottom: 176px !important;
+}
+html.comic-skin .bm-expansion-stage {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  /* keep the staging board above page chrome but below every game dialog */
+  z-index: 40 !important;
+  box-sizing: border-box !important;
+  padding: 9px 12px calc(9px + env(safe-area-inset-bottom)) !important;
+  color: #141414 !important;
+  background: #f7f1e3 !important;
+  border-top: 3px solid #141414 !important;
+  box-shadow: 0 -5px 0 #e01b24 !important;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC",
+    "Source Han Sans SC", system-ui, sans-serif !important;
+}
+html.comic-skin .bm-expansion-stage-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+html.comic-skin .bm-expansion-stage-stamp {
+  display: inline-block;
+  padding: 3px 7px;
+  color: #fff;
+  background: #141414;
+  border: 2px solid #e01b24;
+  box-shadow: 2px 2px 0 #e01b24;
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+html.comic-skin .bm-expansion-stage-count {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+html.comic-skin .bm-expansion-stage-chips {
+  display: flex;
+  gap: 6px;
+  min-height: 42px;
+  padding: 7px 0 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+html.comic-skin .bm-expansion-chip {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px 4px 8px;
+  color: #141414;
+  background: #fffaf0;
+  border: 2px solid #141414;
+  box-shadow: 2px 2px 0 #e01b24;
+}
+html.comic-skin .bm-expansion-chip b {
+  font-size: 11px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+html.comic-skin .bm-expansion-chip small {
+  color: #6e6960;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+html.comic-skin .bm-expansion-chip-remove {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  color: #fff;
+  background: #141414;
+  border: 0;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+html.comic-skin .bm-expansion-stage-empty {
+  display: inline-flex;
+  align-items: center;
+  color: #6e6960;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+  padding: 6px 0;
+}
+html.comic-skin .bm-expansion-stage-foot {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+html.comic-skin .bm-expansion-stage-cap {
+  flex: 1 1 150px;
+  color: #141414;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+html.comic-skin .bm-expansion-stage-cap.is-over {
+  color: #b00018;
+}
+html.comic-skin .bm-expansion-stage-actions {
+  display: flex;
+  gap: 7px;
+  margin-left: auto;
+}
+html.comic-skin .bm-expansion-stage-actions button {
+  height: 38px;
+  padding: 0 12px;
+  border: 2px solid #141414;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+html.comic-skin .bm-expansion-stage-clear {
+  color: #141414;
+  background: #fffaf0;
+  box-shadow: 3px 3px 0 #141414;
+}
+html.comic-skin .bm-expansion-stage-confirm {
+  color: #fff;
+  background: #e01b24;
+  box-shadow: 3px 3px 0 #141414;
+}
+html.comic-skin .bm-expansion-stage-confirm:disabled {
+  color: #6e6960;
+  background: #b9b2a4;
+  box-shadow: 3px 3px 0 #4a4742;
+  cursor: not-allowed;
+}
+html.comic-skin .bm-expansion-stage-note {
+  margin: 5px 0 0;
+  color: #6e6960;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+html.comic-skin .bm-expansion-stage-error {
+  margin: 5px 0 0;
+  color: #b00018;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.4;
+}
+html.comic-skin .reference-expansion-draft .player-row.bm-expansion-staged,
+html.comic-skin .prototype-expansion-draft .player-row.bm-expansion-staged {
+  border-color: #e01b24 !important;
+  background: rgba(224, 27, 36, 0.07) !important;
+  box-shadow: inset 0 0 0 2px rgba(224, 27, 36, 0.22) !important;
+}
+html.comic-skin .reference-expansion-draft .player-row.bm-expansion-staged .player-actions button,
+html.comic-skin .prototype-expansion-draft .player-row.bm-expansion-staged .player-actions button {
+  color: #f7f1e3 !important;
+  background: #141414 !important;
+  border: 2px solid #e01b24 !important;
+  box-shadow: none !important;
+}
+@media (max-width: 380px) {
+  html.comic-skin .bm-expansion-stage {
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+  }
+  html.comic-skin .bm-expansion-stage-actions {
+    width: 100%;
+    margin-left: 0;
+  }
+  html.comic-skin .bm-expansion-stage-actions button {
+    flex: 1;
+  }
+}
+
+/* same-team players are not selectable once that team already lost one */
+html.comic-skin .reference-expansion-draft .player-row.bm-expansion-team-used,
+html.comic-skin .prototype-expansion-draft .player-row.bm-expansion-team-used,
+html.comic-skin .reference-expansion-draft .player-row.bm-expansion-unaffordable,
+html.comic-skin .prototype-expansion-draft .player-row.bm-expansion-unaffordable,
+html.comic-skin .reference-expansion-draft .player-row.bm-expansion-full,
+html.comic-skin .prototype-expansion-draft .player-row.bm-expansion-full {
+  opacity: 0.55 !important;
+}
+html.comic-skin .reference-expansion-draft .player-row.bm-expansion-team-used .player-actions button,
+html.comic-skin .prototype-expansion-draft .player-row.bm-expansion-team-used .player-actions button,
+html.comic-skin .reference-expansion-draft .player-row.bm-expansion-unaffordable .player-actions button,
+html.comic-skin .prototype-expansion-draft .player-row.bm-expansion-unaffordable .player-actions button,
+html.comic-skin .reference-expansion-draft .player-row.bm-expansion-full .player-actions button,
+html.comic-skin .prototype-expansion-draft .player-row.bm-expansion-full .player-actions button {
+  color: #6e6960 !important;
+  background: #b9b2a4 !important;
+  border-color: #4a4742 !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+}
+
+/* free agency: an offer that cannot fit under the cap is not clickable */
+html.comic-skin .fa-reference-player-card > button.bm-fa-unaffordable {
+  color: #6e6960 !important;
+  background: #b9b2a4 !important;
+  border: 2px solid #4a4742 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed !important;
+}
+html.comic-skin .fa-reference-player-card.bm-fa-unaffordable-row {
+  border-color: #4a4742 !important;
+}
+html.comic-skin .fa-reference-player-card.bm-fa-unaffordable-row .fa-player-copy {
+  opacity: 0.72;
+}
+
+/* announcement: shrink to the remaining single-entry content */
+html.comic-skin .launcher-announcement-dialog {
+  height: auto !important;
+  max-height: min(620px, calc(100dvh - 36px)) !important;
+}
+html.comic-skin .launcher-announcement-timeline {
+  flex: 0 1 auto !important;
+}
+html.comic-skin .launcher-announcement-entry.latest {
+  padding-bottom: 2px !important;
+}
+html.comic-skin .launcher-announcement-body {
+  padding-bottom: 6px !important;
+}
+
+/* ============================================================
+   LAUNCHER — comic paper cover (reference layout)
+   ============================================================ */
+html.comic-skin .launcher-shell.home-screen {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  gap: 0 !important;
+  padding: 20px 18px calc(12px + env(safe-area-inset-bottom)) !important;
+  background-color: #f2eee3 !important;
+  background-image:
+    linear-gradient(rgba(20, 20, 20, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 20, 20, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 1px 1px, rgba(224, 27, 36, 0.1) 1px, transparent 1.5px) !important;
+  background-size: 18px 18px, 18px 18px, 9px 9px !important;
+  color: #141414 !important;
+  box-shadow: inset 0 0 0 6px #0b0b0d !important;
+  overflow-y: auto !important;
+  scrollbar-width: none;
+}
+html.comic-skin .launcher-shell.home-screen::-webkit-scrollbar {
+  display: none;
+}
+html.comic-skin .launcher-shell::before {
+  background:
+    repeating-linear-gradient(135deg, rgba(20, 20, 20, 0.035) 0 2px, transparent 2px 10px) !important;
+  mix-blend-mode: multiply !important;
+}
+html.comic-skin .launcher-shell::after {
+  display: none !important;
+}
+html.comic-skin .launcher-shell .launcher-guide {
+  display: none !important;
+}
+html.comic-skin .launcher-shell .launcher-mark {
+  display: none !important;
+}
+
+html.comic-skin .bm-launcher-header {
+  order: 1;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 7px;
+  border-bottom: 2px solid #141414;
+  color: #141414;
+  font-family: "Arial Narrow", "Microsoft YaHei", sans-serif;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+html.comic-skin .bm-launcher-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+html.comic-skin .bm-launcher-brand i {
+  display: block;
+  width: 9px;
+  height: 9px;
+  background: #e01b24;
+  border: 1px solid #141414;
+}
+html.comic-skin .bm-launcher-rule {
+  flex: 1;
+  height: 2px;
+  background: #141414;
+  opacity: 0.22;
+}
+html.comic-skin .bm-launcher-meta {
+  white-space: nowrap;
+}
+html.comic-skin .bm-launcher-eyebrow {
+  order: 2;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 9px 0 7px;
+  color: #b00018;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+html.comic-skin .bm-launcher-eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  background: #e01b24;
+}
+
+html.comic-skin .launcher-shell .launcher-center {
+  order: 3;
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+html.comic-skin .launcher-shell .launcher-center h1 {
+  position: static !important;
+  clip: auto !important;
+  clip-path: none !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  margin: 0 !important;
+  color: #141414 !important;
+  text-shadow: none !important;
+  font-family: "ComicCN", "Microsoft YaHei", "SimHei", sans-serif !important;
+  font-size: 46px !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.01em !important;
+}
+html.comic-skin .bm-title-line {
+  display: block !important;
+}
+html.comic-skin .bm-title-line-highlight {
+  display: inline-block !important;
+  margin-top: 5px !important;
+  padding: 1px 9px 4px !important;
+  background: #f2c200 !important;
+  color: #141414 !important;
+  box-shadow: 5px 5px 0 #e01b24 !important;
+  transform: rotate(-1.2deg) !important;
+  font-size: 42px !important;
+}
+html.comic-skin .launcher-shell .launcher-center p {
+  margin: 10px 0 0 !important;
+  max-width: 330px !important;
+  color: #4a4742 !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+html.comic-skin .bm-launcher-hero {
+  order: 4;
+  position: relative;
+  margin: 11px 0 0;
+  border: 3px solid #141414;
+  background: #141414;
+  box-shadow: 5px 5px 0 #e01b24;
+}
+html.comic-skin .bm-launcher-hero img {
+  display: block;
+  width: 100%;
+  height: 138px;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+html.comic-skin .bm-hero-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 7px;
+  background: #f2c200;
+  border: 2px solid #141414;
+  color: #141414;
+  font: 900 8px/1 "Arial Narrow", "Microsoft YaHei", sans-serif;
+  letter-spacing: 0.1em;
+}
+html.comic-skin .bm-hero-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 8px;
+  background: #f7f1e3;
+  border-top: 2px solid #141414;
+  color: #141414;
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+html.comic-skin .bm-hero-caption em {
+  color: #b00018;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+html.comic-skin .bm-launcher-archive {
+  order: 5;
+  margin: 11px 0 0;
+  border: 3px solid #141414;
+  background: #fffaf0;
+  box-shadow: 5px 5px 0 #1b3fa0;
+}
+html.comic-skin .bm-archive-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 8px;
+  background: #141414;
+  color: #f7f1e3;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+html.comic-skin .bm-archive-head b {
+  color: #f2c200 !important;
+  font-family: "Arial Narrow", "Microsoft YaHei", sans-serif !important;
+  letter-spacing: 0.1em !important;
+}
+html.comic-skin .bm-archive-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 10px 6px 8px;
+}
+html.comic-skin .bm-archive-step {
+  position: relative;
+  padding-top: 12px;
+  text-align: center;
+}
+html.comic-skin .bm-archive-step::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #141414;
+}
+html.comic-skin .bm-archive-step:first-child::before {
+  left: 50%;
+}
+html.comic-skin .bm-archive-step:last-child::before {
+  right: 50%;
+}
+html.comic-skin .bm-archive-step i {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #f2c200;
+  border: 2px solid #141414;
+  transform: translateX(-50%);
+}
+html.comic-skin .bm-archive-step:nth-child(2) i,
+html.comic-skin .bm-archive-step:nth-child(4) i {
+  background: #e01b24;
+}
+html.comic-skin .bm-archive-step b {
+  display: block;
+  color: #141414;
+  font-size: 8px;
+  line-height: 1.2;
+}
+html.comic-skin .bm-archive-step small {
+  display: block;
+  margin-top: 1px;
+  color: #6e6960;
+  font-size: 6px;
+  letter-spacing: 0.05em;
+}
+
+html.comic-skin .bm-launcher-stats {
+  order: 6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 10px 0 0;
+  border: 3px solid #141414;
+  background: #fffaf0;
+  box-shadow: 5px 5px 0 #e01b24;
+}
+html.comic-skin .bm-stat {
+  padding: 7px 3px 6px;
+  text-align: center;
+  border-right: 2px solid #141414;
+}
+html.comic-skin .bm-stat:last-child {
+  border-right: 0;
+}
+html.comic-skin .bm-stat b {
+  display: block;
+  color: #e01b24;
+  font-family: "ComicCN", "Microsoft YaHei", sans-serif;
+  font-size: 27px;
+  line-height: 1;
+}
+html.comic-skin .bm-stat:nth-child(2) b {
+  color: #1b3fa0;
+}
+html.comic-skin .bm-stat:nth-child(3) b {
+  display: inline-block;
+  padding: 0 4px;
+  color: #141414;
+  background: #f2c200;
+}
+html.comic-skin .bm-stat small {
+  display: block;
+  margin-top: 2px;
+  color: #141414;
+  font-size: 9px;
+  font-weight: 900;
+}
+html.comic-skin .bm-stat em {
+  display: block;
+  margin-top: 1px;
+  color: #6e6960;
+  font-size: 6px;
+  font-style: normal;
+  letter-spacing: 0.1em;
+}
+
+html.comic-skin .launcher-actions {
+  order: 7;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 9px !important;
+  margin: 11px 0 0 !important;
+}
+html.comic-skin .launcher-actions .launcher-primary {
+  grid-column: 1 / -1 !important;
+}
+html.comic-skin .launcher-actions button {
+  display: grid !important;
+  grid-template-columns: 24px 1fr 24px !important;
+  min-height: 50px !important;
+  padding: 0 12px !important;
+  color: #141414 !important;
+  background: #fffaf0 !important;
+  border: 3px solid #141414 !important;
+  box-shadow: 4px 4px 0 #e01b24 !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.02em !important;
+}
+html.comic-skin .launcher-actions .launcher-primary {
+  min-height: 58px !important;
+  color: #fff !important;
+  background: #c20d1c !important;
+  border-color: #141414 !important;
+  box-shadow: 5px 5px 0 #141414 !important;
+  font-size: 14px !important;
+}
+html.comic-skin .launcher-actions .launcher-primary span::after {
+  content: "  ↗";
+}
+html.comic-skin .launcher-actions .launcher-action-icon {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+html.comic-skin .launcher-announcement {
+  order: 8;
+  margin: 9px 0 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+html.comic-skin .launcher-announcement-summary {
+  min-height: 30px !important;
+  padding: 5px 0 4px !important;
+  border-top: 2px solid #141414 !important;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.25) !important;
+}
+html.comic-skin .launcher-announcement-summary > span {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+}
+html.comic-skin .launcher-announcement-summary b {
+  color: #141414 !important;
+  font-size: 9px !important;
+  white-space: nowrap !important;
+}
+html.comic-skin .launcher-announcement-summary small {
+  overflow: hidden;
+  color: #6e6960 !important;
+  font-size: 8px !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+html.comic-skin .launcher-announcement-summary button {
+  min-height: 22px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: #b00018 !important;
+  font-size: 9px !important;
+  font-weight: 900 !important;
+}
+html.comic-skin .launcher-announcement-summary button::after {
+  content: " ↗";
+}
+
+html.comic-skin .launcher-version {
+  order: 9;
+  position: static !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  width: 100% !important;
+  margin: 6px 0 0 !important;
+  color: #6e6960 !important;
+  text-shadow: none !important;
+  font-size: 7px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+}
+html.comic-skin .launcher-version::before {
+  content: "COMIC EDITION · 001";
+  font-weight: 900;
+}
+
+@media (max-width: 360px) {
+  html.comic-skin .launcher-shell.home-screen {
+    padding: 16px 14px calc(10px + env(safe-area-inset-bottom)) !important;
+  }
+  html.comic-skin .launcher-shell .launcher-center h1 {
+    font-size: 40px !important;
+  }
+  html.comic-skin .bm-title-line-highlight {
+    font-size: 36px !important;
+  }
+  html.comic-skin .bm-launcher-hero img {
+    height: 118px;
+  }
+  html.comic-skin .launcher-actions button {
+    min-height: 46px !important;
+    font-size: 11px !important;
+  }
+  html.comic-skin .launcher-actions .launcher-primary {
+    min-height: 54px !important;
+    font-size: 13px !important;
+  }
+  html.comic-skin .bm-launcher-stats .bm-stat b {
+    font-size: 23px;
+  }
+}
+
+/* keep the original launcher background behind the comic paper modules */
+html.comic-skin .launcher-shell.home-screen {
+  background-color: #08080a !important;
+  background-image:
+    linear-gradient(rgba(2, 6, 16, 0.36) 0%, rgba(2, 6, 16, 0.7) 46%, rgba(2, 6, 16, 0.94) 100%),
+    url("./story/opening-arena.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  color: #f7f1e3 !important;
+}
+html.comic-skin .launcher-shell::before {
+  background:
+    repeating-linear-gradient(135deg, rgba(224, 27, 36, 0.08) 0 2px, transparent 2px 10px),
+    radial-gradient(circle at 1px 1px, rgba(247, 241, 227, 0.1) 1px, transparent 1.5px) !important;
+  background-size: auto, 9px 9px !important;
+  mix-blend-mode: screen !important;
+}
+html.comic-skin .bm-launcher-header {
+  color: #f7f1e3 !important;
+  border-bottom-color: rgba(247, 241, 227, 0.7) !important;
+}
+html.comic-skin .bm-launcher-rule {
+  background: #f7f1e3 !important;
+  opacity: 0.35 !important;
+}
+html.comic-skin .bm-launcher-eyebrow {
+  color: #ff6b6b !important;
+}
+html.comic-skin .launcher-shell .launcher-center h1 {
+  color: #f7f1e3 !important;
+}
+html.comic-skin .launcher-shell .launcher-center h1 .bm-title-line:first-child {
+  color: #f7f1e3 !important;
+  text-shadow: 3px 3px 0 #000 !important;
+}
+html.comic-skin .launcher-shell .launcher-center p {
+  color: rgba(247, 241, 227, 0.82) !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.7) !important;
+}
+html.comic-skin .launcher-announcement-summary {
+  border-top-color: rgba(247, 241, 227, 0.7) !important;
+  border-bottom-color: rgba(247, 241, 227, 0.25) !important;
+}
+html.comic-skin .launcher-announcement-summary b {
+  color: #f7f1e3 !important;
+}
+html.comic-skin .launcher-announcement-summary small {
+  color: #bdb5a7 !important;
+}
+html.comic-skin .launcher-announcement-summary button {
+  color: #ff6b6b !important;
+}
+html.comic-skin .launcher-version {
+  color: #bdb5a7 !important;
+  text-shadow: 1px 1px 0 #000 !important;
+}
+
+/* restore the original centered logo as the launcher title */
+html.comic-skin .launcher-shell .launcher-center {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  grid-template-columns: none !important;
+}
+html.comic-skin .launcher-shell .launcher-mark {
+  display: grid !important;
+  width: 170px !important;
+  height: 170px !important;
+  margin: 0 auto !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+html.comic-skin .launcher-shell .launcher-mark img {
+  width: 170px !important;
+  height: 170px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(6px 6px 0 rgba(0, 0, 0, 0.9)) !important;
+}
+html.comic-skin .launcher-shell .launcher-center h1 {
+  display: none !important;
+}
+html.comic-skin .launcher-shell .launcher-center p {
+  margin: 8px 0 0 !important;
+  max-width: 340px !important;
+  color: rgba(247, 241, 227, 0.82) !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.7) !important;
+}
+html.comic-skin .bm-launcher-hero img {
+  height: 112px !important;
+}
+@media (max-width: 360px) {
+  html.comic-skin .launcher-shell .launcher-mark,
+  html.comic-skin .launcher-shell .launcher-mark img {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  html.comic-skin .launcher-shell .launcher-center p {
+    font-size: 11px !important;
+  }
+  html.comic-skin .bm-launcher-hero img {
+    height: 100px !important;
+  }
+}
+
+/* widen and slightly enlarge the middle launcher modules */
+html.comic-skin .launcher-shell .launcher-mark,
+html.comic-skin .launcher-shell .launcher-mark img {
+  width: 165px !important;
+  height: 165px !important;
+}
+html.comic-skin .bm-launcher-hero,
+html.comic-skin .bm-launcher-archive,
+html.comic-skin .bm-launcher-stats {
+  width: 100% !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+}
+html.comic-skin .bm-launcher-hero img {
+  height: 116px !important;
+  object-position: 50% 58% !important;
+}
+html.comic-skin .bm-hero-caption {
+  padding: 6px 9px !important;
+  font-size: 10px !important;
+}
+html.comic-skin .bm-archive-head {
+  padding: 5px 10px !important;
+}
+html.comic-skin .bm-archive-timeline {
+  padding: 10px 8px 8px !important;
+}
+html.comic-skin .bm-archive-step b {
+  font-size: 9px !important;
+}
+html.comic-skin .bm-stat {
+  padding: 8px 4px 7px !important;
+}
+html.comic-skin .bm-stat b {
+  font-size: 31px !important;
+}
+html.comic-skin .bm-stat small {
+  font-size: 10px !important;
+}
+@media (max-width: 360px) {
+  html.comic-skin .launcher-shell .launcher-mark,
+  html.comic-skin .launcher-shell .launcher-mark img {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  html.comic-skin .bm-launcher-hero img {
+    height: 108px !important;
+  }
+  html.comic-skin .bm-stat b {
+    font-size: 27px !important;
+  }
+}
+
+/* keep the selected bottom-nav label readable on the red active tab */
+html.comic-skin .season-navigation button.active small {
+  color: #fff !important;
+}
+
+/* ---------- pre-lottery rookie preview ---------- */
+html.comic-skin .bm-rookie-preview-trigger {
+  width: 100% !important;
+  min-height: 42px !important;
+  margin: 10px 0 0 !important;
+  color: #fff !important;
+  background: #c20d1c !important;
+  border: 3px solid #141414 !important;
+  box-shadow: 4px 4px 0 #141414 !important;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+html.comic-skin.bm-rookie-preview-open body {
+  overflow: hidden !important;
+}
+html.comic-skin .bm-rookie-preview-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 20000 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(5, 5, 8, 0.84) !important;
+}
+html.comic-skin .bm-rookie-preview-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(430px, 100%);
+  max-height: min(680px, calc(100dvh - 32px));
+  color: #141414;
+  background: #f7f1e3;
+  border: 3px solid #141414;
+  box-shadow: 7px 7px 0 #e01b24;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+}
+html.comic-skin .bm-rookie-preview-dialog > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px 8px;
+  border-bottom: 3px solid #141414;
+  background: #141414;
+  color: #f7f1e3;
+}
+html.comic-skin .bm-rookie-preview-dialog > header small {
+  display: block;
+  color: #f2c200;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+html.comic-skin .bm-rookie-preview-dialog > header b {
+  display: block;
+  margin-top: 3px;
+  color: #fff;
+  font-family: "ComicCN", "Microsoft YaHei", sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+html.comic-skin .bm-rookie-preview-close {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  color: #141414;
+  background: #f2c200;
+  border: 2px solid #f7f1e3;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+html.comic-skin .bm-rookie-preview-summary {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 7px 12px;
+  color: #6e6960;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.22);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+html.comic-skin .bm-rookie-preview-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 6px 10px 10px;
+}
+html.comic-skin .bm-rookie-preview-row {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 6px 6px;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.16);
+}
+html.comic-skin .bm-rookie-preview-row:last-child {
+  border-bottom: 0;
+}
+html.comic-skin .bm-rookie-preview-rank {
+  color: #b00018;
+  font-family: "ComicCN", "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
+}
+html.comic-skin .bm-rookie-preview-copy {
+  min-width: 0;
+}
+html.comic-skin .bm-rookie-preview-copy b {
+  display: block;
+  overflow: hidden;
+  color: #141414;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+html.comic-skin .bm-rookie-preview-copy small {
+  display: block;
+  margin-top: 2px;
+  overflow: hidden;
+  color: #6e6960;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+html.comic-skin .bm-rookie-preview-ovr {
+  flex: 0 0 auto;
+  padding: 3px 5px;
+  color: #fff;
+  background: #141414;
+  border: 2px solid #e01b24;
+  font-size: 9px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+/* ---------- team role swap ---------- */
+html.comic-skin .bm-role-swap-trigger {
+  width: 100% !important;
+  min-height: 38px !important;
+  margin: 0 0 10px !important;
+  color: #fff !important;
+  background: #141414 !important;
+  border: 3px solid #e01b24 !important;
+  box-shadow: 4px 4px 0 #e01b24 !important;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+html.comic-skin.bm-role-swap-open body {
+  overflow: hidden !important;
+}
+html.comic-skin .bm-role-swap-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 20000 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(5, 5, 8, 0.84) !important;
+}
+html.comic-skin .bm-role-swap-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(430px, 100%);
+  max-height: min(680px, calc(100dvh - 32px));
+  color: #141414;
+  background: #f7f1e3;
+  border: 3px solid #141414;
+  box-shadow: 7px 7px 0 #e01b24;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+}
+html.comic-skin .bm-role-swap-dialog > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px 8px;
+  background: #141414;
+  color: #f7f1e3;
+  border-bottom: 3px solid #141414;
+}
+html.comic-skin .bm-role-swap-dialog > header small {
+  display: block;
+  color: #f2c200;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+html.comic-skin .bm-role-swap-dialog > header b {
+  display: block;
+  margin-top: 3px;
+  color: #fff;
+  font-family: "ComicCN", "Microsoft YaHei", sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+html.comic-skin .bm-role-swap-close {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  color: #141414;
+  background: #f2c200;
+  border: 2px solid #f7f1e3;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+html.comic-skin .bm-role-swap-summary {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 7px 12px;
+  color: #6e6960;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.22);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+html.comic-skin .bm-role-swap-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 6px 10px;
+}
+html.comic-skin .bm-role-swap-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 2px;
+  width: 100% !important;
+  min-height: 48px !important;
+  margin: 0 0 5px !important;
+  padding: 6px 8px !important;
+  color: #141414 !important;
+  background: #fffaf0 !important;
+  border: 2px solid #141414 !important;
+  border-radius: 0 !important;
+  box-shadow: 2px 2px 0 rgba(20, 20, 20, 0.25) !important;
+  text-align: left !important;
+  cursor: pointer;
+}
+html.comic-skin .bm-role-swap-row b {
+  grid-column: 1;
+  grid-row: 1;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+html.comic-skin .bm-role-swap-row small {
+  grid-column: 1;
+  grid-row: 2;
+  overflow: hidden;
+  color: #6e6960;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+html.comic-skin .bm-role-swap-row > span {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  padding: 3px 5px;
+  color: #fff;
+  background: #141414;
+  border: 2px solid #e01b24;
+  font-size: 9px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+html.comic-skin .bm-role-swap-row.is-selected {
+  background: #f2c200 !important;
+  box-shadow: 3px 3px 0 #e01b24 !important;
+}
+html.comic-skin .bm-role-swap-row.has-commitment {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+html.comic-skin .bm-role-swap-status {
+  flex: 0 0 auto;
+  min-height: 16px;
+  margin: 0;
+  padding: 0 12px;
+  color: #b00018;
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 1.4;
+}
+html.comic-skin .bm-role-swap-confirm {
+  flex: 0 0 auto;
+  min-height: 46px !important;
+  margin: 7px 10px 10px !important;
+  color: #fff !important;
+  background: #c20d1c !important;
+  border: 3px solid #141414 !important;
+  box-shadow: 4px 4px 0 #141414 !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  cursor: pointer;
+}
+html.comic-skin .bm-role-swap-confirm:disabled {
+  color: #6e6960 !important;
+  background: #b9b2a4 !important;
+  box-shadow: 3px 3px 0 #4a4742 !important;
+  cursor: not-allowed !important;
+}
+
+/* ---------- user untouchable settings ---------- */
+html.comic-skin .bm-untouchable-trigger {
+  width: 100% !important;
+  min-height: 38px !important;
+  margin: 0 0 10px !important;
+  color: #141414 !important;
+  background: #f2c200 !important;
+  border: 3px solid #141414 !important;
+  box-shadow: 4px 4px 0 #e01b24 !important;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+html.comic-skin .bm-role-swap-row.is-untouchable {
+  background: #fff3c4 !important;
+  border-color: #e01b24 !important;
+  box-shadow: 3px 3px 0 #e01b24 !important;
+}
+html.comic-skin .bm-role-swap-row.is-untouchable > span {
+  background: #e01b24 !important;
+  border-color: #141414 !important;
+}
+
+/* ---------- offseason breakthrough training ---------- */
+html.comic-skin .bm-breakthrough-trigger {
+  width: 100% !important;
+  min-height: 38px !important;
+  margin: 0 0 10px !important;
+  color: #fff !important;
+  background: #1b3fa0 !important;
+  border: 3px solid #141414 !important;
+  box-shadow: 4px 4px 0 #e01b24 !important;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+/* ============================================================
+   LIVE 2026-11 SCREENS — rebase refinements
+   ============================================================ */
+
+/* Team creation: selected name chip was still using the old teal fill. */
+html.comic-skin .team-name-options button.selected,
+html.comic-skin .team-name-options button[aria-pressed="true"] {
+  background: #e01b24 !important;
+  color: #f7f1e3 !important;
+  border-color: #141414 !important;
+  box-shadow: 3px 3px 0 rgba(247, 241, 227, 0.35) !important;
+}
+
+/* Mute inactive actions so big accent blocks do not read as clickable. */
+html.comic-skin button:disabled,
+html.comic-skin .is-disabled {
+  opacity: 0.5 !important;
+  filter: saturate(0.55) !important;
+  cursor: not-allowed !important;
+}
+
+/* Expansion rights comparison: keep the VS badge clear of card copy. */
+html.comic-skin .expansion-rights-card {
+  position: relative;
+}
+
+/* New-generation save badge on the launcher. */
+html.comic-skin .launcher-primary small,
+html.comic-skin .launcher-actions small {
+  color: rgba(247, 241, 227, 0.82) !important;
+}
+
+/* Dark-only skin: hide the live light/dark toggle. */
+html.comic-skin .settings-options button[aria-label^="界面主题"] {
+  display: none !important;
+}
+
+/* Native untouchable dialog confirm follows the comic primary CTA. */
+html.comic-skin button.user-untouchable-submit {
+  background: #e01b24 !important;
+  color: #f7f1e3 !important;
+}
+
+/* 1·3·6 poster validation error: jump to rotation setup. */
+html.comic-skin .bm-poster-goto-lineup {
+  display: block;
+  margin-top: 6px;
+  padding: 3px 8px;
+  color: #f7f1e3 !important;
+  background: #e01b24 !important;
+  border: 1px solid #141414 !important;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
 }

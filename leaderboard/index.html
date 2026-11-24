@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="zh-CN">
   <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self';">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#08080a" />
@@ -85,7 +86,7 @@
       .rule { margin: 15px 0 0; color: #829daf; font-size: 10px; line-height: 1.5; }
       @media (max-width: 375px) { .mine-facts { gap: 5px; font-size: 9px; } .row { gap: 6px; } .row .score { font-size: 11px; } }
     </style>
-  <link rel="stylesheet" href="../leaderboard.css">
+  <link rel="stylesheet" href="../leaderboard.css?build=c19519bd93e4">
 </head>
   <body>
     <main>
@@ -265,7 +266,7 @@
       function imageUrl(value) {
         if (typeof value !== "string") return "";
         if (/^\.\/expansion-logos\/[a-z0-9-]+\.(png|svg|webp)$/.test(value)) return "../" + value.slice(2);
-        try { const url = new URL(value); return url.protocol === "https:" && /^(?:[a-z0-9-]+\.)*(?:hupu\.com|hoopchina\.com\.cn)$/i.test(url.hostname) ? url.href : ""; } catch { return ""; }
+        return "";
       }
 
       function renderImage(parent, url, label, lazy = true) {

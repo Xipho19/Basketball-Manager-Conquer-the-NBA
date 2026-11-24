@@ -247,6 +247,40 @@
     return !!firstVisible([".settings-dialog"]);
   }
 
+  /* The launcher step asks the player to start a new career. Grey out the two
+     existing-career entries so the highlighted primary action is unambiguous.
+     This is only an overlay state; no save data or gameplay value is touched. */
+  function setLauncherLock(stepId) {
+    var locked = stepId === "launcher";
+    document.documentElement.classList.toggle("bm-tut-lock-launcher", locked);
+
+    var actions = document.querySelector(".launcher-actions");
+    if (!actions) return;
+    var buttons = actions.querySelectorAll("button");
+    for (var i = 0; i < buttons.length; i++) {
+      var button = buttons[i];
+      if (button.classList.contains("launcher-primary")) continue;
+      if (locked) {
+        if (!button.hasAttribute("data-bm-tut-lock")) {
+          button.setAttribute("data-bm-tut-lock", button.disabled ? "1" : "0");
+          button.disabled = true;
+          button.setAttribute("aria-disabled", "true");
+        }
+      } else if (button.hasAttribute("data-bm-tut-lock")) {
+        var wasDisabled = button.getAttribute("data-bm-tut-lock") === "1";
+        button.removeAttribute("data-bm-tut-lock");
+        button.disabled = wasDisabled;
+        button.removeAttribute("aria-disabled");
+      }
+    }
+  }
+
+  function isLauncherLockedButton(target) {
+    if (!document.documentElement.classList.contains("bm-tut-lock-launcher")) return false;
+    var button = target && target.closest ? target.closest(".launcher-actions button") : null;
+    return !!button && !button.classList.contains("launcher-primary");
+  }
+
   /* ---------- content helpers ---------- */
 
   function esc(value) {
@@ -367,6 +401,7 @@
     modalMode = false;
     currentStep = step;
     currentIndex = index;
+    setLauncherLock(step.id);
 
     if (isUpdate && card.dataset.stepId === step.id && root.classList.contains("is-on")) {
       positionCoach(step);
@@ -525,6 +560,7 @@
   }
 
   function hideCard() {
+    setLauncherLock(null);
     if (root) root.className = "bm-tut-root";
     if (spot) spot.style.display = "none";
     stopLayoutLoop();
@@ -752,7 +788,12 @@
     }
     document.addEventListener(
       "click",
-      function () {
+      function (event) {
+        if (isLauncherLockedButton(event.target)) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          return;
+        }
         injectSettingsEntry();
         if (state.status === "active") scheduleTick();
       },

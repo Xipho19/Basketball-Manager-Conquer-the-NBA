@@ -326,3 +326,17 @@ html.comic-skin .bm-tut-root.is-center .bm-tut-card {
     transition: none !important;
   }
 }
+
+/* Launcher step: the two existing-career entries are greyed out while the
+   coach mark is visible, so "开始新游戏" is the only entry point offered by
+   the guide. The lock is removed as soon as the step is dismissed. */
+html.comic-skin.bm-tut-lock-launcher .launcher-actions > button:not(.launcher-primary) {
+  background: #b9b2a4 !important;
+  color: #6e6960 !important;
+  border-color: #6e6960 !important;
+  box-shadow: 5px 5px 0 #4a4742 !important;
+  filter: grayscale(1) !important;
+  opacity: 0.72 !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}

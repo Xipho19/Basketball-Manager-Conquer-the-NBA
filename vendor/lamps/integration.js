@@ -618,7 +618,7 @@
           var key = text(result.key);
           if (key.indexOf(CAREER_PREFIX) === 0 && /^\d+$/.test(key.slice(CAREER_PREFIX.length))) {
             var slot = Number(key.slice(CAREER_PREFIX.length));
-            if (slot >= 1 && slot <= 6) {
+            if (slot >= 1 && slot <= 10) {
               records.push({ slot: slot, save: result.value });
             }
           }
@@ -878,7 +878,7 @@
           saved.kind !== "bm-career" ||
           !Number.isSafeInteger(saved.slotId) ||
           saved.slotId < 1 ||
-          saved.slotId > 6 ||
+          saved.slotId > 10 ||
           typeof saved.save !== "string" ||
           saved.save.indexOf("gz:") !== 0
         ) {
