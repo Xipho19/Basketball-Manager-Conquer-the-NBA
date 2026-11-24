@@ -200,6 +200,19 @@ html.comic-skin .save-drawer-backdrop {
   inset: 0 !important;
   z-index: 30 !important;
 }
+/* Announcement detail must be a true modal overlay, not part of the
+   launcher scroll flow. */
+html.comic-skin .launcher-announcement-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 90 !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 18px !important;
+  background: rgba(2, 6, 16, 0.72) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  backdrop-filter: blur(6px) !important;
+}
 html.comic-skin .launcher-shell::after {
   content: "COMIC EDITION · 001";
   position: absolute;
